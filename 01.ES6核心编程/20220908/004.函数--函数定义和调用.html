@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>点击我试试</button>
+
+<input type="text" placeholder="请输入数字" name="iNum1" />
+<input type="text" placeholder="请输入数字" name="iNum2" />
+<input type="button" value="比较" />
+<div class="displayZone">结果</div>
+<script>
+    //调用
+    myfun1();
+
+    //函数定义方式1
+    function myfun1(){
+        console.log(`myfun1被调用了`);
+    }
+
+    //要求输出指定数字连续加到1的总和值
+    // let sum=0;
+    // for (let i = 0; i <= 12; i++) {
+    //     sum+=i;
+    // }
+    // console.log(sum);
+    function myAdd(iNum){
+        let sum = 0;
+        for (let i = 0; i <= iNum ; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    console.log(`加到10：${myAdd(10)}`);
+    console.log(`加到100：${myAdd(100)}`);
+    console.log(`加到1000：${myAdd(1000)}`);
+    console.log(`加到10000：${myAdd(10000)}`);
+
+    //课堂练习：   不考虑非法数据， 编写一个函数 实现能够找出两个数较大的数
+    function myMax(iNum1,iNum2){
+        return iNum1 > iNum2 ? iNum1 : iNum2;
+
+        // let max = iNum1 > iNum2 ? iNum1 : iNum2;
+        // return max;
+
+       /* let flag;
+        if(iNum1 > iNum2)
+            flag = iNum1;
+        else
+            flag = iNum2;
+
+        return flag;//单出口原则*/
+    }
+    //调用
+    console.log(`比较大小：5，3：${myMax(5,3)}`);
+    console.log(`比较大小：5，3，8：${myMax(8,myMax(5,3))}`);
+
+    //函数定义方式2,适合于简单的函数表述[不推荐]
+    //new是一个运算符 ，调用 构造函数  产生一个类的具体实例
+    //此处  Function 是一个构造函数。
+    let myMax1 = new Function('iNum1','iNum2','return iNum1 > iNum2 ? iNum1 : iNum2;');
+    console.log(`比较大小：5，3：${myMax1(5,3)}`);
+
+
+    //定义函数的第3种方式， 匿名函数方式 ，没有名字的函数，主要场景： 异步编程【回调函数【事件函数】】
+    //需要给按钮添加点击[单击]时处理的程序,本质是让onclick事件函数被绑定在自定义函数上
+    // document.querySelector('button').onclick = function(){
+    //     this.innerText = '试试？？';
+    //     alert("按钮被点击了");
+    // };
+
+    //点击比较按钮时执行复杂的逻辑，适合于用匿名函数处理
+    document.querySelector('[type="button"]').onclick = function () {
+        //获取表单的两个比较的数值,  innerHTML ,innerText , value 属性，分别对应获取和设置元素内容
+        let iNum1 = document.querySelector('[name="iNum1"]').value;
+        let iNum2 = document.querySelector('[name="iNum2"]').value;
+        iNum1  = Number.parseInt(iNum1);
+        iNum2  = Number.parseInt(iNum2);
+        //输出结果
+        document.querySelector('.displayZone').innerText = myMax(iNum1,iNum2);
+    };
+
+    //定义函数的第4种方式， 箭头函数
+
+
+</script>
+</body>
+</html>

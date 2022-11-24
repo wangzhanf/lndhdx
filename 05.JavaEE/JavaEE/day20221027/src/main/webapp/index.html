@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    欢迎光临
+    <form action="http://localhost:7777/day20221027//login.do" method="post">
+        <input type="text" name="uname" />
+        <input type="text" name="upss" />
+        <input id="addFoodBtn" type="submit" value="登录" />
+    </form>
+
+    <form action="/day20221027/addFood.do" method="post">
+        <input type="text" name="foodName" placeholder="食品名称" />
+        <textarea name="foodExplain">食品介绍</textarea>
+        <input name="foodPrice" type="number" placeholder="价格" />
+        <select name="bid">
+            <option value="4">商家1</option>
+            <option value="5">商家2</option>
+            <option value="6">商家3</option>
+        </select>
+        <input type="submit" name="添加" />
+    </form>
+    <a href="/day20221027/listFood.do">获取食品列表</a>
+    <div id="dis"></div>
+<script>
+    window.onload = function(){
+        //1
+        var xhr = new XMLHttpRequest()
+        xhr.open("get","/day20221027/listFood.do",true);
+        xhr.onreadystatechange = function(data){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.responseText);
+                var data = JSON.parse(xhr.responseText);
+                document.querySelector("#dis").innerHTML = data[0].foodName;
+            }
+        };
+        xhr.send();
+    };
+
+    var oBtn = document.querySelector("#addFoodBtn");
+    oBtn.onclick = function(){
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList的第一个版本</title>
+</head>
+<body>
+<div id="app">
+    <input v-on:keyup.enter="addEve" type="text" v-model="myevent" placeholder="输入事情回车确认" />
+    <hr />
+    <h2>计划列表</h2>
+    <ul>
+        <li v-for="(item,index,a) in planList" v-on:click="moveEve(index)">
+            {{ index + 1 }} .  {{ item }}
+        </li>
+    </ul>
+    <hr />
+    <h2>完成列表</h2>
+    <ul>
+        <li v-for="(item,index,a) in completeList" v-on:click="moveEve1(index)">
+            {{ index + 1 }} .  {{ item }}
+        </li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            myevent:'',
+            planList:[],
+            completeList:[]
+        },
+        methods:{
+            addEve:function(){
+                this.planList.unshift(this.myevent);
+                this.myevent = '';
+            },
+            moveEve:function(i){
+                this.completeList.push(this.planList.splice(i,1).join());
+            },
+            moveEve1:function(i){
+                this.planList.push(this.completeList.splice(i,1).join());
+            }
+        }
+    });
+</script>
+</body>
+</html>

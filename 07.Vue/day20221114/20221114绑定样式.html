@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    #app>.err{color: red;}  /* 0110 */
+    .success{color: green;font-size: 3em;}
+  </style>
+</head>
+<body>
+<!--View-->
+<div id="app">
+  <input type="range" min="10" max="90" v-model="sVal" />
+  {{ sVal }}
+  <h4 style="color: blue;font-size: 3em;" v-bind:class="students[2].id%2==1?active:''"> {{ students[2].id }}  {{ students[2].sname }} </h4>
+  <h1 v-bind:style="{color:myColor,fontSize:fSize}">style绑定演示</h1>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  //viewModel开始
+  let myvm = new Vue({
+    el: "#app",
+    data: {
+      //model
+      students:[
+        {id:1,sname:"zs"},
+        {id:2,sname:"ls"},
+        {id:7,sname:"ww"},
+      ],
+      active:"err",
+      myColor:"rgba(0,255,0,0.62)",
+      sVal:55,
+      fSize:"44px"
+
+    }
+  });
+
+  document.querySelector("[type='range']").onchange = function () {
+    myvm.fSize = this.value + "px";
+  }
+  //viewModel结束
+</script>
+</body>
+</html>

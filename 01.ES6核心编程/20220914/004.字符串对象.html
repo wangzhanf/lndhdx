@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let sStr = "Hello JavaScript!!!";//此时sStr是一个简单类型--字符串
+    // let oStr = new String(sStr);//显式创建字符串对象,没有必要
+    console.log(sStr.charAt(1),sStr.charCodeAt(1));//此时解释器会自动将sStr转换为String对象类型,调用其方法
+    //请问  a[97] 和 A[65]  是否一样,为什么  不同字符对应不同编码unicode的前127个就是ASCII ,
+    console.log(sStr.indexOf('a'));
+    //javascript中 字符串的计数位置和数组是相同的, 默认从 0 开始计位,检索通用规则  找到返回第一个出现的位置,未找到返回    -1
+    console.log(sStr.toUpperCase());
+    //字符串最常使用的方法基本都和正则表达式相关
+    let sUrl = "http://www.epss.vip/index.html?uname=administrator&upass=123456&role=admin";
+    //使用基本的分割原则太过繁琐,结合正则方便操作
+    let aUrl = sUrl.split(/[?=&]/);
+    console.log(aUrl);
+    if(aUrl[2] == "administrator" && aUrl[4] == '123456')
+        console.log("登录成功");
+</script>
+</body>
+</html>

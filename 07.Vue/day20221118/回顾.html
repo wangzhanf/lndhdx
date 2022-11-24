@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <router-link to="/home">首页</router-link>
+        <router-link to="/my">我的</router-link>
+        <router-link to="/">根目录</router-link>
+    </div>
+    <hr />
+    <router-view></router-view>
+</div>
+
+<template id="homepage">
+    <div>
+        首页内容
+    </div>
+</template>
+<template id="mypage">
+    <div>
+        <router-link to="/my/login">登录</router-link>
+        <router-link to="/my/register">注册</router-link>
+        <router-link to="/my/">默认</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+<template id="loginpage">
+    <div>
+        登录页
+    </div>
+</template>
+<template id="registerpage">
+    <div>
+        注册页
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+    //1 定义路由组件
+    const homecomponent = {
+        template:'#homepage',
+    };
+    const mycomponent = {
+        template:'#mypage',
+    };
+    const logincomponent = {
+        template:'#loginpage',
+    };
+    const registercomponent = {
+        template:'#registerpage',
+    };
+    //2 定义路由规则
+    const routes = [
+        {
+            path:"/home",
+            component:homecomponent
+        },
+        {
+            path: "/",
+            redirect:"/home"
+        },
+        {
+            path:"/my",
+            component:mycomponent,
+            children:[
+                {
+                    path:"/my/login",
+                    component:logincomponent
+                },
+                {
+                    path:"/my/",
+                    redirect:"/my/login"
+                },
+                {
+                    path:"/my/register",
+                    component:registercomponent
+                }
+            ]
+        }
+    ];
+    //3 创建router实例
+    const router = new VueRouter({
+        routes:routes
+    });
+
+    new Vue({
+        el: "#app",
+        data: {},
+        //4 应用路由实例
+        router:router
+    });
+</script>
+</body>
+</html>

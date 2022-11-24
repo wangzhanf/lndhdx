@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<a name="top" href="001.正则的静态属性.html">测试</a>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<button>返回上一页</button>
+<span>
+    <a href="#top">回到顶部</a>
+</span>
+<script>
+    //设置状态栏文字
+    window.setInterval(function () {
+        window.status = "hello " + Math.random();
+    },1000);
+
+    //常见应用场景，   在线文档
+    document.querySelector('button').onclick = function () {
+      window.history.go(-1);
+    };
+
+    //location   对地址的操作
+    let sUrl = window.decodeURIComponent(window.location.href);
+    console.log(sUrl);
+
+    //screen相关对象
+    console.log(window.screenX,window.screenY);
+    console.log(window.scrollY);
+    window.onscroll = function(){
+        // console.log(typeof window.scrollY)
+        if(window.screenY >= 10){
+            console.log(window.scrollY);
+            document.querySelector('span').setAttribute("class","show");
+        }else{
+            document.querySelector('span').setAttribute("class","hide");
+        }
+    };
+
+</script>
+</body>
+</html>

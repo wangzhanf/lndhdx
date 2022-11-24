@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="loginForm">
+    <input type="text" name="uname" />
+    <input type="text" name="upass" />
+    <input type="button" value="登录" />
+</form>
+
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<script>
+    window.onload = function(){
+        var xhr = new XMLHttpRequest();
+        var url = "http://localhost:7777/day20221028/msg.do";
+        xhr.open("get",url,true);
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.responseText);
+                let jObj = JSON.parse(xhr.responseText);
+                document.querySelector("h1").innerText = jObj.statusCode;
+                document.querySelector("h2").innerText = jObj.message;
+                document.querySelector("h3").innerText = jObj.dataZone.ds[1];
+            }
+        };
+        xhr.send();
+    };
+
+</script>
+
+</body>
+</html>

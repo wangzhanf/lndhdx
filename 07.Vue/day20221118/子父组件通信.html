@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h1>rootTitle</h1>
+  <son></son>
+</div>
+
+<template id="sonview">
+  <div>
+    <h2>{{ sonTitle }} {{ money}}</h2>
+    <h2>公告栏：孩子{{ cGrade }}年级，考了{{ cScore }}分</h2>
+    <sun v-on:carescore="getScore" info="你是长子长孙" v-bind:yichan="money*0.75"></sun>
+    <sun info="你是老疙瘩" v-bind:yichan="money*0.25"></sun>
+  </div>
+</template>
+
+<template id="sunview">
+  <div>
+    <h3>{{ sunTitle }} </h3>
+    <p>这是孙子节点的内容</p>
+    <p>这是父节点传递的数据：  {{ info }}</p>
+    <p>继承了遗产：  {{ yichan }}</p>
+    <div>
+      考试结束了，告知父母成绩
+      <input type="number" v-model="iscore" />
+      <input type="number" v-model="igrade" />
+      <button v-on:dblclick="sendMsg">告知</button>
+    </div>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: function(){
+      return {
+        rootTitle:"根组件的标题"
+      };
+    },
+    components:{
+      son:{
+        template:'#sonview',
+        data:function(){
+          return {
+            sonTitle:'Son子组件的标题',
+            money:100,
+            cScore:0,
+            cGrade:0
+          };
+        },
+        methods:{
+          getScore(score,grade){
+            console.log(score,grade);
+            this.cScore = score;
+            this.cGrade = grade;
+            if(grade<4 && score < 60){
+              window.alert("揍一顿");
+            }
+          }
+        }
+        ,
+        components: {
+          sun:{
+            template: '#sunview',
+            data:function(){
+              return {
+                sunTitle:"sun孙子组件的标题",
+                iscore:0,
+                igrade:1,
+                //money:this.super().money/2
+              };
+            },
+            props:['info','yichan'],   //存在了  info ,yichan 数据属性
+            methods:{
+              sendMsg:function (){
+                //console.log(this.iscore,this.igrade);
+                this.$emit("carescore",this.iscore,this.igrade);
+              }
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

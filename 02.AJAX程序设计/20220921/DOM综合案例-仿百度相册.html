@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{font-family: '微软雅黑';margin: 0;padding: 0;}
+        div,ul{display: block;}
+
+        [name="bigImg"]{width: 800px;height: 600px;background-image: url("./img/0.webp");margin: 2em;background-size: cover;}
+        #imgList li{display: block;float: left;width: 20%;margin: 1em;}
+        #imgList img{width: 200px;height: 160px;}
+
+    </style>
+</head>
+<body>
+<!--
+    有大图的展示区，小图列表，点击小图在大图展示区打开大图
+    容错性：当网络或资源出现问题能够静态展示部分图片
+    平滑渐退和逐步增强：基本能力也可以使用户访问，所有条件具备能力是逐步增强
+    强壮性：尽可能的少用或不用BOM，所有对象都应该检测
+    //1 设计HTML结构【考虑极端只有HTML如何实现】
+    //2 设计CSS修饰【能用class尽量不用id，初始化很重要】
+    //3 设计js，如果JavaScript能够运行，则body的代码都应该是js生成的（DOM操作）【作业】。
+    //4 异步访问， 所有的数据不是静态的，而是动态从远端服务器获取的
+-->
+<!--
+可以考虑使用内部框架iframe实现同页面资源的切换,利用一个浏览器窗口组织多个页面的展示
+-->
+    <iframe name="bigImg" src="./img/0.webp" width="600" height="400" scrolling="no" frameborder="no">
+        您的浏览器不支持内部框架，请更新浏览器版本
+    </iframe>
+    <ul id="imgList">
+        <li><a target="bigImg" href="./img/big1.webp"><img src="./img/small1.webp" width="200" /></a></li>
+        <li><a target="bigImg" href="./img/big2.webp"><img src="./img/small2.webp" width="200" /></a></li>
+        <li><a target="bigImg" href="./img/big3.webp"><img src="./img/small3.webp" width="200" /></a></li>
+        <li><a target="bigImg" href="./img/big4.webp"><img src="./img/small4.webp" width="200" /></a></li>
+    </ul>
+<script>
+    //封装好的Promise，只需要编写一次
+    let getData = function(url){
+        let promise = new Promise(function(resolve, reject){
+            let xhr = new XMLHttpRequest();
+            xhr.open('get',url,true);
+            xhr.onreadystatechange = processHandler;
+            xhr.send();
+
+            function processHandler() {
+                if(this.readyState != 4){
+                    return;//此处要注意，如果中间状态不做处理则会如何呢
+                }
+                if(this.readyState == 4 && this.status == 200){
+                    //假定数据全部都是json格式，在通用函数直接转换
+                    let jsonData = JSON.parse(this.responseText);
+                    resolve(jsonData);
+                }else{
+                    reject(new Error(this.statusText));
+                }
+            }
+        });
+        return promise;
+    };
+
+    function createImgList(){
+        //先模拟从网络中获取图片列表数据
+        //将套娃式的调用关系整理成同步模式的调用关系，只是看起来好像比较干净而已
+        getData('./imgList.json').then(function (myData) {
+            console.log('获取到的数据',myData);
+            //将获得的数据渲染到图片列表区
+            let oUl = document.querySelector('#imgList');
+            oUl.innerHTML = "";//清空原始内容
+            let sStr = "";
+            for (let i = 0; i < myData.lists.length; i++) {
+                sStr += `<li><a target="bigImg" href="${ myData.lists[i].bigImg }"><img src="${ myData.lists[i].smallImg }" width="200" /></a></li>`;
+            }
+            oUl.innerHTML = sStr;
+
+        },function (errorInfo) {
+            console.log('出错信息',errorInfo);
+        });
+    }
+
+
+    function processBigImg(){
+        //假定js能够正常工作，删除 内部框架， 生成新的大图展示区
+        let oBigImg = document.querySelector('[name="bigImg"]');
+        if(!oBigImg) return false;//对象检测,不存在则推出
+        oBigImg.remove();
+        //创建新的大图区
+        let oDiv = document.createElement('div');
+        oDiv.setAttribute("name","bigImg");
+        //新创建的大图展示区挂载到body中，放在列表前
+        document.querySelector('body').prepend(oDiv);
+    }
+    //给每个缩略的小图片绑定事件
+    function bindEvent(){
+        //代表js是正常的，给每个小图片添加事件确保能够点击切换
+        //考虑到 未来  缩略图都是动态从网络请求获取的【不易绑定事件】，考虑使用事件托管
+        let oImgList = document.querySelector('#imgList');
+        oImgList.onclick = function(event){
+            console.log(event.target);//在本案例中，真实的触发者是img标签
+            //切换大图区的背景图片
+            let sImgUrl = event.target.parentElement.getAttribute('href');
+            //let sImgUrl = event.target.parentElement.href;
+            //实施切换
+            let oBigImg = document.querySelector('[name="bigImg"]');
+            if(!oBigImg) return false;//对象检测,不存在则推出
+            //通过CSS的ABCD算法， style行内样式的优先级是最高的
+            oBigImg.setAttribute("style",`background-image:url(${sImgUrl});`)
+            event.preventDefault();
+        };
+    }
+    window.onload = function(){
+        processBigImg();//处理大图区的函数
+        createImgList();//动态生成小图片列表，模拟从网络获取数据【免费api有限制，目前还未学习java后端】
+        bindEvent();//给每个小图片绑定事件
+    };
+
+</script>
+</body>
+</html>

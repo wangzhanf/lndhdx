@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.2   数值类型
+    var iAge = 18;//典型的整数数值
+    var dScore = 59.5;//典型的浮点数值
+    //1.2.1 数值表示,可以采用默认的十进制,
+    // var temp = 17;//十进制表示
+    var temp = 0X11;//十六进制的表示
+    var temp = 0O71;//八进制的表示
+    //默认采用十进制输出,  可以使用toString方法指定输出的进制模式
+    console.log(`默认采用十进制输出:${temp},对应的十六进制:${temp.toString(16)}`);
+
+    //特殊的数值类型
+    //科学计数
+    // console.log(1400000000);
+    console.log(1.4E9);//1400000000
+    console.log(1.4E-2);//0.014
+    //极大和极小值,在不同的引擎[chrome的v8]实现是不同的
+    console.log(3/0);//Infinity
+    console.log(-3/0);//-Infinity
+    console.log(Number.MAX_VALUE);//超过该值的都被定义为Infinity
+
+    //非数, 特殊的数 , NaN不等与任意,包括它自己
+    console.log(0/0);//NaN
+    console.log("a3" * 4);//NaN
+    console.log(0/0 == 0/0);//false   非数不等于任意
+    console.log(Number.isNaN(0/0));  //判断是否是非数Nan需要通过函数判断
+
+
+    //1.3   undefined类型
+    //未定义 ,   使用未声明的变量  ,
+    console.log(undefineVar);
+    var undefineVar = "abc";
+
+    let bStatus = console.log(123);//123
+    console.log(bStatus);//如果函数没有返回值则默认返回   undefined
+
+    //1.4   null空类型[一般表示不存在的对象]
+    console.log(document.getElementById("myName"));//null
+    console.log(document.querySelector("body"));//非  null
+
+
+    //1.5   Boolean类型
+    //   true表示真,   false 表示假 ,通常是判断的依据
+    console.log(true);
+    /*if(true 或者  false){
+        //为true时执行
+    }else{
+        //为false时执行
+    }*/
+    console.log("" == true);//false
+    console.log(0 == false);//true
+
+
+
+
+    //数据类型转换
+    console.log(3+5+"a"+6+7);
+    console.log(`默认采用十进制输出:${temp},对应的十六进制:${temp.toString(16)}`);
+    console.log(Number.parseInt("123.45ab"));//123
+    console.log(Number.parseFloat("123.45ab"));//123.45
+    console.log(Number("123.45"));//123.45
+    console.log(Number("123.45ab"));//NaN
+
+    console.log(Number.parseInt("ab123.45ab"));//NaN
+    console.log(Number.parseFloat("ab123.45ab"));//NaN
+    console.log(Number("ab123.45"));//NaN
+
+    // Math.floor(), Math.ceil();//向上或向下取整
+
+</script>
+</body>
+</html>

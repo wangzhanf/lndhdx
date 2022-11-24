@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    中文
+    <a href="/day20221028/hello.do?arg1=张三">传递数据</a>
+    <div></div>
+
+    <form id="loginForm" action="/day20221028/login.do" method="get">
+        <input type="text" name="uname" />
+        <input type="text" name="upass" />
+        <input type="submit" value="登录" />
+    </form>
+<script>
+
+
+    window.onload = function(){
+        document.querySelector("a").onclick = function(eve){
+            eve.preventDefault();
+            eve.stopPropagation();
+            var xhr = new XMLHttpRequest();
+            xhr.open("get",eve.target.getAttribute("href"),true);
+            xhr.onreadystatechange = function(event){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    // var rt = JSON.parse(xhr.responseText);
+                    var rt =  JSON.parse(xhr.responseText)
+                    console.log(xhr.responseText); // 9:50  上课
+                    document.querySelector("a").nextElementSibling.innerHTML = rt;
+                }
+            };
+            xhr.send();
+
+        };
+    };
+</script>
+</body>
+</html>

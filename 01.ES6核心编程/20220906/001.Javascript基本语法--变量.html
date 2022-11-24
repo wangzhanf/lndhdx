@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log("hello");
+    console.log(110);
+
+    //javascript 属于弱类型语言, 建议自我约束，
+    var myname = "wangzhanf";
+    myname = 18;
+    myname = false;
+    //  变量声明， 可以使用  var    let    const   关键字   声明
+    var age = 18;   //   关键字   变量名 =  变量值
+    console.log(age);
+
+    //const不能再次被赋值
+    //const hobby;   //不可以，因为声明必须给初始值
+    const hobby = "music";//正确,建议使用     const   HOBBY = "music";
+    // hobby = "movie";//不可以，不能再次被赋值
+
+
+    //var声明变量
+    console.log(gender);//报错, gender未被定义
+    // if(true){
+    var gender = "男";//相当于声明了全局变量 , 所有代码都可以访问,浏览器的全局对象是window
+    console.log(window.gender);
+    console.log(gender);
+    for (var i = 0; i < 9; i++) {
+
+    }
+    console.log(i);//9
+    // }
+
+    for (let j = 0; j < 9; j++) {
+
+    }
+    // console.log(j);//报错
+
+    if(true){
+        temp = "haha";//变量自动提升,window.temp 的值  是   haha
+        var temp = "heihei";//修改  window.temp的值为   heihei
+        console.log(temp);//1
+    }
+    console.log(temp);//2
+
+    if(true){
+        //temp1 = "haha";//如果代码块内有let声明同名变量,进入暂时性死区
+        //  此行之前 temp1  的临时性死区  [变量不能使用],建议将变量声明在语句的起始位置
+        let temp1 = "heihei";//
+        console.log(temp1);//3
+    }
+    console.log(temp1);//4
+
+
+</script>
+</body>
+</html>

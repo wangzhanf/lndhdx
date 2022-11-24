@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="number" v-model="num" />
+    <label><input type="radio" name="pay" value="$" v-model="payMethod">美元</label>
+    <label><input type="radio" name="pay" value="￥" v-model="payMethod">人民币</label>
+    <hr />
+    <h2>总价：{{ num*price  | truncate | addPrefix(payMethod) }}</h2>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    Vue.filter("truncate",function(val){
+        console.log(val);
+        let newVal = val.toFixed(2);
+        return newVal;
+    });
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            payMethod:"￥",
+            price:2.6,
+            num:3
+        },
+        filters:{
+            addPrefix:function(val,symbol){
+                //console.log(this);
+                let newVal;
+                switch (symbol){
+                    case "$":
+                        newVal = (val / 7).toFixed(2);
+                        break;
+                    default:
+                        newVal = val;
+                }
+                return symbol + newVal;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

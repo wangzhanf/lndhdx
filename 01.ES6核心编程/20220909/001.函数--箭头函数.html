@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 箭头函数是函数的一个变体， 是匿名函数的一个变体, 简洁语法【语法糖】，可以命名
+    * */
+    // document.querySelector('body').onclick = init;
+    /*document.querySelector('body').onload = function init() {
+        alert("init执行了");
+    };*/
+
+    //1 基本形式, 定义了一个函数，叫做f ， 接纳形参[参量]  a ，   返回值  a*a
+    let f = a => a*a;
+    console.log(f(4));
+    //2 完整形式
+    let myMax = (iNum1,iNum2) => {
+        //函数体
+        let max;
+        max = iNum1 > iNum2 ? iNum1 : iNum2;
+        return max;
+    };
+    console.log(myMax(3,5));
+
+    //3 简写模式  , 形参只有1个可以不写（）, 函数体语句只有一行可以不写{} 和 return,
+    let myMax1 = (iNum1,iNum2) => iNum1 > iNum2 ? iNum1 : iNum2;
+
+    //4 ES6中， 箭头函数主要用于  数组的遍历操作  ，   函数作为参数（回调）
+    console.log([1,2,3,4,5,6].map(function(a){
+        return a*a;
+    }));
+    console.log([1,2,3,4,5,6].map(a=>a*a));
+
+
+</script>
+</body>
+</html>

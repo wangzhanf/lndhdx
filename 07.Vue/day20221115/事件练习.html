@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-on:keyup.stop="func" v-bind:value="msg" />
+  <hr />
+  {{ msg }}
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      msg : "以前的内容"
+    },
+    methods:{
+      func:function(eve){
+        this.msg = eve.target.value;
+        // eve.target.keyCode == 13
+        console.log("键盘改变");
+      }
+    }
+  });
+</script>
+</body>
+</html>

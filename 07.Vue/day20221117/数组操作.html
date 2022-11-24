@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  <style>
+    tbody input{
+      border: none;
+      outline: none;
+    }
+    /*tbody input:focus{
+      outline: 1px solid orangered;
+    }*/
+    .borderLine{
+      outline: 1px solid orangered;
+    }
+    .nonePoint{
+      cursor: none;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+<!--  数据表格，删除，修改-->
+  <button v-on:click="paixu($event,'id')">反转排序</button>
+  <button v-on:click="addFormToggle=!addFormToggle">新增数据</button>
+<!--  通过方法实现-->
+  <input type="text" placeholder="请输入关键字" v-on:change="searchRec" v-model="keyWords" />
+<!--通过watch实现-->
+  <!--  <input type="text" placeholder="请输入关键字" v-model="keyWords" />-->
+<!--通过computed实现-->
+  <!--  <input type="text" placeholder="请输入关键字" v-model="keyWords" />{{keyWords}}-->
+  <table border="1">
+    <thead>
+    <tr>
+      <th>index</th>
+      <th v-on:click="paixu($event,'id')">id</th>
+      <th v-on:click="paixu($event,'businessName')">businessName</th>
+      <th v-on:click="paixu($event,'avatar')">avatar</th>
+      <th>operator</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--  修改表单-->
+    <tr v-show="updFormToggle">
+      <td></td>
+      <td><input readonly="readonly" type="number" v-model="updId" /></td>
+      <td><input type="text" v-model="updBusinessName" /></td>
+      <td><input type="text" v-model="updAvatar" /></td>
+      <td>
+        <button v-on:click="updExeRec">确定修改</button>
+      </td>
+    </tr>
+    <tr v-for="(item,index) in blists">
+      <td>{{ index }}</td>
+      <td v-text="item.id"></td>
+<!--      <td v-html="item.businessName"></td>-->
+      <td><input v-on:blur="blurFocus($event)" v-on:click="ignoreFocus($event)" v-on:dblclick="getFocus($event)" type="text" v-model="item.businessName" /></td>
+      <td><img width="30" v-bind:src="item.avatar" /></td>
+      <td>
+        <button v-on:click="delRec($event,index)">删除</button>
+        <button v-on:click="updRec($event,index)">修改1</button>
+      </td>
+    </tr>
+    <!--  增加表单-->
+    <tr v-show="addFormToggle">
+      <td></td>
+      <td><input type="number" v-model="addId" /></td>
+      <td><input type="text" v-model="addBusinessName" /></td>
+      <td><input type="text" v-model="addAvatar" /></td>
+      <td>
+        <button v-on:click="addRec">确定添加</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  const vm =  new Vue({
+    el: "#app",
+    data: {
+      keyWords:'',//搜索的关键词
+      //收集增加的临时数据,压缩写法
+      addId:null,
+      addBusinessName:'',
+      addAvatar:'',
+      updId:null,
+      updBusinessName:'',
+      updAvatar:'',
+      addFormToggle:false,//新增表单的控制开关
+      updFormToggle:false,//修改表单的控制开关
+      sFlag:true,
+      sortK:"id",
+      blists:[
+        {id:1,businessName:"kfc",avatar:"../null.png"},
+        {id:12,businessName:"麻辣烫",avatar:"../null.png"},
+        {id:13,businessName:"麻辣香锅",avatar:"../null.png"},
+        {id:44,businessName:"火锅",avatar:"../null.png"},
+      ],
+      copyBlists:[],//原始数据的副本
+      copyBlists0:[]//原始数据的副本
+    }
+    ,
+    computed:{
+      copyBlists2:{//原始数据的副本2
+        get:function(){
+          // console.log("计算属性...............");
+          // console.log(this.keyWords);//Vue
+          let that = this;
+          let arr = this.blists.filter(function (value, index, array){
+            //回调函数，注意可能会改变this的指向
+            //console.log(this);//window对象
+            //console.log(value.businessName.indexOf(this.keyWords));
+            return value.businessName.indexOf(that.keyWords)!=-1;
+          });
+
+          // console.log(arr);
+          return arr;
+        }
+      }
+    },
+    watch:{
+      /*keyWords:{
+        deep:true,//深度监听
+        immediate:true,//初始状态不参考oldVal,以newVal的初始进行一次监听
+        handler:function(newVal,oldVal){
+          //console.log(oldVal,newVal);
+          this.copyBlists = this.blists.filter(function(value, index, array){
+            //console.log(value.businessName.indexOf(newVal));
+            return value.businessName.indexOf(newVal)!=-1;
+          });
+          //console.log(this.copyBlists);
+        }
+      }*/
+    },
+    mounted:function(){
+      this.searchRec();
+    }
+          ,
+    methods:{
+      ignoreFocus:function (eve){
+        eve.target.blur();//丢失焦点
+      },
+      getFocus:function (eve){
+        eve.target.focus();//获取焦点
+        eve.target.setAttribute("class","borderLine nonePoint");
+      },
+      blurFocus:function (eve){
+        eve.target.removeAttribute("class");
+      },
+      asc:function (x,y){
+        let flag = 0;
+        if(typeof x[this.sortK] == "number");
+          flag = x[this.sortK] - y[this.sortK];
+        if(typeof x[this.sortK] == "string");
+          flag = (String)(x[this.sortK]).localeCompare((String)(y[this.sortK]));
+        return flag;
+      },
+      desc:function (x,y){
+        let flag = 0;
+        if(typeof x[this.sortK] == "number");
+          flag = y[this.sortK] - x[this.sortK];
+        if(typeof x[this.sortK] == "string");
+          flag = (String)(y[this.sortK]).localeCompare((String)(x[this.sortK]));
+        return flag;
+      },
+      paixu:function (eve,k) {
+        // console.log("paixu...........");
+        this.sFlag = !this.sFlag;
+        this.sortK = k;//需要排序的列
+        // console.log("k",k,"sortK",this.sortK);
+        this.blists.sort(this.sFlag?this.asc:this.desc);
+      },
+      searchRec:function (){
+        //遍历数组找出和keyWords相关的记录
+        /*for(let i=0;i<this.blists.length;i++){
+          if(this.blists[i].businessName.indexOf(this.keyWords)==-1){
+            this.blists.splice(i,1);
+          }
+        }*/
+        /*for(let i=0;i<this.blists.length;i++){
+          if(this.blists[i].businessName.indexOf(this.keyWords) != -1){
+            this.copyBlists.push(this.blists.splice(i,2));
+          }
+        }*/
+        let that = this;
+        this.copyBlists0 = this.blists.filter(function (value, index, array){
+          //回调函数，注意可能会改变this的指向
+          console.log(this);//window对象
+          //console.log(value.businessName.indexOf(this.keyWords));
+          return value.businessName.indexOf(that.keyWords)!=-1;
+        });
+      },
+      addRec:function(){
+        //将数据添加到列表中
+        //this.blists[this.blists.length] = {id:this.addId,businessName:this.addBusinessName,avatar:this.addAvatar};
+        // this.blists[this.blists.length].id = this.addId;
+        // this.blists[this.blists.length].businessName = this.addBusinessName;
+        // this.blists[this.blists.length].avatar = this.addAvatar;
+        this.blists.unshift({id:this.addId,businessName:this.addBusinessName,avatar:this.addAvatar});
+        //隐藏表单
+        this.addFormToggle = !this.addFormToggle;
+        //清空表单数据
+        this.addId = null;
+        this.addBusinessName = '';
+        this.addAvatar = '';
+      },
+      updRec:function (eve,current){
+        console.log("updRec...........");
+        //1 展示修改表单
+        this.updFormToggle = !this.updFormToggle;
+        //2 回填数据
+        this.updId = this.blists[current].id;
+        this.updBusinessName = this.blists[current].businessName;
+        this.updAvatar = this.blists[current].avatar;
+        //3
+        //this.blists.splice(current,1);
+      },
+      updExeRec:function(){
+        //1 修改数据
+        for(let i=0;i<this.blists.length;i++){
+          if(this.updId == this.blists[i].id){
+            this.blists[i].businessName = this.updBusinessName;
+          }
+        }
+        //2 清空数据
+        this.updId = null;
+        this.updBusinessName = null;
+        this.updAvatar = null;
+        //3 关闭修改表单
+        this.updFormToggle = !this.updFormToggle;
+      },
+
+      delRec:function (eve,current){
+        console.log("delRec...........");
+        this.blists.splice(current,1);
+        // this.blists.splice(current,1,{id:66,businessName:"花甲粉",avatar:"../null.png"});
+        // this.blists.pop();//弹出最后一个
+        // this.blists.shift();//弹出第1个
+        // this.blists.push({id:55,businessName:"炒饼",avatar:"../null.png"});//添加到最后
+        // this.blists.unshift({id:55,businessName:"炒饼",avatar:"../null.png"});//添加到最前
+      }
+    },
+  });
+
+</script>
+</body>
+</html>

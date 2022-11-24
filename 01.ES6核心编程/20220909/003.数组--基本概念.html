@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //传统定义变量存储4名学生的成绩
+/*    let zhangsan = 99;
+    let lisi = 88;
+    let wangwu = 77;
+    let maliu = 55;*/
+    //ES6也可以通过  解构赋值 进行
+    // let [zhangsan,lisi,wangwu,maliu] = [99,88,77,55];
+    // console.log(zhangsan,lisi,wangwu,maliu);//处理超过10个数据困难
+
+    let aStu = [99,88,77,66,55,44,33,22,11,5,6,7];//声明一个数组
+    console.log(aStu[0]);//99   通过不同的索引下标访问不同的数组元素， 下标从  0 开始
+    //使用JavaScript 中  数组名[下标值]   访问或设置指定位置的内容  ，通过  数组名.属性名  访问或设置数组的相关属性
+    //常见属性有  length ,  数组的长度
+    console.log(aStu.length);
+    aStu[2] = 101;//赋值
+    console.log(aStu);//数组名代表整个数组
+
+    //多维数组:数组的元素内容是数组
+    let aRnum1 = [216,216,218];
+    let aRnum2 = [522,523,525];
+    let aType = [aRnum1,aRnum2];
+    console.log(aType[1][2]);
+</script>
+</body>
+</html>

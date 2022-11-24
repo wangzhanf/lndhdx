@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view-->
+<div id="app">
+    <input type="text" name="uname" v-model="uname" />
+    <input type="text" name="uphone" v-model="uphone" />
+    <input type="text" name="avatar" v-model="avatar" />
+    <hr />
+    <h2> {{ uname }} </h2>
+    <h3> {{ uphone }} </h3>
+    <img v-bind:src="avatar" />
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    let aData = {
+        uname:"guest",
+        uphone:"110",
+        avatar:"null.png"
+    };
+    window.onload = MtoV;
+    function MtoV(){
+        document.querySelector("#app h2").innerHTML = aData.uname;
+        document.querySelector("#app h3").innerHTML = aData.uphone;
+        document.querySelector("#app img").setAttribute("src",aData.avatar);
+    };
+
+    document.querySelector("#app [name='uname']").onchange = function () {
+        aData.uname = this.value;
+        // MtoV();
+    }
+    document.querySelector("#app [name='uphone']").onchange = function () {
+        aData.uphone = this.value;
+        // MtoV();
+    }
+    document.querySelector("#app [name='avatar']").onchange = function () {
+        aData.avatar = this.value;
+        // MtoV();
+    }
+
+    setInterval(MtoV,1000);
+
+    // setInterval(function () {
+    //     console.log("123");
+    //     console.log("---------------");
+    // },3000);
+    // setTimeout(function(){alert(123);},3000);
+
+
+    // let vm = new Vue({
+    //     el:"#app",
+    //     data:{
+    //         uname:"guest",
+    //         uphone:"110",
+    //         avatar:"null.png"
+    //     }
+    // });
+</script>
+</body>
+</html>

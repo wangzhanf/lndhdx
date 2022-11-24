@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<body>
+<div id="app">
+<!--    顶部-->
+    <div>顶部</div>
+    <div>内容区【可变】</div>
+    <div>
+        <botnav></botnav>
+    </div>
+</div>
+<template id="botnavview">
+    <div>
+        <itemico></itemico>
+        <itemico></itemico>
+        <itemico></itemico>
+        <itemico></itemico>
+    </div>
+</template>
+<template id="itemicoview">
+    <div>
+        <i class="fa fa-user"></i>
+        {{ title }}
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            botnav:{
+                template:"#botnavview",
+                components: {
+                    itemico : {
+                        template: "#itemicoview",
+                        data:function(){
+                            return  {
+                                title:"文字1"
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

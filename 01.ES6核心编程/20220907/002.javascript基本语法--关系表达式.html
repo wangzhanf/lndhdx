@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //关系表达式,常常用于判断的场景
+        // 整个关系表达式的返回值必定是   true或false
+        console.log(3>4);//false
+        console.log(5<=5);//true
+        //  =    ,  ==     ,   ===    有不同的语义
+        let iAge = 18;
+        if(iAge = 1){// 将1赋值给iAge后，整个表达式的返回值为  1 ，  JavaScript除了7种假值其他都为真
+            console.log("可以购买酒精饮料");
+        }
+        //undefined 和 null   是衍生关系，
+        if(undefined == null){
+            console.log("相同");//能够输出，都有共同祖先
+        }
+
+        if(typeof(undefined) == typeof(null)){
+            console.log("相同");//不能输出
+        }
+
+
+        if(undefined === null){
+            console.log("相同");//不能输出，除了判断真实值是否相同，还判断类型是否相同
+        }
+
+        //逻辑运算符，  操作的就是逻辑表达式 ，最终的结果也是逻辑值，true和false
+        //主要描述    && 和-与（并且）   ， || 或（或者）  ， ！ 非（反向）
+        //应用场景， 多条件判断的场景
+        let iAges = 16;//年龄
+        let bHungry = false;//饥饿状态
+        let fMoney = 16.78;//钱包余额
+        //如果饿了就去吃饭，如果余额超过50就吃大餐，如果年龄不满18岁不限制任何
+        // if(bHungry){
+        //     if(fMoney >= 50){
+        //         console.log("吃饭,吃大餐");
+        //     }
+        // }
+        if((bHungry && fMoney >= 50) || !(iAges >= 18)){
+            console.log("吃大餐");
+        }
+
+        //逻辑表达式具有短路功能， 如果前置表达式可以确定整个最终值，则后续表达式不会计算
+        //if(true || ....||...............一堆表达式) ,   最终只需要判断第一个，整个结果都为true
+        //if(false && ....&&...............一堆表达式) ,  最终只需要判断第一个，整个结果都为false
+        let iCount = -1;
+        if(iCount > 0 || ++iCount){
+            console.log(iCount);//1
+        }
+        if(iCount < 0 && ++iCount){
+            console.log(iCount);//不会输出
+        }
+        console.log(iCount);//1
+
+
+
+        //三元【目】运算符，  条件表达式，    -a 一元运算符   ，a + b 二元运算符    ，  三元指有三个操作数
+        //应用场景， 取代简单if...else
+        //获取用户输入的年龄，如果大于等于18则设置属性为成年，否则为未成年
+        /*let iUserAge = Number.parseInt(prompt('请输入年龄',17)); // NaN
+        // console.log(iUserAge);//NaN  对应 false
+        if(!iUserAge){
+            console.log("输入格式错误");
+        }else{
+            if(iUserAge >= 18){
+                console.log("成年");
+            }else{
+                console.log("未成年");
+            }
+        }*/
+
+        //三元的语法：     条件表达式 ？“真的结果” ：“假的结果”
+        //    age > 18 ? alert("1") : alert("0");
+        //  vat bAgeStatus = age > 18  ?  "已成年"  ：  “未成年”  ；
+
+        var bM = (iUserAge = Number.parseInt(prompt('请输入年龄',17))) && iUserAge >=18 ? "成年" : "未成年";
+        console.log(bM);
+
+
+
+
+        //位运算符：   将数据按照二进制位 方式进行运算   ，数字，字符都可以转换为二进制， 通常位运算符只作为数值运算
+        // &按位与   ，   |按位或     ，   ^按位异或     ，   ~按位求反
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

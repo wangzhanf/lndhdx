@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--模板文件确保基础问题无歧义-->
+<html>
+<head>
+    <!--  标签可嵌套不可交叉,非自闭和标签必须成对出现,自闭合标签以  "空格 /" 结尾，所有标签名小写字母，所有属性都必须有属性值，自定义属性用 data-开头  -->
+    <meta charset="UTF-8" />
+    <!--  优先响应移动设备端，确保在不同设备上都不会缩放元素  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!--  模板中要将资源加载  -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.css" />
+    <title>用户注册</title>
+</head>
+<body>
+<!--注册，登录页面顶部都存在标题，蓝色白字,推荐，尽量选择语义化标签,如果不存在语义化标签再使用div,span 通用标签-->
+<header class="pageHeader">
+    用户注册
+</header>
+<section class="mainContent">
+    <form class="baseForm">
+        <div>
+            <label>手机号码：<input class="inputText" type="text" name="phone" placeholder="手机号码" /></label>
+        </div>
+        <div>
+            <label>密码：<input class="inputText" type="password" name="pass" placeholder="密码" /></label>
+        </div>
+        <div>
+            <label>确认密码：<input class="inputText" type="password" name="repass" placeholder="确认密码" /></label>
+        </div>
+        <div>
+            <label>用户名：<input class="inputText" type="text" name="username" placeholder="用户名" /></label>
+        </div>
+        <div>性别：
+            <div class="rightAlign">
+                <label><input type="radio" name="gender" value="1" />男</label>
+                <label><input type="radio" name="gender" value="0" />女</label>
+            </div>
+        </div>
+        <input class="btn btn-block btn-success" type="submit" value="注册" />
+        <input class="btn btn-block btn-regular" data-href="./login.html" type="button" value="登陆" />
+    </form>
+</section>
+
+<footer class="pageFooter">
+    <ul class="footNav">
+       <li>
+            <a href="./index.html">
+                <!-- 通用的字体图标参考 https://www.runoob.com/font-awesome/fontawesome-reference.html          -->
+                <span class="fa fa-home"></span>
+                首页
+            </a>
+       </li>
+        <li>
+            <a href="./goods.html">
+                <span class="fa fa-compass"></span>
+                发现
+            </a>
+        </li>
+        <li>
+            <a href="./orderList.html">
+                <span class="fa fa-file-text-o"></span>
+                订单
+            </a>
+        </li>
+        <li>
+            <a href="./login.html">
+                <span class="fa fa-user-o"></span>
+                我的
+            </a>
+        </li>
+    </ul>
+</footer>
+
+<!--因为JavaScript是阻塞式加载模式，js的引入不要放在前面，应该在  /body  之前-->
+<script src="./js/main.js"></script>
+<!--因为每个页面加载时执行的代码可能不同，所以给每个页面预留一个script段，将自动加载执行代码写在此处-->
+<script>
+    window.onload = function(){
+        //给登录按钮绑定事件
+        if(!(oBtn = document.querySelector('[value="登陆"]'))) return false;
+        oBtn.onclick = gotoPage;
+        //每个页面加载时需要执行的操作写在当前页面
+        if(!(oUsername = document.querySelector('[name="username"]'))) return false;
+        oUsername.onkeyup = checkUsername;
+    };
+</script>
+</body>
+</html>

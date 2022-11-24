@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" />
+    <style>
+        nav{
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            width: 100vw;
+        }
+        nav>a{
+            flex: 1;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        .router-link-active{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+  <h1>主页的内容 登录状态:{{isLogin?"已登录":"未登录"}}</h1>
+    <hr />
+<!--    6   应用路由进行导航-->
+    <nav>
+        <router-link v-for="(item) in navList" v-bind:to="{name:'recordVName',params:{isL:isLogin}}" :key="item.href">
+            <navitem v-bind:it="item"></navitem>
+        </router-link>
+<!--        <router-link v-for="(item) in navList" v-bind:to="item.href" :key="item.href">-->
+<!--            <i class="fa" v-bind:class="item.icon"></i>-->
+<!--            {{ item.atext }}-->
+<!--        </router-link>-->
+
+
+<!--        <router-link to="/info">信息</router-link>-->
+<!--        <router-link to="/find">发现</router-link>-->
+<!--        <router-link to="/record">通讯录</router-link>-->
+<!--        <router-link to="/my">我的</router-link>-->
+    </nav>
+    <hr />
+    <router-view></router-view>
+
+</div>
+
+<!--1 创建不同组件的view模板-->
+<template id="myview">
+  <div>
+      <div>我的页面内容</div>
+      <router-link to="/my/login">登录</router-link>
+      <router-link to="/my/register">注册</router-link>
+      <router-link to="/my/content">详情</router-link>
+      <router-view></router-view>
+  </div>
+</template>
+<template id="recordview">
+  <div>
+      --{{ $route.params.isL }}--
+
+      <span v-if="localIsLogin">
+          通讯录的页面内容
+      </span>
+      <span v-else>
+          您无权访问该内容
+      </span>
+
+  </div>
+</template>
+<template id="infoview">
+    <div>信息页面内容</div>
+</template>
+<template id="findview">
+    <div>发现的页面内容</div>
+</template>
+
+<template id="loginview">
+    <div>登录的表单内容</div>
+</template>
+<template id="registerview">
+    <div>注册的表单内容</div>
+</template>
+<template id="contentview">
+    <div>详情页面的内容</div>
+</template>
+<template id="itemview">
+    <div>
+                    <i class="fa" v-bind:class="it.icon"></i>
+                    {{ it.atext }}
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+  //2 创建组件【为路由服务】
+  let mycomponent = {
+    template:'#myview',
+    methods:{},
+    data:function(){
+      return {};
+    }
+  };
+  let recordcomponent = {
+    template:'#recordview',
+    methods:{},
+    data:function(){
+      return {
+          localIsLogin:this.$route.params.isL
+      };
+    }
+  };
+  let infocomponent = {
+      template:'#infoview',
+  };
+  let findcomponent = {
+      template:'#findview',
+  };
+  let logincomponent = {
+      template:'#loginview',
+  };
+  let registercomponent = {
+      template:'#registerview',
+  };
+  let contentcomponent = {
+      template:'#contentview',
+  };
+
+  //3 设定路由规则，使url地址和组件产生关联，类似于 web.xml
+  let routes = [
+      {
+          path:'/',
+          // component:infocomponent   //不会引发link操作
+          redirect:'/info'   //建议的方式
+      },
+    {
+      path:'/my',
+      component:mycomponent,
+        children:[
+            {
+                path: '/my/',
+                redirect:'/my/content'
+            },
+            {
+                path:'/my/login',
+                component:logincomponent
+            },
+            {
+                path:'/my/register',
+                component:registercomponent
+            },
+            {
+                path:'/my/content',
+                component:contentcomponent
+            },
+        ]
+    },
+    {
+      path:'/record',
+        name:'recordVName',
+      component:recordcomponent
+    },
+      {
+          path:'/info',
+          component:infocomponent
+      },
+      {
+          path:'/find',
+          component:findcomponent
+      }
+  ];
+
+  //4 创建路由实例对象
+  let router = new VueRouter({
+    //指定路由规则
+    routes:routes
+  });
+
+
+  const vm = new Vue({
+    el: "#app",
+    data: {
+        navList:[
+            {href:'/info',atext:'信息',icon:'fa-weixin'},
+            {href:'/find',atext:'发现',icon:'fa-search'},
+            {href:'/record',atext:'通讯录',icon:'fa-address-card'},
+            {href:'/my',atext:'我的',icon:'fa-user'},
+        ],
+        isLogin:false
+    },
+    //5 使该实例对象采用xx路由实例
+    router:router,
+      components:{
+        navitem:{
+            template:'#itemview',
+            props:["it"]
+        }
+      }
+  });
+</script>
+</body>
+</html>

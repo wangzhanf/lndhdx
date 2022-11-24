@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //购买工具
+     let dtCurr = new Date("2022-9-15");//类似于重载
+    //使用工具    Date.getDay();
+     dtCurr.getDay();
+
+     //通用操作工具,直接使用，都是 static  方法
+    Math.random();
+
+    //
+    let iRet = "my name is wangzhanf".indexOf('an');
+    console.log(iRet);
+    console.log('my name is wangzhanf'.split(/[ a]/));
+
+    //正则表达式
+    let rPhone = /^1[3-9][0-9]{9}$/i;
+    console.log(rPhone.test('我的手机  13898647536110 '));
+    console.log(rPhone.exec('我的手机  13898647536110 '));
+    console.log(rPhone.test('13898647536'));
+</script>
+</body>
+</html>

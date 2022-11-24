@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{border-collapse: collapse;}
+        table{
+            width: 80%;
+            border-left: 1px solid red;
+            border-top: 1px solid red;
+        }
+        th,td{
+            border-right: 1px solid red;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<!--
+    ajax都是基于事件触发,请求纯数据【尽量结构简单】，根据响应的数据做业务处理
+    HTML规范： 浏览器有超强纠错
+-->
+<a href="001.ajax业务处理逻辑.html">查看所有用户数据【传统】</a>
+
+<input type="checkbox" checked="checked" /><!--</p>-->
+<button>获取用户信息</button>
+<div id="display">
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>爱好</th>
+                <th>职称</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+<!--        tr应该是从远程获得的数据并填充-->
+
+        </tbody>
+    </table>
+</div>
+<script>
+    //通过事件委托方式对动态增加在组件进行事件绑定
+    document.querySelector('#display tbody').onclick = function(event){
+        if(event.target.getAttribute('class') == 'delBtn'){
+            //通用的过程是，异步ajax  向远程服务器发送请求删除当前资源【假定 序号是依据  】
+            let xhr = new XMLHttpRequest();
+            // xhr.open('get','./delete?uid='+i,true);//错误
+            xhr.open('get','./delete?uid='+event.target.getAttribute('data-uid'),true);
+            xhr.onreadystatechange = function(){
+                alert(xhr.responseText);
+            };
+            xhr.send();
+        }
+        event.preventDefault();
+        event.stopPropagation();
+    };
+
+
+    document.querySelector('button').onclick = function(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('get','./userlist.json',true);
+        xhr.onreadystatechange = function (event) {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                //正确接收到响应的时候执行的逻辑,
+                //document.querySelector('#display').innerHTML = xhr.responseText;
+                //按格式布局数据
+                //let aUsers = xhr.responseText.split(',');
+                //document.querySelector('#display>table>tbody>tr:first-child>td:nth-child(3)').innerText = aUsers[1].split(":")[1];
+                // console.log(aUsers[1].split(":")[1]);
+                //上述3行代码太   LOW    ， 硬编码，css选择器过于复杂，数据拆分处理自我实现。可以用标准的数据格式取代
+                //对JSON的解析
+                // 确保获取到的数据是json  ，  浏览器调试工具确认响应头  1   content-type: application/json
+                //console.log(typeof xhr.responseText);//string , web中默认都是字符串
+                //console.log(typeof xhr.response);//string
+                //2 通过内置的JSON的对象提供的方法将字符串和json互相转换【序列化】
+                // JSON.stringify(JSON对象);//将JSON对象转换为字符串
+                let oResult = JSON.parse(xhr.responseText);//将字符串解析为JSON对象
+                //console.log(oResult.mystate);//true
+                //循环结果数据到放在DOM中，建议通过函数封装
+                parseData(oResult);//
+            }
+        };
+        xhr.send();
+    };
+
+    //定义一个封装DOM操作的函数
+    function parseData(aData){
+        //先清空原始数据
+        //document.querySelector('#display tbody').empty();//连标记一起删
+        document.querySelector('#display tbody').innerHTML = '';//初始化为空白
+        //console.log(aData);
+        // 1 第一种渲染方式，通过字符串拼接，优点是简单，缺点是粗糙
+        let sStr = "";
+        for (let i = 0; i < aData.users.length; i++) {
+            sStr += `<tr><th>${i+1}</th>`;
+            sStr += `<td>${aData.users[i].name}</td>`;
+            sStr += `<td>${aData.users[i].age}</td>`;
+            sStr += `<td>${aData.users[i].gender?'男':'女'}</td>`;
+            sStr += `<td>${aData.users[i].hobby.join('-')}</td>`;
+            sStr += `<td>${aData.users[i].role ? aData.users[i].role.level : '无' }</td>`;
+            sStr += `<td><input type="button" data-uid="${i}"  value="删除-${i}" class="delBtn" /></td>`;
+            //给按钮绑定事件不直接，创建一个函数专门绑定事件，需要事件委托实现对动态增加对象绑定事件
+            sStr += `</tr>`;
+        }
+        //将所有的tr都追加到tbody
+        document.querySelector('#display tbody').innerHTML = sStr;
+        //演示通过字符串拼接方式渲染DOM如何绑定事件,多个元素，querySelectorAll返回伪数组集合，分别对单个元素绑定
+        let aBtns = document.querySelectorAll('.delBtn');
+        /*aBtns.onclick = function(){
+            alert('haha');
+        };*/
+        //分别绑定
+/*        for (let i = 0; i < aBtns.length; i++) {
+            aBtns[i].onclick = function(){
+                //通用的过程是，异步ajax  向远程服务器发送请求删除当前资源【假定 序号是依据  】
+                let xhr = new XMLHttpRequest();
+                xhr.open('get','./delete?uid='+i,true);
+                xhr.onreadystatechange = function(){
+                    alert(xhr.responseText);
+                };
+                xhr.send();
+            }
+        }*/
+        //上述方法的缺点，代码的顺序很重要【耦合度过高】,必须元素在DOM上才能绑定，推荐使用事件委托方式
+
+
+        // 2 第二种渲染方式，通过DOM操作，优点是细节满满，缺点是挺啰嗦
+        // for (let i = 0; i < aData.users.length; i++) {
+        //     //每循环一次代表一个人的信息，应该在1行，tr代表行
+        //     let oTr = document.createElement('tr');
+        //
+        //     let oTd1 = document.createElement('th');
+        //     let oTd1Text = document.createTextNode(i+1);
+        //     oTd1.append(oTd1Text);
+        //     let oTd2 = document.createElement('td');
+        //     let oTd2Text = document.createTextNode(aData.users[i].name);
+        //     oTd2.append(oTd2Text);
+        //     let oTd3 = document.createElement('td');
+        //     let oTd3Text = document.createTextNode(aData.users[i].age);
+        //     oTd3.append(oTd3Text);
+        //     let oTd4 = document.createElement('td');
+        //     let oTd4Text = document.createTextNode(aData.users[i].gender?'男':'女');
+        //     oTd4.append(oTd4Text);
+        //     let oTd5 = document.createElement('td');
+        //     let oTd5Text = document.createTextNode(aData.users[i].hobby.join('-'));
+        //     oTd5.append(oTd5Text);
+        //     let oTd6 = document.createElement('td');
+        //     let oTd6Text = document.createTextNode(aData.users[i].role ? aData.users[i].role.level + '/'+ aData.users[i].role.name:'无');
+        //     oTd6.append(oTd6Text);
+        //     let oTd7 = document.createElement('td');
+        //     let oDelBtn = document.createElement('input');
+        //     oDelBtn.setAttribute("type","button");
+        //     oDelBtn.setAttribute("value",'删除');
+        //     //通过DOM操作数据渲染的最大好处，元素事件绑定比较方便
+        //     oDelBtn.onclick = function(){
+        //         //通用的过程是，异步ajax  向远程服务器发送请求删除当前资源【假定 序号是依据  】
+        //         let xhr = new XMLHttpRequest();
+        //         xhr.open('get','./delete?uid='+i,true);
+        //         xhr.onreadystatechange = function(){
+        //             alert(xhr.responseText);
+        //         };
+        //         xhr.send();
+        //     };
+        //     oTd7.append(oDelBtn);
+        //
+        //     oTr.append(oTd1);
+        //     oTr.append(oTd2);
+        //     oTr.append(oTd3);
+        //     oTr.append(oTd4);
+        //     oTr.append(oTd5);
+        //     oTr.append(oTd6);
+        //     oTr.append(oTd7);
+        //
+        //     //将所有的tr都追加到tbody
+        //     document.querySelector('#display tbody').append(oTr);
+        // }
+
+    }
+</script>
+</body>
+</html>

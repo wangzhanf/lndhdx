@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        /*通过通用选择器对页面元素初始化,大小尺寸选择绝对值*/
+       *{font-family: '微软雅黑';font-size: 14pt;margin: 0;padding: 0;}
+        /*通过标签选择器对部分标签初始化*/
+       header,nav,ul {display: block;}
+       ul{list-style: none;}
+       a{text-decoration: none;}
+
+        /*通过类选择器对指定元素指派   */
+       .menu{margin: 4em auto;width: 80%;} /*位置描述，4   2   1  ,   4em =  4*14pt*/
+       .menu a{color: rgba(255,255,255,1);}
+       .menu a:link{color: rgba(255,255,255,1);}
+       .menu a:hover{color: rgba(255,255,255,0.8);}
+       .menu a:visited{color: rgba(255,255,255,1);}
+       .menu>ul>li{background-color: orangered;width: 20%;float: left;text-align: center;}/*直系后代选择器*/
+
+        /*实现多列布局，可以使用  弹性盒子 flex   ，表格式tab*/
+       .menu>ul>li:nth-child(1):nth-last-child(1){width: 100%;}
+       .menu>ul>li:nth-child(1):nth-last-child(2),.menu>ul>li:nth-child(1):nth-last-child(2)~li{width: 50%;}
+       .menu>ul>li:nth-child(1):nth-last-child(3),.menu>ul>li:nth-child(1):nth-last-child(3)~li{width: 33.333333%;}
+       .menu>ul>li:nth-child(1):nth-last-child(4),.menu>ul>li:nth-child(1):nth-last-child(4)~li{width: 25%;}
+       .menu>ul>li:nth-child(1):nth-last-child(5),.menu>ul>li:nth-child(1):nth-last-child(5)~li{width: 20%;}
+       .menu>ul>li:hover{opacity: 70%;}
+       .menu>ul>li:first-child{border-top-left-radius: 0.3em;border-bottom-left-radius: 0.3em;}
+       .menu>ul>li:last-child{border-top-right-radius: 0.3em;border-bottom-right-radius: 0.3em;}
+       .menu>ul>li:not(:first-child)::before{content: "|";color:white;display: block;width: 10%;float: left;}
+       .menu>ul>li a{display: block;width: 90%;float: left;}
+       .subMenu{display: none;}
+       .toggle:hover+.subMenu,.subMenu:hover{display: block;}
+    </style>
+</head>
+<!--
+    1   发现问题
+        id滥用——通过class替代，class实现更抽象【方便复用】
+        解耦合——HTML组织架构，CSS修饰
+        HTML语义化理解不足，标签符合语义，最后的选择才是通用标签div，span
+    2   实现过程
+        构建HTML组织结构，分析关键点，给关键点添加class属性
+        构建css样式修饰
+
+-->
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">菜单1</a></li>
+                <li><a href="#">菜单2</a></li>
+                <li>
+                    <a class="toggle" href="#">菜单3</a>
+                    <ul class="subMenu">
+                        <li><a href="#">子菜单1</a></li>
+                        <li><a href="#">子菜单2</a></li>
+                        <li><a href="#">子菜单3</a></li>
+                        <li><a href="#">子菜单4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">菜单4</a></li>
+                <li><a href="#">菜单5</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/day2022101802/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day20221019" />
+        <module name="day20221018" />
+        <module name="day20221020SEPro" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day2022101802" target="1.5" />
+      <module name="day2022101803" target="11" />
+      <module name="testWebApp" target="11" />
+      <module name="testWebApp2" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

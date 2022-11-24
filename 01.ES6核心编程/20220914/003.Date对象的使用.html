@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Date构造函数
+    //new  运算符调用构造函数产生对象,返回内存地址给调用者, 用实例对象名[一般在栈中]接收即可
+    let dtCurrent = new Date();//构造了当前日期对象
+    let dtBirthday = new Date(1999,2,30); //按照年月日构造一个指定日期对象
+
+    console.log(`今天是星期`,dtCurrent.getDay());
+    console.log(`出生的那天是星期`,dtBirthday.getDay());
+    console.log(`出生的那天是几号`,dtBirthday.getDate());
+    console.log(`今年的岁数`,dtCurrent.getFullYear() - dtBirthday.getFullYear());
+
+    dtBirthday.setDate(28);
+    console.log(dtBirthday);
+
+</script>
+</body>
+</html>

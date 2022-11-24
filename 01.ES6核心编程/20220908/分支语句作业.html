@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let iScore = Number.parseInt(prompt('请输入成绩','60'));
+    if(!iScore){
+        console.log("请输入正确格式");
+    }else{
+        if(iScore < 0 || iScore > 100){
+            console.log("请输入合法成绩0-100");
+        }else if(iScore < 60){
+            console.log('不及格');
+        }else if(iScore < 75){
+            console.log('及格');
+        }else if(iScore < 85){
+            console.log('良好');
+        }else{
+            console.log('优秀');
+        }
+    }
+    //多分支选择可以使用if...else if..... ，适合于 阶段的判断  例如：0-59  是不及格
+    //也可以使用switch处理               ， 适合于 点 的判断，  例如 ： 周几 ，选项
+
+</script>
+</body>
+</html>

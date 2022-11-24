@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1 创建正则对象
+    //1.1   new调用RegExp构造函数创建,构造函数,模式字符串[后期深入],修饰符
+    let rPhone = new RegExp('1[3-9][0-9]{9}','ig');//手机号码
+    //1.2   字面量方式创建
+    let rZipCode = /65[0-9]{4}/ig;//大连的邮政编码
+    //2 使用RegExp提供的方法可以处理字符串[匹配], test方法和exec方法
+    console.log(/box/i.test('haha box exists'));//true
+    console.log(/box/i.test('haha booox exists'));//false
+    //和indexOf没太大区别, 下面的例子正则要更灵活
+    console.log(rPhone.test('我的手机号码是 110 !!'));//false
+    console.log(rPhone.test('我的手机号码是 13898647536 !!'));//true
+    //test仅用于判断, 不能抽取结果
+    let aRet = rZipCode.exec('我的邮政编码   650011   !!');
+    console.log(aRet);
+
+</script>
+</body>
+</html>

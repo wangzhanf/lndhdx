@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="number" v-model="num" />
+<!--    总价格 ：{{ num * price }}-->
+<!--    折后价： {{ num * price * 0.8 }}-->
+
+<!--    总价格 ：<span v-text="getTotal()"></span>-->
+<!--    折后价 ：{{ getTotal() * 0.8 }}-->
+<!--    节省了 ：{{ getTotal() - getTotal() * 0.8 }}-->
+
+    总价格 ：<span v-text="total"></span>
+    折后价 ：{{ total * 0.8 }}
+    节省了 ：{{ total - total * 0.8 }}
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    //声明式编程
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            num:3,
+            price:2.6,
+            zs:{name:'zhangsan',age:18}
+        },
+        watch:{
+            /*"zs.age":{
+                handler:function(oldV,newV){
+                    console.log(oldV,newV);
+                }
+            }*/
+            zs:{
+                deep:true,
+                handler:function(oldV,newV){
+                    console.log(oldV,newV);
+                }
+            }
+            ,
+
+            num:{
+                //默认回调函数    handler
+
+                handler: function (a,b){
+                    console.log(a,"-",b);
+                    this.num =  a < 0 || a > 99 ? b : a;
+                    // setTimeout(function(){
+                    //     console.log(a,"-",b);
+                    //     this.num =  a < 0 ? b : a;
+                    // },5000)  ;
+                }
+
+            }
+            //语法糖
+            /*num:function(newValue,oldValue){
+                console.log(newValue,"-",oldValue);
+                this.num =  newValue < 0 ? oldValue : newValue;
+            }*/
+        }
+        ,
+        computed:{
+            //语法糖造成
+            /*total:function(){
+                console.log("计算属性调用了")
+                let total = (this.num - Math.floor(this.num/3)) * this.price;
+                return total;
+            }*/
+            total:{
+                get:function(){
+                    console.log("计算属性getter调用了");
+                    let total = (this.num - Math.floor(this.num/3)) * this.price;
+                    return total;
+                },
+                set:function(val){
+                    console.log("计算属性setter调用了");
+                    //   "99|1.2"
+                    console.log(val);
+                    let v = val.split("|");
+                    this.num = v[0];
+                    this.price = v[1];
+                }
+            }
+        },
+        methods:{
+            getTotal:function(){
+                console.log("算总价函数被调用了")
+                let total = this.num * this.price;
+                return total;
+            }
+        }
+    });
+
+    // if(window.location.navigator){
+    //     vm.$watch('num',function(o,n){
+    //         console.log(o,n);
+    //     },{deep:true});
+    // }
+
+    vm.$watch("total",function(o,n){
+        console.log(o,n);
+        if(this.total > 100){
+            let temp = this.total - 10;
+            this.price = temp / this.num;
+            this.num = temp/this.price;
+            this.total = this.num + "|" + this.price;
+            console.log(this.total)
+            //this.total = temp;
+            /*alert();
+            prompt();
+            confirm();*/
+        }
+    });
+
+</script>
+</body>
+</html>

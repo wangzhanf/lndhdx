@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 可以一次声明多个变量
+    //var num1=3,num2=4,sum=0;//注意, 顺序是左到右,
+    // console.log(num2);
+
+
+    // var num1=3,num2=4,sum=num1+num2;
+    var sum=num1+num2,num1=3,num2=4;//undefined
+    console.log(sum);
+
+    //使用ES6的解构方法实现赋值, 语法糖[仅仅用于编写代码方便]
+    //通过一个数据序列给一个变量序列依次赋值
+    // let a = 1;
+    // let b = 2;
+    // let c = 3;
+    // let a=1,b=2,c=3;
+    let [a,b,c,d] = [1,2,3];//解构赋值时,如果不存在对应的数据序列,则默认为undefined
+    console.log(a,b,c,d);
+
+
+
+    //课堂练习
+    let iRadius = 5;
+    const PI = 3.1415926;
+    var dLen = 2 * PI * iRadius;
+    let dArea = PI * iRadius * iRadius;
+    console.log(`圆的半径是:${iRadius},周长是:${dLen},面积是:${dArea}`);
+
+
+    let iWidth = prompt("请输入长方形的宽");
+    let iheight = prompt("请输入长方形的高");
+    //输出对角线的长度
+    let dLength = iWidth * iWidth + iheight * iheight;
+    console.log(`斜边的平方是:${dLength}`);
+
+
+
+</script>
+
+</body>
+</html>

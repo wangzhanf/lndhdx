@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .dataTab{
+            border-left: 1px solid orange;
+            border-top: 1px solid orange;
+        }
+        .dataTab th,.dataTab td{
+            border-right: 1px solid orange;
+            border-bottom: 1px solid orange;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<script>
+    //本质上越简易BUG越少
+    //HTML应该是语义化的【便于搜索引擎收录】
+    document.write(`
+        <table class="dataTab">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>电话号码</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>wangzhanf</td>
+                    <td>13898647536</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>zhangsan</td>
+                    <td>13999999999</td>
+                </tr>
+            </tbody>
+        </table>
+    `);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<pre>1      2        3            4</pre>
+<!--通用标签：   div   span   -->
+<div id="myView">
+<!--    代表Vue监听的View区域-->
+    <h2> {{ myName }} </h2>
+    {{ myage }}
+    <img v-bind:src="avatar" />
+    <input type="text" v-model="myage" />
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    adata={//model模型
+        myName:"wangzhanf",
+        myage:88,
+        avatar:"photo.png"
+    };
+    //便于调试代码，new  Vue出来的实例对象叫根Vue，一个页面只有1个根Vue
+    let myvm = new Vue({//viewModel
+        el:"#myView",//监听的view区域，匹配原则  选择器,一个vue实例只能监听一个view区域
+        data:adata
+    });
+
+    //myvm是调试的句柄
+</script>
+
+</body>
+</html>

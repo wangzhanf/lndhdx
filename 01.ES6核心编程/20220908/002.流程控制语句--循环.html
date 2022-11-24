@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*流程控制语句--循环
+    * 计算机专长， 重复执行，通过  while,for等指令实现，
+    * 基本语法
+    * while(能够进入循环的条件逻辑表达式){
+    *   //循环体
+    * }
+    * for(表达式1;表达式2;表达式3){
+    *   //循环体
+    * }
+    * */
+
+    //模拟案例： 饥饿状态 0-100值  ， 每吃一勺饭降低一个饥饿状态值，状态为0停止吃饭
+    //let iHungrayStatus = Number.parseInt(prompt('输入饥饿状态','12'));
+   /* while(true){
+        if(iHungrayStatus == 0){//判断停止的条件
+            console.log('吃饱了');
+            break;//停止当前循环或者switch判断，跳出当前代码块
+        }
+        console.log(`正在吃饭，目前饥饿状态为${iHungrayStatus}`);
+        iHungrayStatus --;//每勺代表状态 -1
+    }*/
+
+    //while语法格式就是语法糖
+    /*while(iHungrayStatus-- > 0){//如果还饿，就循环吃饭
+        console.log(`正在吃饭，目前饥饿状态为${iHungrayStatus}`);
+    }*/
+
+    //for的基本实现
+/*    let iHungrayStatus = Number.parseInt(prompt('输入饥饿状态','12'));
+    for(;;){
+        if(iHungrayStatus == 0){//判断停止的条件
+            console.log('吃饱了');
+            break;//停止当前循环或者switch判断，跳出当前代码块
+        }
+        console.log(`正在吃饭，目前饥饿状态为${iHungrayStatus}`);
+        iHungrayStatus --;//每勺代表状态 -1
+    }*/
+
+    //for标准语法格式，语法糖  ,
+    // 表达式1--初始化表达式，进入for之前执行的，只执行1次
+    // 表达式2--循环条件表达式，每次进入for循环首先执行循环条件判断
+    // 表达式3--状态改变表达式，每次循环最后执行
+/*    for(let iHungrayStatus = Number.parseInt(prompt('输入饥饿状态','12'));iHungrayStatus > 0;iHungrayStatus --){
+        console.log(`正在吃饭，目前饥饿状态为${iHungrayStatus}`);
+    }*/
+
+    //语法糖方式
+    // for(let i=1;i<=100;i++){
+    //     console.log(i);
+    // }
+    //常用表现形式
+    /*let sum = 0;
+    for(let i = 1;i <= 100;i++){
+        sum += i;
+    }
+    console.log(sum);*/
+    // console.log(101 * 50);
+    /*let sum = 0;
+    let i = 1;
+    for(;;){
+       //什么时候跳出循环
+        if(i > 100){
+            console.log(sum);
+            break;
+        }
+        //循环体语句
+        sum += i;
+        //状态自增自减
+        i ++;
+    }*/
+
+    // for(var sum=0,i=1;i<=100;sum+=i++);
+    /*for(var i=1,j=100,sum=0;i<50||j>50;sum+=(i++)+(j--));
+    console.log(sum);*/
+
+
+    /*# 课堂练习：
+    按需求实现，
+    用户输入饥饿度【0-100】，饭的总量【】，错误使用try...catch处理
+        --注意， try...catch解决的问题主要是逻辑异常问题，代码语法错误问题不要靠try解决
+    模拟吃饭的过程，每吃一勺饭饥饿度-1，饭的总量吃完或者饥饿度为 0时停止吃饭，每吃5勺喝水。*/
+    try{
+        let iHun = Number.parseInt(prompt('输入饥饿程度【0-100】','100'));
+        let iTotal = Number.parseInt(prompt('输入饭的总量','1'));
+        let iCount = 1;
+        while(iHun > 0 && iTotal > 0){
+            iHun --;
+            iTotal --;
+            if(iCount++ % 5 == 0) {
+                console.log(`模拟喝水`);//当 if，for，while等语句块后没有{ 时，语句块是紧邻的1行
+            }
+            console.log(`当前饥饿状态${iHun}，剩余饭量${iTotal}`);
+        }
+    }catch (e){
+        console.log('异常消息：'+e);
+    }finally {
+        console.log('吃饭过程结束');
+    }
+
+</script>
+</body>
+</html>

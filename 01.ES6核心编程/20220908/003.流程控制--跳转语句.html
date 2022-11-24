@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * break：跳出当前【switch，循环】代码块
+    * continue：跳出当前循环，继续下一次循环
+    * return: 结束当前函数执行
+    * */
+    let sum = 0;
+    for (let i = 1; i <= 100; i++) {
+        if(i%3 == 0){
+            continue;
+        }
+        sum += i;
+    }
+    console.log(sum);
+
+
+    /*
+    * 异常处理
+    * 异常的语法
+    * try{//尝试要执行的代码，一般访问资源，对象操作}
+    * catch{当出现问题时的处理代码，  多个catch并列【从小到大】}
+    * finally{不管是正常还是异常都需要执行的代码  ，  关闭资源等操作}
+    * */
+
+    // sbb;//引发异常，阻塞后面的代码
+
+    try{
+        let iNum = Number.parseInt(prompt('数字','7'));
+        sbb;
+    }catch (exception) {
+        console.log("异常消息" + exception);
+    }finally {
+        console.log('final');
+    }
+
+</script>
+
+</body>
+</html>

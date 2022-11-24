@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        div,button{
+            display: block;
+        }
+    </style>
+<!--    css的外联形式-->
+    <link rel="stylesheet" href="./main.css" />
+</head>
+<body style="font-size: 14pt;" onload="alert('页面开始加载');" onunload="alert('您真的要离开吗');">
+<!--    -->
+<button onclick="alert('试试就试试');">点击我试试</button>
+
+<!--因为JavaScript一统客户端编程， 所以script标签无需指定type属性，默认就是javascript-->
+<script>
+    alert('快到   /body标记了');//onload发生在文档对象准备完毕进行渲染之前
+</script>
+
+<!--外联方式引入独立的js代码-->
+<script src="./main.js">
+    //alert("看是否能弹出");//不能，如果有src属性，则标签内所有代码均不被执行
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>停止计时器</button>
+
+<a href="006.其他BOM对象.html" target="_self">测试链接</a>
+<script>
+    let myWin;
+    //当页面打开或刷新   10秒之后 ，再打开一个新窗口
+    // window.setTimeout(10秒后需要执行的代码,10000);
+    let hTimeout = window.setTimeout(function () {
+        myWin = window.open('./昨日回顾.html','newWin','width=200,height=200,toolbar=false');
+
+        //每秒钟让新打开的窗口移动一个像素
+        let hInterval = window.setInterval(function () {
+            myWin.moveBy(1,1);
+        },1000);
+
+    },5000);
+
+
+
+    //clearTimeout(hTimeout);
+
+    document.querySelector("button").onclick = function () {
+        clearTimeout(hTimeout);
+    };
+
+</script>
+</body>
+</html>

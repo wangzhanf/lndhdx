@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/day20220927/day20220927.iml" filepath="$PROJECT_DIR$/day20220927/day20220927.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20220928/day20220928.iml" filepath="$PROJECT_DIR$/day20220928/day20220928.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20220929/day20220929.iml" filepath="$PROJECT_DIR$/day20220929/day20220929.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20220930/day20220930.iml" filepath="$PROJECT_DIR$/day20220930/day20220930.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221009/day20221009.iml" filepath="$PROJECT_DIR$/day20221009/day20221009.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221010/day20221010.iml" filepath="$PROJECT_DIR$/day20221010/day20221010.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221011/day20221011.iml" filepath="$PROJECT_DIR$/day20221011/day20221011.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221012/day20221012.iml" filepath="$PROJECT_DIR$/day20221012/day20221012.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221013/day20221013.iml" filepath="$PROJECT_DIR$/day20221013/day20221013.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221014/day20221014.iml" filepath="$PROJECT_DIR$/day20221014/day20221014.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20221017/day20221017.iml" filepath="$PROJECT_DIR$/day20221017/day20221017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day2022101802.iml" filepath="$PROJECT_DIR$/day2022101802.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day2022101803.iml" filepath="$PROJECT_DIR$/day2022101803.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaSE.iml" filepath="$PROJECT_DIR$/javaSE.iml" />
+    </modules>
+  </component>
+</project>

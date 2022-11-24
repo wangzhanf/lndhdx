@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入用户名" />
+<div class="tips"></div>
+<script>
+    window.onload = function(){ //DOM准备完毕加载渲染的时候
+        let oInput = document.querySelector('input');
+        if(!oInput) return false;//对象检测
+        let oTips = document.querySelector('.tips');
+        if(!oTips) return false;//对象检测
+
+
+        oInput.onkeyup = function (event) {
+            //发起ajax请求
+            let xhr = new XMLHttpRequest();
+            xhr.open('get','./userlist.txt',true);
+            xhr.onreadystatechange = function (eve){
+                //console.log(xhr.responseText);
+                if(xhr.readyState == 2 || xhr.readyState == 3){
+                    console.log("数据正在加载");
+                }
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    //拿到了真正的数据，检测是否重复
+                    //if(xhr.responseText.indexOf(oInput.value) == -1){
+                    // let rUser = new RegExp(oInput.value,'ig');
+                    //if(!rUser.test(xhr.responseText)){ //zhangsan,lisi
+                        //oTips.innerText = "恭喜你，该用户名可以注册";
+                    //}else{
+                        //oTips.innerText = "抱歉，该用户名已被占用";
+                    //}
+                    //最终方案，独立匹配， 分割成独立体，单独匹配
+                    let aUsers = xhr.responseText.split(',');
+                    for (let i = 0; i < aUsers.length; i++) {
+                        if(aUsers[i] == oInput.value){
+                            let iNum = Math.floor(Math.random()*899+100);
+                            oTips.innerText = `抱歉，该用户名已被占用,推荐${oInput.value+iNum}`;
+
+                            break;
+                        }else{
+                            oTips.innerText = "恭喜你，该用户名可以注册";
+                        }
+                    }
+                }
+
+            }
+            xhr.send();
+        }
+    };
+</script>
+</body>
+</html>

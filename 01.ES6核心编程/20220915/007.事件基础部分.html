@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button no="one">按钮1</button>
+<button no="two">按钮2</button>
+<button no="three">按钮3</button>
+<button no="four">按钮4--执行多个函数</button>
+<script>
+    // console.log(window);
+    // console.log(document);
+    //绑定事件处理函数的方式
+    //1 方式1：  命名函数方式
+    function func1(){
+        console.log("func1运行了");
+    }
+    function func4(){
+        console.log("func4运行了");
+    }
+    document.querySelector('[no="one"]').ondblclick = func1;//函数名代表函数的地址指针，切记不要使用()
+
+    //2 方式2：   匿名函数方式
+    document.querySelector('[no="two"]').onclick = function(){
+        console.log("匿名函数被调用了")
+    };
+    document.querySelector('[no="three"]').ondblclick = ()=>{
+        console.log("箭头函数lambda被调用了");
+    };
+    //3 方式3： 同一个事件调用多个事件函数
+    //document.querySelector('[no="four"]').onclick = func4;
+    //document.querySelector('[no="four"]').onclick = func1;//相当于重复赋值，后面的赋值取代了前面
+    //3.1   匿名函数组装调用实现
+    /*document.querySelector('[no="four"]').onclick = function () {
+      func1();//调用， 带()
+      func4();
+    };*/
+    //3.2   利用观察者模式实现函数 进行绑定
+    document.querySelector('[no="four"]').addEventListener('click',func1,false);
+    document.querySelector('[no="four"]').addEventListener('click',func4,false);
+
+</script>
+</body>
+</html>

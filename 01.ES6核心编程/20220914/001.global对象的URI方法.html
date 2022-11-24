@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--    用户登录时需要提交用户名和密码，模拟获得用户名和密码验证登录-->
+<!--method不存在默认用get【将变量附带在URL地址后发送】，action不存在默认发往当前页面-->
+<form method="get">
+<!--    表单中name属性值就是传递变量时变量的名字-->
+    <input type="text" name="uname" placeholder="输入用户名" />
+    <input type="password" name="upass" placeholder="请输入密码" />
+    <input type="submit" value="登录" />
+</form>
+<script>
+    //1 获取地址栏中的地址
+    let sUrl = window.location.href;
+    console.log(sUrl);
+    //http://localhost:63342/code/ES6%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/20220914/001.global%E5%AF%B9%E8%B1%A1%E7%9A%84URI%E6%96%B9%E6%B3%95.html?uname=%E5%BC%A0%E4%B8%89&upass=123
+    //1.1   通过解码技术，转换为程序员可以理解的形式
+    sUrl = window.decodeURIComponent(sUrl);
+    console.log(sUrl);
+    //http://localhost:63342/code/ES6核心编程/20220914/001.global对象的URI方法.html?uname=张三&upass=123
+    //2 利用字符串相关的方法将字符串分割得到所需要内容，url附带变量时，?后叫查询字串【变量串】，变量名和值通过=连接， 多个变量用   & 分割
+    //利用字符串的split方法切分为数组
+    let aUrl = sUrl.split('?');//返回结果是数组
+    console.log(aUrl[0]);
+    console.log(aUrl[1]);//用户和密码存储在这个位置
+    // 继续分割分别得到用户名和密码
+    let myname = ((aUrl[1].split('&'))[0].split('='))[1];
+    let mypass = ((aUrl[1].split('&'))[1].split('='))[1];
+    console.log(myname,mypass);
+    //判断登录状态
+    if(myname == 'admin' && mypass == '123456'){
+        alert('登录成功');
+    }else{
+        alert('登录失败,重新登录');
+    }
+</script>
+</body>
+</html>

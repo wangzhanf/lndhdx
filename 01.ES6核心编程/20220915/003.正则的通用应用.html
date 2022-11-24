@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--模拟实现一个聊天界面，发送信息的时候将 敏感词过滤为  * -->
+<div id="display"></div>
+<textarea>456</textarea>
+<button>发送</button>
+<script>
+    //1 点击发送按钮执行操作
+    document.querySelector('button').onclick = function () {
+      //2   获取多行文本框中的内容
+      let sContent = document.querySelector('textarea').value;
+      //3   替换敏感词
+      let rBadWord = /TMD|滚蛋|不好的词/ig;
+        // sContent = sContent.replace(rBadWord,'*');
+        sContent = sContent.replace(rBadWord,function(m){
+            return m.replace(/./g,'*');
+        });
+      //4 将内容写入到显式区
+        document.querySelector('#display').innerHTML += sContent + '<br />';
+        //5 清空聊天记录
+        document.querySelector('textarea').value = '';
+    };
+</script>
+</body>
+</html>

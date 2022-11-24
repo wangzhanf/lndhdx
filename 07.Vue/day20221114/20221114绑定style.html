@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <label><input type="radio" value="red" name="fColor" v-model="fColor" />红色</label>
+  <label><input type="radio" value="green" name="fColor" v-model="fColor" />绿色</label>
+  <input type="number" v-model="fSize" />
+  <hr />
+  <h1 v-bind:style="{color:fColor,fontSize:fSize}">被控制的内容部分</h1>
+
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      fColor:"red",
+      fSize:44
+    }
+  });
+</script>
+</body>
+</html>

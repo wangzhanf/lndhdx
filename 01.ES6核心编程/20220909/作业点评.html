@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="text" value="36" name="iHun" />
+<input type="text" value="9999" name="iTot" />
+<button>吃饭</button>
+<div class="display">展示</div>
+<script>
+    //点击按钮的时候想做点事情,给事件处理函数绑定匿名函数
+    document.querySelector('button').onclick = function () {
+        //获取表单数据
+        let iHun = Number.parseInt(document.querySelector('[name="iHun"]').value);
+        let iTot = Number.parseInt(document.querySelector('[name="iTot"]').value);
+        iHun = iHun ? iHun : 36;
+        iTot = iTot ? iTot : 9999;
+        //模拟吃饭过程
+        let sStr = eat(iHun,iTot);
+        //将结果展现在显式区
+        document.querySelector('.display').innerHTML = sStr;
+    };
+    function eat(aiHun,aiTot){
+        let str = '';//
+        for (let iCount = 1; aiHun > 0 && aiTot > 0 ; aiHun--,aiTot--) {
+            if(iCount++ % 5 == 0)
+                str += '<div>喝一口水</div>';
+            str += `<div>吃了1勺，${aiHun} , ${aiTot}</div>`;
+        }
+        return str;
+    }
+    /*switch,表达式的值使用枚举量【整数】，穿透【break】
+    循环，
+    //初始化
+    let i = 1;
+    //循环体
+    while(true)  |  for(;;){
+        //条件判断
+        if(i > 100)
+            break;
+        //业务处理
+        //状态改变
+        i ++;
+    }
+    while(i++<=100){
+        //业务处理
+    }
+    for(i=1;i<=100;i++){
+        //业务处理
+    }
+    break,continue,return[单一出口原则]，try...catch...finally
+    函数：  复用代码 ， 命名函数，   匿名函数   ， DOM基础操作
+
+    * */
+
+
+
+</script>
+</body>
+</html>

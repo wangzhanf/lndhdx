@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //顺序结构，自上而下，依次执行；默认都是顺序【除异步编程】,吃1万勺
+    console.log('吃了第1勺');
+    console.log('吃了第2勺');
+    console.log('吃了第3勺');
+    console.log('吃了第4勺');
+    console.log('吃了第5勺');
+
+    //选择分支
+    //单分支结构
+    let iAge = 18;
+    if(iAge >= 18){
+        iAge ++;
+    }
+    console.log(iAge);//19
+
+    //双分支结构
+    if(--iAge > 18){
+        console.log("确实成年")
+    }else{
+        if(iAge == 18){
+            console.log('马上成年');
+        }else{
+            console.log('还未成年');
+        }
+    }
+
+    //多分支结构，多阶段 ，按顺序编码
+    let iScore = Number.parseInt(prompt('请输入成绩','60'));
+    if(!iScore){
+        console.log("请输入正确格式");
+    }else{
+        if(iScore < 0 || iScore > 100){
+            console.log("请输入合法成绩0-100");
+        }else if(iScore < 60){
+            console.log('不及格');
+        }else if(iScore < 75){
+            console.log('及格');
+        }else if(iScore < 85){
+            console.log('良好');
+        }else{
+            console.log('优秀');
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

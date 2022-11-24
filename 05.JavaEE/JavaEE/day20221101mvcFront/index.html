@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>商家管理</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <!--    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container-fluid bg-secondary text-white" id="loginBoard">
+        <!--    登录框开始-->
+        <form class="form-inline" id="loginForm">
+            <label for="adminName">adminName:</label>
+            <input type="text" class="form-control m-2" id="adminName" name="adminName" />
+            <label for="password">password:</label>
+            <input type="password" class="form-control m-2" name="password" id="password">
+            <label>vcode:</label>
+            <input type="text" class="form-control m-2" name="vcode" id="vcode" />
+            <img style="width: 90px;" id="vcodeImg" src="http://localhost:7777/day20221101mvc/vcode.do" />
+            <button type="button" class="btn btn-primary m-2" id="loginBtn">登录</button>
+        </form>
+        <!--    登录框结束-->
+    </div>
+
+    <div class="container-fluid" id="optBoard">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">EPSS</a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" target="dis" href="admin.html">管理员管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="dis" href="business.html">商家管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="dis" href="food.html">食品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="dis" href="orderMap.html">订单管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <strong id="uname" target="dis" class="nav-link" href="#"></strong>
+                    </li>
+                    <li class="nav-item">
+                        <a id="logoutBtn" class="btn btn-danger nav-link" href="#">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <iframe frameborder="no"  border="0" style="width: 90vw;height: 100vh;" name="dis"></iframe>
+    </div>
+
+
+
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!--<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>-->
+<script src="./js/jquery-3.6.1.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<!--<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>-->
+<script src="./js/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url: "http://localhost:7777/day20221101mvc/admin/loginCheck.do",
+            success: function (res) {
+                if(res.message == "0"){
+                    $('#loginBoard').show();
+                    $('#optBoard').hide();
+                }else{
+                    $('#loginBoard').hide();
+                    $('#optBoard').show();
+                }
+            }
+        });
+        var loginStatus = false;
+        //dom就绪判断是否是登录状态，显式不同的面板
+
+
+
+
+        $('#logoutBtn').click(function(){
+            $.ajax({
+                type:"GET",
+                xhrFields: {
+                    withCredentials: true   //允许xhr对象携带认证消息
+                },
+                crossDomain: true,//是否允许跨域
+                url:"http://localhost:7777/day20221101mvc/admin/logout.do",
+                success:function(res){
+                    if(res.status == 400){
+                        myAlert(res.message,"bg-danger text-white",1500);
+                        return;
+                    }else{
+                        myAlert(res.message,"bg-success text-white",1500);
+                        $('#loginBoard').slideDown(3000);
+                        $('#optBoard').fadeOut(3000);
+                        $("#vcodeImg").attr("src","http://localhost:7777/day20221101mvc/vcode.do?time="+(new Date().getMilliseconds()+Math.random()));
+                        $('uname').html("");
+                        loginStatus = false;
+                    }
+                }
+            });
+        });
+        //点击登录按钮发送登录数据
+        $("#loginBtn").click(function (){
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:7777/day20221101mvc/admin/login.do",
+                data:$("#loginForm").serialize(),
+                xhrFields: {
+                    withCredentials: true   //允许xhr对象携带认证消息
+                },
+                crossDomain: true,//是否允许跨域
+                success:function(res){
+                    if(res.statusCode == 400){
+                        myAlert(res.message,"bg-danger text-white",1500);
+                        return;
+                    }
+                    //成功
+                    $('#loginBoard').slideUp(3000);
+                    $('#optBoard').fadeIn(3000);
+                    $("#loginForm").get(0).reset();
+                    $('#uname').html(res.dataZone.uname);
+                    loginStatus = true;
+                    //window.location.href = "business.html";
+
+                    //console.log(res);
+                }
+            });
+        });
+        //点击验证码图片更换
+        $("#vcodeImg").attr("src","http://localhost:7777/day20221101mvc/vcode.do?time="+(new Date().getMilliseconds()+Math.random()));
+        $("#vcodeImg").click(function () {
+            console.log(this);
+            $(this).attr("src","http://localhost:7777/day20221101mvc/vcode.do?time="+(new Date().getMilliseconds()+Math.random()));
+
+            // $.ajax({
+            //     url:"http://localhost:7777/day20221101mvc/vcode.do",
+            //     type:"get",
+            //     contentType:"image/jpeg;charset=utf-8",
+            //     success:function(res){
+            //         $("#vcodeImg").attr("src",res);
+            //     }
+            // });
+        });
+    });
+</script>
+</body>
+</html>

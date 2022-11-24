@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    3   使用组件-->
+    <mynav>123</mynav>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    //1 定义组件   //2    注册为全局组件
+    Vue.component("mynav",{
+        //组件的视图区
+        // template:'<h2>组件的内容:{{ msg }}</h2>',
+        template:`
+          <div>
+            <h2>{{ title }}</h2>
+            <p> {{ msg }}</p>
+          </div>
+        `,
+        //data部分被Vue监听生成对应的getter和setter
+        //为了避免名字污染，java【包管理】 C++【namespace】，javascript【函数作用域】
+        //data:{msg:'Hello'}
+        data:function (){
+            return {
+                title:'组件的标题',
+                msg:'Hello'
+            };
+        }
+    });
+    new Vue({
+        el: "#app",
+        data:function(){
+            return {
+
+            };
+        }
+    });
+</script>
+</body>
+</html>

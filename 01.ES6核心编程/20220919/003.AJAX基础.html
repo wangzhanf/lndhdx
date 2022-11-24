@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onload = function(){
+        //1 创建ajax对象，  XMLHttpRequest
+        let xhr = new XMLHttpRequest();
+        //2 准备链接请求，
+        xhr.open('get','./userlist.json',true);
+        //3 发送ajax请求会引发状态改变，绑定事件回调函数    xxx.onclick = function(){}
+        xhr.onreadystatechange = function (event) {
+            //处理具体的业务
+        }
+
+        //4 发送ajax请求
+        xhr.send();
+    };
+</script>
+</body>
+</html>

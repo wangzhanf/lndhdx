@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            /*font-size: 18px !important;*/
+        }
+
+        /* 0100 */
+        /*#id1{
+            color: red;
+        }*/
+        /* 0021 */
+        p.demo1:first-child{
+            color: orange;
+        }
+        /* 0020 */
+        .demo1:first-child{
+            color: red;
+        }
+
+        /* 0120 */
+        #id1.demo1:first-child{
+            color: blue;
+        }
+
+
+
+        /* 0001 */
+        p{
+            font-size: 10px;
+            color: #38CA73;
+        }
+
+
+
+        .toggle .out{
+            width: 200px;
+            height: 40px;
+            border: 1px solid blueviolet;
+            border-radius: 20px;
+        }
+        .toggle .in{
+            width: 30px;
+            height: 30px;
+            background-color: blueviolet;
+            border-radius: 50%;
+            margin: 5px;
+            transition: all 200ms ease 10ms;
+        }
+        .toggle input{display: none;}
+        .toggle input:checked+.out>.in{
+            margin-left: 165px;
+            opacity: 0.5;
+            transition: all 200ms ease 10ms;
+        }
+
+
+
+        .counter input{
+            display: inline-block;
+            width: 1.1em;
+            border:none;
+            outline: none;
+        }
+        .counter span{
+            display: inline-block;
+            width: 20px;
+            height:20px;
+            line-height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        .counter .left{
+            background-color: gray;
+        }
+        .counter .right{
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <p id="id1" class="demo1">段落1</p>
+
+    <!--可控制组件，默认的可控制元素，复选框不符合需求-->
+    <label class="toggle">
+        <input type="checkbox" />
+        <div class="out">
+            <div class="in"></div>
+        </div>
+    </label>
+
+
+    <div class="counter">
+        <span class="left">-</span>
+        <input type="text" value="0" placeholder="0" maxlength="2" />
+        <span class="right">+</span>
+    </div>
+
+<script>
+    document.querySelector('.counter').onclick = function (event) {
+        let oInput = document.querySelector('.counter input');
+        console.log(oInput.value)
+        newvalue = parseInt(oInput.value);
+        if(event.target.getAttribute("class").indexOf("left") >=0 ){
+            oInput.value = newvalue - 1;
+        }
+        if(event.target.getAttribute("class").indexOf("right") >= 0){
+            oInput.value = newvalue + 1;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+    };
+</script>
+
+
+</body>
+</html>

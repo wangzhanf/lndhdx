@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //创建对应的子节点，可以考虑从底层开始创建
+    //创建文本节点
+    let oText = document.createTextNode("百度");
+    //创建img元素节点
+    let oImg = document.createElement("img");
+    //设置img元素的属性节点
+    oImg.setAttribute("src","./img/baiduLogo.png");
+    //创建a元素节点
+    let oA = document.createElement("a");
+    //设置a的属性href节点
+    oA.setAttribute("href","https://www.baidu.com");
+
+    //组装节点为一个大的碎片
+    //将img追加到a的尾部
+    oA.append(oImg);
+    //将文本节点插入到a的首部
+    oA.prepend(oText);
+
+    //将碎片挂载到DOM对象中
+    document.querySelector("body").prepend(oA);
+</script>
+</body>
+</html>

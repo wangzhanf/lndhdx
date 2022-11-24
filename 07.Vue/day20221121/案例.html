@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .left{
+            width: 30%;
+            float: left;
+            border:1px solid red;
+        }
+        .right{
+            width: 60%;
+            float: right;
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="left">
+        <!--        渲染列表-->
+        <router-link v-bind:to="{path:'/right',query:{id:item.id}}" v-for="(item) in kList" :key="item.id">
+            {{ item.title }} <br />
+        </router-link>
+    </div>
+    <div class="right">
+        <router-view></router-view>
+    </div>
+</div>
+
+<template id="rightview">
+    <div>
+        <button v-on:click="getInfo">人工刷新</button>
+        具体内容  {{ localId }}  {{ content }}
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    Vue.config.productionTip = false;
+
+    let rightcomponent = {
+        template:'#rightview',
+        data:function (){
+            return {
+                localId:this.$route.query.id,
+                content:''
+            };
+        },
+        methods:{
+            getInfo:function(){
+                let that = this;
+                /*let xhr = new XMLHttpRequest();
+                xhr.open("GET","./"+this.localId+".json");
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4 && xhr.status == 200){
+
+                        //that.content = xhr.responseText.content;
+                        let resp = JSON.parse(xhr.responseText);
+                        that.content = resp.content;
+                    }
+                };
+                xhr.send();*/
+                //使用ajax库简化编程
+                axios.get("./"+this.localId+".json").then(function (resp) {
+                    console.log(resp)
+                    that.content = resp.data.content;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+    };
+    let routes = [
+        {
+            path:"/right",
+            component:rightcomponent
+        }
+    ];
+    let router = new VueRouter({
+        routes:routes
+    });
+    let vm = new Vue({
+        el: "#app",
+        data: function(){
+            return {
+                kList : [
+                    {id:1,title:'vue组件'},
+                    {id:3,title:'vue路由'},
+                    {id:5,title:'vue传参'},
+                    {id:6,title:'vue案例'},
+                ]
+            };
+        },
+        router:router
+    });
+</script>
+</body>
+</html>

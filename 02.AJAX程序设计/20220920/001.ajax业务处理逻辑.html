@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div id="display"></div>
+<script>
+        //1 创建XMLHttpRequest对象
+        let xhr = new XMLHttpRequest();
+        //2 准备链接信息
+        xhr.open('get','./userlist.json',true);//一般都是true，异步的
+        //3 ajax的状态变化事件预先绑定回调函数
+        xhr.onreadystatechange = function(){
+            // console.log(xhr.readyState)
+            if(xhr.readyState == 2){
+                // alert('服务器已经收到了该ajax请求');
+            }
+            if(xhr.readyState == 3){
+                // alert('服务器正在处理数据');
+            }
+            if(xhr.readyState == 4 && xhr.status == 200 ){
+                /*互联网常见状态码：2xx 成功，3xx  重定向，4xx  资源不可访问， 5xx 服务器程序错误*/
+                //alert('信息已到达浏览器,有可能是错误信息，还需要使用http状态码判断是否是正常数据');
+                //服务器响应的内容会被封装到  ajax对象的  responseXXXX中
+                //服务器响应的内容通过，MIME确定类型值，服务器设定了MIME则按照类型传输加载，若未设定，则按照资源的扩展名自动匹配设置
+                console.log(xhr.responseText);
+                document.querySelector('#display').innerText = xhr.responseText;
+            }
+        };
+
+        //4 发送ajax请求
+        xhr.send();
+
+
+
+</script>
+</body>
+</html>

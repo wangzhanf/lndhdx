@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul v-on:click="curr = '欢迎光临'">
+        <li><a v-on:click.prevent.stop="liCli($event,'0')" href="a.html">{{ lists[0] }}</a></li>
+        <li><a @:click.prevent.stop="liCli($event,'1')" href="b.html">{{ lists[1] }}</a></li>
+    </ul>
+    <hr />
+    {{  curr }}
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            curr:"空",
+            lists:["麻辣鸡丝","红烧排骨"]
+        },
+        methods:{
+            liCli:function(eve,k){
+                //eve.preventDefault();
+                console.log("***",eve);
+                console.log("@@@",k);
+
+                console.log("li被点击了");
+                // this.curr = eve.target.innerText;
+                this.curr = this.lists[parseInt(k)];
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

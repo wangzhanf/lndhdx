@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--文本框, 要求用户输入包含自己 身份证号码  的信息,格式任意-->
+<input type="text" width="30" maxlength="30" />
+<script>
+    //当光标离开输入框时判断输入是否正确
+    document.querySelector('input').onblur = function () {
+        //1 获取表单中的内容
+        // console.log(document.querySelector('input').value);
+        // console.log(this.value);//this 是谁
+        let rId = new RegExp("[0-9]{18,18}","ig");//最简易的身份证号码规则
+        if(rId.test(this.value)){
+            alert("正确")
+        }else{
+            alert("错误");
+        }
+    }
+</script>
+</body>
+</html>

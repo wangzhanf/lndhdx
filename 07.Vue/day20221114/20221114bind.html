@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{color: red;}
+        .green{color: green;}
+        .important{font-size: 4em;}
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    部分浏览器通过  alt实现-->
+    <img src="../null.png" v-bind:alt="t1" :title="t1" />
+    <h1 v-bind:class="current">内容文字</h1>
+    <div v-bind:class="{important:isImportant,red:isError}">重要信息</div>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            t1:"这是提示信息",
+            current:"red",
+            isImportant:false,
+            isError:false
+        }
+    });
+
+    document.querySelector("h1").onclick = function () {
+        vm.current = "green";
+    }
+</script>
+</body>
+</html>

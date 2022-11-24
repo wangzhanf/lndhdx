@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day20221027mini" />
+        <module name="day20221031" />
+        <module name="day20221101" />
+        <module name="day20221026" />
+        <module name="day20221101mvc" />
+        <module name="day20221028" />
+        <module name="day20221027" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Book = {
+        bname:"小说",
+        bprice:1.23
+    };
+    //给对象添加属性
+    // Book.pages = 200;
+    // //删除属性
+    // delete Book.pages;
+    // console.log(Book);
+    //
+    // //javascript提供了原型链编程，改变类使所有对象实例都拥有该能力
+    // Book.prototype.pages = 200;
+    // Book.prototype.abc = function(){};
+    let num = 0;
+    Object.defineProperty(Book,"pages",{
+        value:201,
+        Writable:true,
+        Enumerable:true,
+        Configurable:true,
+        get:function(){
+            console.log("get被调用了");
+            return num;
+        },
+        set:function(a){
+            console.log("set被调用了");
+            num = a;
+        }
+    });
+    //delete Book.pages;
+    Book.pages = 700;
+    console.log(Book);
+
+    for (const bookKey in Book) {
+        console.log(bookKey)
+    }
+
+
+
+</script>
+
+</body>
+</html>

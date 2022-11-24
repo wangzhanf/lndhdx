@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <img v-on:load.once="haha()" src="../null.png" />
+    <ul>
+        <li v-for="(item,index) in lists" v-bind:key="index">
+            <span>{{ index }}</span>
+            <input type="text" v-bind:value="item.name" />
+        </li>
+    </ul>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    let a = 8;
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            lists:[
+                {id:1,name:'zs'},
+                {id:2,name:'ls'},
+                {id:3,name:'ww'},
+            ]
+        },
+        methods:{
+            haha:function (eve,a) {
+
+            }
+        }
+    });
+</script>
+<script>
+    /*let Book = {id:1};
+    let Book1 = Object.create({id:1,name:"Vue"});
+    Book1.pages = 888;
+    //Vue 等前端框架的数据监听机制
+    Object.defineProperty(Book1,"price",{
+        writable:true,
+        configurable:true,
+        enumerable:true,
+        get:function (){
+            //监听代码
+        },
+        set:function(val){
+            //触发代码
+        }
+    });
+
+
+    console.log(Book1.price);
+
+
+    //事件
+    window.onload = function(){
+        document.querySelector("#app").onclick = proc;
+    };
+    function proc(eve){
+        //if(eve.target.key)
+    }
+
+    //
+    $(function (){
+        $("#app").click(function () {
+
+        });
+    });*/
+</script>
+</body>
+</html>

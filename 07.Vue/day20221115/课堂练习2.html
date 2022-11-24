@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <label><input type="radio" value="false" name="role" v-model="choice" />学生</label>
+  <label><input type="radio" value="true" name="role" v-model="choice" />教师</label>
+  <hr />
+    <div v-if="!choice || choice=='false'">
+        {{ lists[1].sno }} -- {{ lists[1].name }}
+    </div>
+    <div v-else>
+        {{ lists[0].sno }} -- {{ lists[0].name }} <br />
+        {{ lists[1].sno }} -- {{ lists[1].name }} <br />
+        {{ lists[2].sno }} -- {{ lists[2].name }} <br />
+    </div>
+
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      choice:false,
+        lists:[
+            {sno:110,name:"zs",score:59.5},
+            {sno:119,name:"ls",score:69.5},
+            {sno:120,name:"ww",score:79.5}
+        ]
+    }
+  });
+</script>
+</body>
+</html>

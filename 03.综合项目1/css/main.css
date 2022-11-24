@@ -1,0 +1,242 @@
+/*整个站点的css布局文件*/
+/*通过 * 选择器对所有元素初始化*/
+*{
+    font-family: '微软雅黑';
+    font-size: 3vw;/*初始化建议采用绝对单位*/
+    margin: 0;
+    padding: 0;
+}
+/*通过 标签组合 选择器对特定元素初始化*/
+header,section,footer,div,p{
+    display: block;
+}
+body{
+    position: relative;
+}
+a{
+    text-decoration: none;
+}
+
+/*推荐方式，多页面通用的样式写在上面，具体页面样式写在后面，容器从大到小*/
+/* common 通用样式 */
+.pageHeader{
+    width: 100%;
+    height: 4rem;/*建议采用相对单位*/
+    line-height: 4rem;
+    /*background-color: #0097FF;*/
+    background-color: rgba(0,151,255,1);/*建议采用rgba*/
+    font-size: 1.6rem;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    letter-spacing: 0.15em;
+    position: fixed;/*遵守子绝对，父相对*/
+    z-index: 9999;/*脱离文档流的内容，数字越大离用户越近*/
+}
+
+.mainContent{
+    padding-top: 5rem;
+    padding-bottom: 5.666666rem;
+    height: 200vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /*background-color: #70BC46;*/
+}
+/*输入表单，激活按钮，非激活按钮*/
+/*基础部分和特性部分应该是分离的,有助于组合*/
+.btn{
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    letter-spacing: 0.15em;
+    border:none;
+}
+.btn:hover{
+    opacity:0.8;
+}
+.btn-block{
+    display: block;
+    width: 100%;
+}
+.btn-success{
+    background-color: #38CA73;
+    color: white;
+}
+.btn-regular{
+    background-color: #DDD;
+    color: #666;
+}
+/*内置的部分组件，特别是表单组件默认存在特殊特性，复选框的方块，单选框大圆点，输入框的边
+    outline特性不占用盒子空间
+*/
+.baseForm>*{
+    margin: 1rem 0;
+}
+.inputText,.rightAlign{
+    border: none;
+    outline: none;
+    width: 80%;
+    float: right;
+    background-color: transparent;
+}
+
+
+.cartFooter{
+
+}
+
+.pageFooter{
+    width: 100%;
+    height: 4.666666rem;
+    /*line-height: 4.666666rem;*/
+    background-color: rgba(255,255,255,1);
+    border-top: 1px solid rgba(221,221,221,1);
+    position: fixed;
+    bottom: 0;
+    padding-top: 1rem;
+    /*padding-top: 1.333333rem;*/
+}
+.footNav{
+    color: rgba(153,153,153,1);
+    display: flex;/*参考多列平均布局*/
+    list-style: none;
+    justify-items: center;
+}
+.footNav li{
+    flex:1;
+    /*display: flex;*/
+    /*width: 25%;*/
+    float: left;
+    text-align: center;
+}
+/*超连接的样式，4种伪类建议都设置,有顺序要求*/
+.footNav a{display: block;}
+.footNav a:link{color: rgba(153,153,153,1);}
+.footNav a:hover{color: rgba(153,153,153,1);}
+.footNav a:visited{color: rgba(153,153,153,1);}
+.footNav a:active{color: rgba(153,153,153,1);}
+
+.footNav a span{
+    display: block;
+}
+
+
+/*index.html    */
+.typeList{
+    list-style: none;
+}
+/*让每个li占等宽距离*/
+/*.typeList li{
+    display: block;
+    float: left;
+}
+.typeList li:nth-child(1):nth-last-child(1){width: 100%;}
+.typeList li:nth-child(1):nth-last-child(5),.typeList li:nth-child(1):nth-last-child(5)~li{width: 20%;}
+*/
+/*弹性盒子的实现*/
+/*.typeList{
+    display: flex;
+    flex-wrap:wrap;
+}
+.typeList li{
+    width: 20%;
+    overflow: hidden;
+    flex: 1;!*用以表示所占的份额*!
+}*/
+/*.typeList li:nth-child(2){
+    flex: 3;
+}*/
+/*使用媒体响应对极端情况进行布局*/
+.typeList{
+    display: flex;
+    flex-wrap:wrap;
+}
+.typeList img{
+    width: 120px;
+}
+@media screen and (max-width: 299px) {
+    .typeList img{
+        width: 200px;
+    }
+}
+.typeList li{
+    flex:1;
+}
+
+
+/*login.html    */
+
+
+
+/*register.html    */
+
+
+/*business.html*/
+.businessList{
+    list-style: none;
+}
+.businessList li{
+    display: block;
+    overflow: visible;
+    padding: 1em 0;
+}
+.businessList li::after{
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    clear: both;
+}
+
+.businessList a{
+    color: #333333;
+}
+.businessList a:link{color: #333333;}
+.businessList a:hover{color: #111111;}
+.businessList a:visited{color: #333333;}
+.businessList a:active{color: #333333;}
+
+.businessList p,.businessList h3,.businessList div{
+    margin: 0.5em 0;
+    color: #505051;
+}
+.businessList h3{font-size: 1.2em;color: black;}
+
+.businessList p{
+    width: 20vw;
+    float: left;
+    position: relative;
+    margin-right: 1em;
+}
+.businessList p>span{
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    background-color: rgba(255,0,0,1);
+    right: -0.75em;
+    top: -0.75em;
+    border-radius: 50%;
+    position: absolute;
+    color: white;
+}
+
+.businessList.col-3 h3,.businessList.col-3 div{
+    width: 40vw;
+    float: left;
+}
+
+.businessList h3,.businessList div{
+    width: 60vw;
+    float: left;
+}
+
+.businessList.col-3 p:last-child{
+    float: right;
+}
+
+.businessList img{
+    width: 20vw;
+    height: 20vw;
+}

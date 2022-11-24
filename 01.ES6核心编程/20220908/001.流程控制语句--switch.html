@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //switch 多路分支的开关语句，适用于点判断, 表达式的值 应该是可  枚举【整数】  的，
+    //每个case分支结束可以使用break防止穿透
+    /*switch(表达式){
+        case 表达式值1:
+            //
+        case 表达式2:
+            //
+        default:
+            //
+    }*/
+    //获取离休息还有几天
+    let iNum = Number.parseInt(prompt("请输入星期数：","2"));
+    let iCount = 0;
+    //处理违法输入
+    if(iNum){
+        iNum = iNum % 7;//  iNum %= 7;
+        /*switch (iNum) {
+            case 1:
+                console.log("离休息还有5天");break;
+            case 2:
+                console.log("离休息还有4天");break;
+            case 3:
+                console.log("离休息还有3天");break;
+            case 4:
+                console.log("离休息还有2天");break;
+            case 5:
+                console.log("离休息还有1天");break;
+            default:
+                console.log("现在就在休息");break;
+        }*/
+        switch (iNum) {
+            // case 1,2,3,4,5: iCount++;break;
+            case 1: iCount ++;
+            case 2: iCount ++;
+            case 3: iCount ++;
+            case 4: iCount ++;
+            case 5: iCount ++;break;
+            default: break;
+        }
+        console.log(`离休息还有${iCount}天`);
+    }else{
+        console.log("你输入的数据有错误，请重新输入");
+    }
+</script>
+</body>
+</html>

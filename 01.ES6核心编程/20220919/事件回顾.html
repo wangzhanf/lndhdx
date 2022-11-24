@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li><a href="https://www.baidu.com">百度</a></li>
+    <li><a href="http://www.sina.com.cn">新浪</a></li>
+</ul>
+<script>
+    //基础编程：量【字面量，变量，常量，作用域】，算法（步骤）【表达式,运算符，流程控制（顺序，选择，循环，跳转）】
+    //编程习惯良好
+    //web前端编程 = BOM（运行环境提供的） + DOM（实际应用，条件判断访问不同的网络资源，在不刷新页面的前提下更新页面部分区域）
+    //事件--【异步编程 -- 执行随条件改变】,同步编程--预知执行过程
+    //状态改变即事件发生，事件发生可以采取措施--事件处理函数【忽略，默认，自定义处理】
+/*    var a = 8;
+    setTimeout(function(){//倒计时为0时触发的操作
+        console.log("hello");
+    },4000);//异步编程一般不会阻塞。
+    for (let i = 0; i < a; i++) {
+        console.log(i);
+    }*/
+    //利用事件的捕获和冒泡行为，通过监听父组件的事件，将子组件的事件处理绑定在父组件上
+    //事件处理函数的第一个参数默认就是事件对象，事件对象封装了细节（真实触发者），阻止冒泡或者默认行为的产生
+    document.querySelector('ul').onclick = function(event){
+        console.log('事件对象',event);
+        console.log('真实触发者',event.target);
+        //具体业务--异步访问链接地址 -- AJAX
+
+
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+</script>
+</body>
+</html>

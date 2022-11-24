@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+<!--    初始宽度时设备宽度，缩放比100%-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <style>
+        /*合理使用 * 标签  实现初始化*/
+        * {font-family: '微软雅黑';font-size: 14pt;margin: 0;padding: 0;}
+        div{display: block;}
+        /*自适应界面的设计
+            在不同的设备能够自动进行缩放【匹配不同的CSS样式】
+            实现：1    在HTML文档中声明在不同设备进行不同响应
+                 2    使用@media  进行css定制
+        */
+        /*合理使用移动设备常用的尺寸单位，vw 视口宽度 和vh视口高度*/
+        .ui{width: 100vw;height: 100vh;}
+        /*使用定位方式*/
+        .info{
+            position: fixed;
+            bottom: 0;
+        }
+        .infoList>div{padding: 1em;}
+/*        .infoList>div::after{
+            content: '';
+            display: block;
+            width: 100%;
+            clear: both;
+        }*/
+        .self{
+            float: left;
+            clear: both;
+        }
+        .self::before{
+            content: '';
+            display: inline-block;
+            width: 2em;height: 2em;background-color: black;
+        }
+        .ai{
+            float: right;
+            clear: both;
+        }
+        .ai::after{
+            content: '';
+            display: inline-block;
+            width: 2em;height: 2em;background-color: green;
+        }
+        /*媒体响应的代码-- 如果在宽度小于500px的屏幕设备上套用该样式*/
+        @media only screen and (max-width: 500px){
+            .ui{background-color: orangered;}
+        }
+        @media only screen and (min-width: 501px){
+            .ui{background-color: blueviolet;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="ui">
+    <div class="infoList">
+
+    </div>
+    <div class="info">
+        <textarea class="in"></textarea>
+        <button class="sendBtn">发送</button>
+    </div>
+</div>
+<script>
+    //模拟实现和机器聊天，过滤敏感词，手机界面
+    //1 基本的HTML布局
+    //2 使用CSS进行界面规划和修饰
+    //3 使用JavaScript实现业务
+    function processInfo(){
+        //3.2   收集用户输入的信息
+        let sContent = document.querySelector('.in').value;
+        //3.3   过滤敏感词
+        let reBadWord = /TMD|坏蛋|敏感词/igm;
+        sContent = sContent.replace(reBadWord,function(findWord){
+            return findWord.replace('/./g','*');
+        });
+        //3.4   将自己发送的信息展示到显示区间
+        document.querySelector('.infoList').innerHTML += `<div class="self">${sContent}</div>`;
+        //3.5   模拟机器人回复， 针对性回复，回复有延时
+        //3.5.1 机器人的回复列表
+        let aAiResponse = [
+            '欢迎使用该系统',
+            '退货详细规则',
+            '支付注意事项',
+        ];
+        //3.5.2 模拟智能匹配
+        let iAnswer  = 0;//默认回答
+        let reAiRes = new RegExp(sContent,'igm');
+        for (let i = 0; i < aAiResponse.length; i++) {
+            // if(aAiResponse.indexOf(sContent) != -1)
+            if(reAiRes.test(aAiResponse[i]))
+                iAnswer = i;
+        }
+        //3.5.3 将机器人的回复 延时  展示到显示区间
+        let hT;
+        hT = window.setTimeout(function(){
+            document.querySelector('.infoList').innerHTML += `<div class="ai">${aAiResponse[iAnswer]}</div>`;
+            window.clearTimeout(hT);
+        },Math.floor(Math.random()*1500)+500);//模拟 500毫秒到2000毫秒
+
+    }
+    //3.1   点击发送按钮处理业务
+    document.querySelector('.sendBtn').addEventListener('click',processInfo,false);
+
+</script>
+</body>
+</html>

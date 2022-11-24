@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            width: 100vw;height: 100vh;background-color: green;
+        }
+        .zone{
+            width: 10px;height: 10px;background-color: orangered;
+            position: absolute;
+            /*top: 400px;left: 400px;*/
+        }
+    </style>
+</head>
+<body>
+<input  type="button" value="增加一个按钮" />
+<div class="zone"></div>
+<div class="btns">
+    <button class="up">上</button>
+    <button class="down">下</button>
+    <button class="left">左</button>
+    <button class="right">右</button>
+</div>
+<script>
+    /*
+    function moveDown(event){
+        document.querySelector('.zone').setAttribute('style','top:100px;')
+    }
+    function moveUp(event){
+        document.querySelector('.zone').setAttribute('style','top:100px;')
+    }
+    document.querySelector('.down').onclick = moveDown;
+    document.querySelector('.up').onclick = moveUp;
+    */
+
+    //利用事件委托：父元素节点监听事件的发生， 通过获取实际触发者采取不同的业务
+    /*
+    function move(event){
+        // console.log(event);
+        console.log(event.target.innerText);//event.target//可以拿到真实触发事件的组件
+        switch (event.target.innerText) {
+            case '上':
+                document.querySelector('.zone').setAttribute('style','top:100px;');break;
+            case '下':
+                document.querySelector('.zone').setAttribute('style','bottom:100px;');break;
+            case '左':
+                document.querySelector('.zone').setAttribute('style','left:100px;');break;
+            case '右':
+                document.querySelector('.zone').setAttribute('style','right:100px;');break;
+            default:
+                document.querySelector('.zone').setAttribute('style','top:400px;left:400px;');break;
+        }
+        event.stopPropagation();//阻止冒泡
+        event.preventDefault();//阻止默认行为
+    }
+    document.querySelector('.btns').onclick = move;
+*/
+    document.querySelector('.newBtn').onclick = function (event) {
+        console.log("hello");
+    }
+
+    document.querySelector('[type="button"]').onclick = function (event) {
+        //按钮区中添加一个新按钮
+        document.querySelector('.btns').innerHTML = document.querySelector('.btns').innerHTML + '<button class="newBtn">新按钮</button>';
+
+
+    }
+</script>
+</body>
+</html>

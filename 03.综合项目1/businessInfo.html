@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--模板文件确保基础问题无歧义-->
+<html>
+<head>
+    <!--  标签可嵌套不可交叉,非自闭和标签必须成对出现,自闭合标签以  "空格 /" 结尾，所有标签名小写字母，所有属性都必须有属性值，自定义属性用 data-开头  -->
+    <meta charset="UTF-8" />
+    <!--  优先响应移动设备端，确保在不同设备上都不会缩放元素  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!--  模板中要将资源加载  -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.css" />
+    <title>商家信息</title>
+</head>
+<body>
+<header class="pageHeader">
+    商家信息
+</header>
+<section class="mainContent">
+    <ul class="businessList col-3">
+        <li>
+            <a href="#">
+                <p>
+                    <img src="./img/sj01.png" />
+                    <span>3</span>
+                </p>
+                <h3>万家饺子</h3>
+                <div>￥15元起送 | ￥3元配送</div>
+                <div>各种饺子炒菜</div>
+                <p>数量</p>
+            </a>
+        </li>
+    </ul>
+</section>
+
+<footer class="cartFooter">
+    <div>
+        <div>
+            <i class="fa fa-shopping-cart"></i>
+            <span>3</span>
+        </div>
+        <div>
+            12.88
+        </div>
+    </div>
+    <div>
+        去结算
+    </div>
+</footer>
+
+<!--因为JavaScript是阻塞式加载模式，js的引入不要放在前面，应该在  /body  之前-->
+<script src="./js/main.js"></script>
+<!--因为每个页面加载时执行的代码可能不同，所以给每个页面预留一个script段，将自动加载执行代码写在此处-->
+<script>
+    window.onload = function(){
+
+    };
+</script>
+</body>
+</html>

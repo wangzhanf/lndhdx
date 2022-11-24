@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //赋值运算符
+    //将等号  右边的值   赋给  左侧的变量【切记不能是字面量】
+    var iAge = 18;
+    //赋值运算符的结合性【从右到左】
+    var a = b = c = 1;
+    console.log(a);
+    //赋值运算符的优先级较低，当不明确优先级，用 （）
+    var d = a + b;//先计算  +  ，然后再赋值
+    console.log(d);
+    //赋值运算可以采用缩写方式【语法糖】,
+    // sum = sum + current;
+    // sum += current;
+    // 案例：  实现1加到100
+    let iSum = 0;
+    for (let i = 1; i <= 100; i++) {
+        // iSum = iSum + i;
+        iSum += i;
+    }
+    console.log(iSum);
+
+
+    //算术运算符
+    //取余运算符也称之为模运算符，常用场景 过滤内容，绘制表格
+    // 案例：  实现1加到100 的所有 奇数 的和
+    // let iSum1 = 0;
+    // for (let i = 1; i <= 100; i=i+2) {
+    //     iSum1 += i;
+    // }
+    // console.log(iSum1);
+
+    // let iSum1 = 0;
+    // for (let i = 1; i <= 100; i+=2) {
+    //     iSum1 += i;
+    // }
+    // console.log(iSum1);
+
+    let iSum1 = 0;
+    for (let i = 1; i <= 100; i++) {
+        if(i%2 != 0)
+            iSum1 += i;
+    }
+    console.log(iSum1);
+
+    //自增和自减运算符     i++   等同    i = i + 1;   j--   等同于   j = j - 1
+    //前置和后置的区别：前置先计算表达式，后置后计算表达式
+    let count = 5;
+    ++count;//count++;   // count = count + 1;
+    //此时   count   肯定是6  ,
+    console.log(count);//6
+    console.log(count--);//先输出6，然后再将表达式计算得到count为5
+    console.log(count);//5
+    console.log(++count);//6 ,先计算表达式 count为 6，然后输出
+</script>
+</body>
+</html>

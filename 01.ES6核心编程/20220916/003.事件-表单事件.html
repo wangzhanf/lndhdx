@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+表单是用户和web页进行交互的接口
+信奉： 永远不要相信用户的输入，可以使用js做前端验证，减少服务器压力
+案例： 注册功能，手机号码必须符合规则，两次密码必须符合规则，才可以提交表单
+-->
+
+<form action="001.事件详解.html" method="get">
+    <input type="text" name="phone" placeholder="phone" />
+    <input type="password" name="pass" placeholder="Password" />
+    <input type="password" name="repass" placeholder="RePassword" />
+    <div class="tips"></div>
+    <input type="submit" value="注册" />
+</form>
+<script>
+    //每个组件的校验应该由独立的函数实现，当所有校验函数的结果通过才能提交表单
+    //1 获取所有的组件对象
+    let oPhone = document.querySelector('[name="phone"]');
+    let oPass = document.querySelector('[name="pass"]');
+    let oRepass = document.querySelector('[name="repass"]');
+    let oBtn = document.querySelector('[type="submit"]');
+    let oTips = document.querySelector('.tips');
+    let oForm = document.querySelector('form');
+    //2 分别编写校验函数 ， 校验通过一般返回true，校验不通过一般返回false
+    //2.1   手机号码校验
+    function checkPhone(event){
+        let rePhone = new RegExp('^1[3-9][0-9]{9}$','igm');
+        let flag = false;
+        if(!rePhone.test(oPhone.value)){
+            oTips.innerHTML = "手机号码错误";
+        }else{
+            oTips.innerHTML = "";
+            flag = true;
+        }
+        return flag;
+    }
+    function checkPass(event){
+        let flag = false;
+        if(oPass.value.length < 6 || oPass.value.length > 8){
+            oTips.innerHTML = "密码长度必须是6-8位";
+        }else{
+            if(oPass.value != oRepass.value)
+                oTips.innerHTML = "两次密码不一致";
+            else{
+                oTips.innerHTML = "恭喜密码可用";
+                flag = true;
+            }
+        }
+        return flag;
+    }
+    function checkRepass(event){
+        let flag = false;
+        if(oRepass.value.length < 6 || oRepass.value.length > 8){
+            oTips.innerHTML = "重复密码长度必须是6-8位";
+        }else{
+            if(oPass.value != oRepass.value)
+                oTips.innerHTML = "两次密码不一致";
+            else{
+                oTips.innerHTML = "恭喜密码可用";
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    //总的校验函数取 单独校验函数的返回值判断是否通过分项校验
+    function checkForm(event){
+        //分别调用独立的校验函数，根据返回值确定是否校验通过
+        if(checkPhone() && checkPass() && checkRepass()){
+
+        }else{
+            event.preventDefault();//
+            //return false;//阻止默认行为【表单的默认行为是提交】
+            oTips.innerHTML = "数据校验不通过";
+        }
+    }
+
+
+    //3 分别给不同的组件绑定不同的事件
+    //3.1   手机号码 ，当光标离开手机号码组件 ， 当改变的时候
+    oPhone.onblur = checkPhone;
+    oPhone.onchange = checkPhone;
+    //3.2   密码校验， 失去焦点和改变的时候
+    oPass.onblur = checkPass;
+    oPass.onchange = checkPass;
+    oPass.onkeyup = checkPass;
+    //3.3   重复密码校验， 失去焦点和改变的时候
+    oRepass.onblur = checkRepass;
+    oRepass.onchange = checkRepass;
+    oRepass.onkeyup = checkRepass;
+    //3.4   对表单提交事件进行处理
+    oBtn.onclick = checkForm;
+    oForm.onsubmit = checkForm;
+</script>
+
+</body>
+</html>

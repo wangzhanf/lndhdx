@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #display,#result{color: white;}
+        #display span,#result span{
+            margin: 0.2em;display: inline-block;width: 2em;height: 2em; line-height: 2em;border-radius: 50%;text-align: center;
+        }
+        .redZone{
+            padding: 2em;
+            border: 1px solid red;
+        }
+        .redZone span{
+            background-color: red;
+        }
+        .blueZone{
+            padding: 2em;
+            border: 1px solid blue;
+        }
+        .blueZone span{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="display">
+
+</div>
+<button>开始抽奖</button>
+<div id="result">抽奖结果</div>
+<script>
+    //课堂练习：  模拟 彩票抽奖  的双色球，  构建一个抽奖的奖池，
+    //对于所有的魔术数字MagicNumber，推荐使用变量取代
+    let aRedPoolSize = 35;//红色球池有33个球
+    let aBluePoolSize = 15;//蓝色球池有15个球
+    let iRedLen = 5;
+    let iBlueLen = 1;
+    // 红色球池球号  1-33，蓝色球池球号  1-15 ，将结果显示在页面中。
+    let aRedballPool = [];//创建一个红球球池， 默认不存在任何元素
+    // let aBlueballPool = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; //创建蓝色球池，显式初始化
+    // let aBlueballPool = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+    let aBlueballPool = new Array(aBluePoolSize);//动态数组，数组长度初始化时可以使用变量
+
+
+    //通过循环遍历给数组赋初始值，JavaScript中数组是动态增长【意味着不会越界】，
+    // console.log(aRedballPool[1]);//undefined
+    for (let i = 0; i < aRedPoolSize/*33*/; i++) { // 循环  0 - 32  共33次，恰好和数组下标对应  ，33是什么？ MagicNumber，没有语义性
+        aRedballPool[i] = i+1;//   将 6 值赋值给  aRedballPool[5]
+    }
+    //console.log(aRedballPool[1]);//2
+
+    //通过循环遍历给数组初始化， 对于数组和对象而言，都可以使用for...in进行遍历  , 利用迭代器  iterator
+    //for...in优势无需知道数组的长度 ， 劣势适合于读取元素，不适合对元素赋值
+    //for (let 临时当前变量名 in 要遍历的对象) {
+    for (let i = 0; i < aBluePoolSize; i++) {
+        aBlueballPool[i] = i+1;
+    }
+
+    //将球池渲染到页面中【展示】
+    //遍历红色球池，组装为对应的HTML代码
+    let sStr = '';
+    sStr += `<div class="redZone">`;
+    for (const temp in aRedballPool) {
+        sStr += `<span>${aRedballPool[temp]}</span>`;
+    }
+    sStr += `</div>`;
+    //遍历蓝色球池，组装为对应的HTML代码
+    sStr += `<div class="blueZone">`;
+    for (const temp in aBlueballPool) {
+        sStr += `<span>${aBlueballPool[temp]}</span>`;
+    }
+    sStr += `</div>`;
+
+    //将组装的HTML内容显示到页面的指定区域
+    document.querySelector('#display').innerHTML = sStr;
+
+
+    //点击抽奖按钮执行抽奖逻辑
+    document.querySelector('button').onclick = function(){//匿名函数
+        let aResultPool = [];//创建一个结果数组(空)，初始没有元素的
+        let aBlueResultPool = [];
+        //产生随机数，循环随机从球池中不重复取出中奖号码
+
+        let iRand;
+        for (let i = 0; i < iRedLen; i++) {
+            iRand = Math.floor(Math.random()*aRedballPool.length);//
+            //将结果放在中奖号码区
+            aResultPool.push(aRedballPool.splice(iRand,1)[0]);
+            // aResultPool.concat(aRedballPool.splice(iRand,1));
+            // console.log(aResultPool);
+        }
+        let sStr = '';
+        sStr += `<div class="redZone">`;
+        for (const temp in aResultPool) {
+            sStr += `<span>${aResultPool[temp]}</span>`;
+        }
+        sStr += `</div>`;
+
+
+        //对结果进行排序
+        aResultPool.sort((a,b)=>b-a);
+        aResultPool.reverse();
+
+
+        //渲染结果
+        //将结果球池渲染到页面中【展示】
+        //遍历红色结果球池，组装为对应的HTML代码
+
+
+        document.querySelector('#result').innerHTML = sStr;
+
+        let sStrB='';
+        for (let i = 0; i < iBlueLen; i++) {
+            iRand = Math.floor(Math.random()*aBlueballPool.length);//
+            //将结果放在中奖号码区
+            aBlueResultPool.push(aBlueballPool.splice(iRand,1)[0]);
+            // aResultPool.concat(aRedballPool.splice(iRand,1));
+            // console.log(aResultPool);
+
+        }
+
+        sStrB += `<div class="blueZone">`;
+        for (const temp in aBlueResultPool) {
+            sStrB += `<span>${aBlueResultPool[temp]}</span>`;
+        }
+        sStrB += `</div>`;
+
+        document.querySelector('#result').innerHTML += sStrB;
+
+
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  增加表单-->
+<!--  修改表单-->
+<!--  数据表格，删除，修改-->
+  <button v-on:click="paixu($event,'id')">反转排序</button>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>index</th>
+      <th v-on:click="paixu($event,'id')">id</th>
+      <th v-on:click="paixu($event,'businessName')">businessName</th>
+      <th>avatar</th>
+      <th>operator</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="(item,index) in blists">
+      <td>{{ index }}</td>
+      <td v-text="item.id"></td>
+      <td v-html="item.businessName"></td>
+      <td><img width="30" v-bind:src="item.avatar" /></td>
+      <td>
+        <button v-on:click="delRec($event,index)">删除</button>
+        <button>修改</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+  const vm =  new Vue({
+    el: "#app",
+    data: {
+      sFlag:true,
+      sortK:"id",
+      blists:[
+        {id:1,businessName:"kfc",avatar:"../null.png"},
+        {id:12,businessName:"麻辣烫",avatar:"../null.png"},
+        {id:13,businessName:"麻辣香锅",avatar:"../null.png"},
+        {id:44,businessName:"火锅",avatar:"../null.png"},
+      ]
+    },
+    methods:{
+      asc:function (x,y){
+        let flag = 0;
+        if(typeof x[this.sortK] == "number");
+          flag = x[this.sortK] - y[this.sortK];
+        if(typeof x[this.sortK] == "string");
+          flag = (String)(x[this.sortK]).localeCompare((String)(y[this.sortK]));
+        return flag;
+      },
+      desc:function (x,y){
+        let flag = 0;
+        if(typeof x[this.sortK] == "number");
+          flag = y[this.sortK] - x[this.sortK];
+        if(typeof x[this.sortK] == "string");
+          flag = (String)(y[this.sortK]).localeCompare((String)(x[this.sortK]));
+        return flag;
+      },
+      paixu:function (eve,k) {
+        // console.log("paixu...........");
+        this.sFlag = !this.sFlag;
+        this.sortK = k;
+        // console.log("k",k,"sortK",this.sortK);
+        this.blists.sort(this.sFlag?this.asc:this.desc);
+      },
+      delRec:function (eve,current){
+        console.log("delRec...........");
+        this.blists.splice(current,1);
+        // this.blists.splice(current,1,{id:66,businessName:"花甲粉",avatar:"../null.png"});
+        // this.blists.pop();//弹出最后一个
+        // this.blists.shift();//弹出第1个
+        // this.blists.push({id:55,businessName:"炒饼",avatar:"../null.png"});//添加到最后
+        // this.blists.unshift({id:55,businessName:"炒饼",avatar:"../null.png"});//添加到最前
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

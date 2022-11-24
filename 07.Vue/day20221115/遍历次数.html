@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+<!--        <li v-bind:data-id="i" v-for="i of 9"> {{ i }} </li>-->
+<!--    <li v-for="i of lists.length"> {{ lists[i-1] }} </li>-->
+    <li v-for="(item,index,sperator) in lists">
+        <span v-for="(v,k,i) in item">
+            {{k}} -- {{v}}
+        </span>
+    </li>
+    </ul>
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            lists: [
+                {sno: 110, name: "zs", score: 59.5},
+                {sno: 119, name: "ls", score: 69.5},
+                {sno: 120, name: "ww", score: 79.5}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

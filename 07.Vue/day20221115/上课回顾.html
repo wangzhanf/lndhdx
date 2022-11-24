@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <label><input name="c" value="red" type="radio" v-model="colorStatus" />红色</label>
+    <label><input name="c" value="green" type="radio" v-model="colorStatus" />绿色</label>
+    <input type="number" v-model="fontStatus" />
+    <hr />
+    <span v-bind:style="{color:colorStatus,fontSize:fontStatus+'px'}">{{ msg }}</span>
+
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    var ele = "#app";
+    let vm = new Vue({
+        el: "#app",
+        data: function(){
+            return {
+                msg:"显式的信息",
+                colorStatus:"red",
+                fontStatus:24
+            };
+        }
+    });
+</script>
+</body>
+</html>

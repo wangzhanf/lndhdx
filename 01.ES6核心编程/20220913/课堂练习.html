@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1 首先定义学生以及对应的寝室， 此例中使用所谓的二维数组比较方便
+    //寝室的人数可能是不同，这样的数组【稀疏数组】
+    //aStudents[0] 等同于  ['张1','李1','王1']
+    //aStudents[2][3] 等同于   马3
+    let aStudents = [['张1','李1','王1'],['张2','李2','王2'],['张3','李3','王3','马3'],['张4','李4'],['张5','李5','王5']];
+    //随机抽取每日，随机产生取决于寝室的个数
+    let iRand;
+    //循环几次取决于一维【最外层】数组的初始长度,aStudents.length 初始为  2
+    let iLen = aStudents.length;
+    let aTemp;
+    //可以使用位置对应的方式进行表现层的展示
+    let aWeek = ['一','二','三','四','五'];
+    let aRoom = [110,112,512,522,688];
+    for (let i = 0; i < iLen; i++) {
+        iRand = Math.floor(Math.random() * aStudents.length);//按一维长度随机取值   0-2
+        // 将随机取到的数组元素移出数组
+        aTemp = aStudents.splice(iRand,1)[0];
+        //如果结果需要长久保留，用一个结果数组保存，如果仅用以显示，打印即可
+        console.log(`星期 ${aWeek[i]} ,  寝室${aRoom[i]}， 人员 ${aTemp.join(' | ')}`);
+    }
+</script>
+</body>
+</html>

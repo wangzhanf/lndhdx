@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{ mydate }}
+    <hr />
+    <button v-on:click="add">添加</button>
+    <ul>
+        <li v-for="(item,index,a) in blists">
+            {{ index }} -- {{item.id}}--{{item.name}}--{{item.price}}
+            <input type="text" />
+            <button v-on:click="del(index)">删除</button>
+        </li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        methods:{
+          del(id){
+              this.blists.splice(id,1);
+          },
+            add(){
+                this.blists.unshift({});
+            }
+        },
+        data: {
+            mydate:"00:00:00",
+            blists:[
+                {id:101,name:"html",price:23.45},
+                {id:102,name:"css",price:34.56},
+                {id:103,name:"javascript",price:45.67},
+                {id:104,name:"vue",price:12.34}
+            ]
+        },
+        mounted:function (){
+            let that = this;
+            // setInterval(function (){
+            //     let d = new Date();
+            //     console.log(this);
+            //     that.mydate = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+            // },1000);
+            let st;
+            function rooool(){
+                let d = new Date();
+                console.log(this);
+                that.mydate = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+                st = setTimeout(rooool,1000);
+                // clearTimeout(st);
+            };
+            rooool();
+        }
+    });
+</script>
+<script>
+    // let Book = Object.create({
+    //     name:"anonymous",
+    //     pages:102
+    // });
+    // Book.price = 23.45;
+    // console.dir(Book);
+    // delete Book.pages;
+    // console.dir(Book);
+</script>
+
+</body>
+</html>

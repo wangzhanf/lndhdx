@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //封装好的Promise，只需要编写一次
+    let getData = function(url){
+        let promise = new Promise(function(resolve, reject){
+            let xhr = new XMLHttpRequest();
+            xhr.open('get',url,true);
+            xhr.onreadystatechange = processHandler;
+            xhr.send();
+
+            function processHandler() {
+                if(this.readyState != 4){
+                    return;//此处要注意，如果中间状态不做处理则会如何呢
+                }
+                if(this.readyState == 4 && this.status == 200){
+                    resolve(this.responseText);
+                }else{
+                    reject(new Error(this.statusText));
+                }
+            }
+        });
+        return promise;
+    };
+
+    //将套娃式的调用关系整理成同步模式的调用关系，只是看起来好像比较干净而已
+    getData('./userlist.json').then(function (myData) {
+        console.log('获取到的数据',myData);
+    },function (errorInfo) {
+        console.log('出错信息',errorInfo);
+    });
+</script>
+</body>
+</html>

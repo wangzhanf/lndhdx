@@ -1,0 +1,64 @@
+{
+  "lists": [
+    {
+      "imgsrc":"./img/sj01.png",
+      "title":"万家饺子1",
+      "role": ["￥15元起送 ","￥3元配送"],
+      "description": "各种饺子炒菜",
+      "tips": 3,
+      "url": "./businessInfo.html",
+      "star": 4.5,
+      "distance": 11
+    },
+    {
+      "imgsrc":"./img/sj02.png",
+      "title":"万家饺子2",
+      "role": ["￥15元起送 "],
+      "description": "各种饺子炒菜",
+      "tips": 2,
+      "url": "./businessInfo.html",
+      "star": 3.5,
+      "distance": 10
+    },
+    {
+      "imgsrc":"./img/sj03.png",
+      "title":"万家饺子3",
+      "role": ["￥3元配送"],
+      "description": "各种饺子炒菜",
+      "tips": 1,
+      "url": "./businessInfo.html",
+      "star": 4.0,
+      "distance": 1
+    },
+    {
+      "imgsrc":"./img/sj04.png",
+      "title":"万家饺子4",
+      "role": [],
+      "description": "各种饺子炒菜",
+      "tips": 0,
+      "url": "./businessInfo.html",
+      "star": 3.5,
+      "distance": 3
+    },
+    {
+      "imgsrc":"./img/sj05.png",
+      "title":"万家饺子5",
+      "role": [],
+      "description": "各种饺子炒菜",
+      "tips": 0,
+      "url": "./businessInfo.html",
+      "star": 2.5,
+      "distance": 3.5
+    },
+    {
+      "imgsrc":"./img/sj06.png",
+      "title":"万家饺子6",
+      "role": [],
+      "description": "各种饺子炒菜",
+      "tips": 0,
+      "url": "./businessInfo.html",
+      "star": 3.5,
+      "distance": 12
+    }
+  ]
+}

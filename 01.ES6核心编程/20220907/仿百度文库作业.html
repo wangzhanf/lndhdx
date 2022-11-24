@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+
+        body{background-color: black;}
+
+        /*通过通用选择器对页面元素初始化,大小尺寸选择绝对值*/
+        *{font-family: '微软雅黑';font-size: 14pt;margin: 0;padding: 0;}
+        /*通过标签选择器对部分标签初始化*/
+        ul {display: block;list-style: none;}
+        a{text-decoration: none;}
+
+        /*通过类选择器对指定元素指派   */
+        .fileList a{color: rgba(255,255,255,1);}
+        .fileList a:link{color: rgba(255,255,255,1);}
+        .fileList a:hover{color: rgba(255,255,255,0.8);}
+        .fileList a:visited{color: rgba(255,255,255,1);}
+
+        /*需要在每个超链接的前面放置一个图标,伪元素实现，伪元素默认是行内元素*/
+        .fileList a::before{
+            content: "";
+            display: inline-block;
+            width: 2em;
+            height: 2em;
+            background-image: url("./img/filetype.png");
+            /*background-position: -28px -0px;*/
+            background-size: 800%;
+        }
+        /*不同类型位移不同，通过属性选择器进行区分*/
+        .fileList a[href$='.docx']::before{
+            background-position: 2px -0px;
+        }
+        .fileList a[href$='.css']::before{
+            background-position: -60px -20px;
+        }
+        .fileList a[href$='.mp4']::before{
+            background-position: -60px -0px;
+        }
+    </style>
+</head>
+<body>
+<!--
+仿百度文库模式，不同的文件类型展示不同的图标
+    仅用户展现的内容， 用CSS解决
+    可以使用精灵图片技术【背景图移位】，实现多个图片集成在一个大图中
+1   获取图片资源
+2   构建HTML结构
+3   CSS修饰
+-->
+
+<ul class="fileList">
+    <li>
+<!--        <img src="doc.jpg" />-->
+        <a href="abc.docx">HTML语言帮助手册</a>
+    </li>
+    <li>
+        <a href="css.pdf">CSS语言帮助</a>
+    </li>
+    <li><a href="css.mp4">课堂录像</a></li>
+    <li><a href="css.pdf">课堂录像2</a></li>
+    <li><a href="css.mp4">课堂录像3</a></li>
+</ul>
+
+</body>
+</html>

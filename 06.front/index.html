@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--模板文件确保基础问题无歧义-->
+<html>
+<head>
+    <!--  标签可嵌套不可交叉,非自闭和标签必须成对出现,自闭合标签以  "空格 /" 结尾，所有标签名小写字母，所有属性都必须有属性值，自定义属性用 data-开头  -->
+    <meta charset="UTF-8" />
+    <!--  优先响应移动设备端，确保在不同设备上都不会缩放元素  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.css" />
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" />
+    <title>食品管理页面</title>
+</head>
+<body>
+<div class="container">
+    <form id="addForm">
+        <input type="text" name="foodName" placeholder="食品名称" />
+        <input type="text" name="foodExplain" placeholder="食品介绍" />
+        <input name="foodPrice" type="number" placeholder="价格" />
+        <input type="text" name="bid" placeholder="商家" />
+        <input type="button" id="addBtn" value="添加" />
+    </form>
+</div>
+<div class="container">
+    <table id="display"  class="table table-border table-striped table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>名称</th>
+            <th>介绍</th>
+            <th>价格</th>
+            <th>商家</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<!--因为JavaScript是阻塞式加载模式，js的引入不要放在前面，应该在  /body  之前-->
+<script src="./js/main.js"></script>
+<!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+<script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+<!--因为每个页面加载时执行的代码可能不同，所以给每个页面预留一个script段，将自动加载执行代码写在此处-->
+<script>
+    window.onload = function(){
+        getList();//获取所有食品列表
+
+        //update
+        var oBtn = document.querySelector("#display tbody");
+        oBtn.onclick = function(eve){
+            //update
+            if(eve.target.getAttribute("data-uid")!=null){
+                var xhr = new XMLHttpRequest()
+                var id = eve.target.getAttribute("data-uid");
+                console.log(eve.target.parentElement.parentElement);
+                var foodName = eve.target.parentElement.parentElement.querySelector("[name='foodName']").value;
+                var foodExplain = eve.target.parentElement.parentElement.querySelector("[name='foodExplain']").value;
+                var foodPrice = eve.target.parentElement.parentElement.querySelector("[name='foodPrice']").value;
+                var bid = eve.target.parentElement.parentElement.querySelector("[name='bid']").value;
+                var url = "http://localhost:7777/day20221027mini/uptFood.do?id=" + id + "&foodName=" + foodName + "&foodExplain=" + foodExplain + "&foodPrice=" + foodPrice + "&bid=" + bid;
+                xhr.open("get",url,true);
+                xhr.onreadystatechange = function(data) {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+                        getList();
+                    }
+                }
+                xhr.send();
+                eve.preventDefault();
+            }
+            //del
+            if(eve.target.getAttribute("data-id")!=null){
+                var xhr = new XMLHttpRequest();
+                var id = eve.target.getAttribute("data-id");
+                var url = "http://localhost:7777/day20221027mini/delFood.do?id="+id;
+                xhr.open("get",url,true);
+                xhr.onreadystatechange = function(data) {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+                        getList();
+                    }
+                }
+                xhr.send();
+                eve.preventDefault();
+            }
+
+        };
+
+
+
+
+        //add
+        var oAddBtn = document.querySelector("#addBtn");
+        oAddBtn.onclick = function(eve){
+            var xhr = new XMLHttpRequest()
+            var foodName = document.querySelector("#addForm [name='foodName']").value;
+            var foodExplain = document.querySelector("#addForm [name='foodExplain']").value;
+            var foodPrice = document.querySelector("#addForm [name='foodPrice']").value;
+            var bid = document.querySelector("#addForm [name='bid']").value;
+            var url = "http://localhost:7777/day20221027mini/addFood.do?foodName=" + foodName + "&foodExplain=" + foodExplain + "&foodPrice=" + foodPrice + "&bid=" + bid;
+            xhr.open("get",url,true);
+            xhr.onreadystatechange = function(data) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                    getList();
+                }
+            }
+            xhr.send();
+            eve.preventDefault();
+        };
+
+    };
+
+    function getList(){
+        var xhr = new XMLHttpRequest()
+        xhr.open("get","http://localhost:7777/day20221027mini/listFood.do",true);
+        xhr.onreadystatechange = function(data){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.responseText);
+                var data = JSON.parse(xhr.responseText);
+                var str = "";
+                for (let i = 0; i < data.length; i++) {
+                    str += "<tr>";
+                    str += `<th>${data[i].id}</th>`;
+                    str += `<td><input type="text" name="foodName" value="${data[i].foodName}" /></td>`;
+                    str += `<td><input type="text" name="foodExplain" value="${data[i].foodExplain}" /></td>`;
+                    str += `<td><input type="text" name="foodPrice" value="${data[i].foodPrice}" /></td>`;
+                    str += `<td><input type="text" name="bid" value="${data[i].bid}" /></td>`;
+                    str += `<td><a class="btn btn-info uptBtn"  data-uid="${data[i].id}">修改</a></td>`;
+                    str += `<td><a class="btn btn-danger delBtn"  data-id="${data[i].id}">删除</a></td>`;
+                    str += "</tr>";
+                }
+                document.querySelector("#display tbody").innerHTML = str;
+            }
+        };
+        xhr.send();
+    }
+</script>
+</body>
+</html>

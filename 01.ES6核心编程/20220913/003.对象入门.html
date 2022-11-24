@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var x = 3;
+    var y = x;
+    x = 5;
+    console.log(y);//3
+
+    var obj1 = {x:3,y:5};
+    var obj2 = obj1;
+    obj1.x = 6;  //  对象的属性   在等号左侧， 赋值操作
+    obj1.y = 10;
+    console.log(obj2.x,obj2.y);//6  10
+
+    //javascript是基于对象，无需自己创建类和对象即可实现程序编写
+    //ECMAScript 6 的标准已实现了   面向对象  【可以创建自己的类】
+
+    //老版本的基于对象的创建方法
+    //1 使用new运算符，调用  Object构造函数产生对象
+    // 需要使用平面坐标记录敌机和子弹的位置，当两者重合时代表子弹击中敌机
+    // myx = 3;myy = 4;ex = 5; ey = 77;  //分散记录，不易使用
+    // let [myx,myy,ex,ey] = [3,4,5,77];//解构赋值能稍简化
+    // 在Javascript中Object 是所有对象的祖宗 ，
+    let point1 = new Object({x:1});//子弹坐标
+    point1.y = 1;//也可以在创建完对象后，给对象添加属性和方法
+    //2 使用字面量方式创建， Object继承关系被掩盖
+    let point2 = {
+        x:4,
+        y:5
+    };//敌机坐标
+
+    //需要计算子弹和敌机的距离
+    //1 通用函数实现 ,  基于面向过程的编程思想。
+    function getInstance(obj1,obj2){
+        //得到x的差距
+        let dx = obj1.x - obj2.x;
+        //得到y的差距
+        let dy = obj1.y - obj2.y;
+        //利用直角三角形的特性求斜边的值，距离
+        let distance = Math.sqrt(dx * dx + dy * dy) ;
+        return distance;
+    }
+    console.log(getInstance(point1,point2));
+
+
+    //问题在于，面向结构思路，求距离（点1，点2）   ，面向对象【人的思维】 我和其他点的距离
+    //通过对象调用对应方法。和调用属性类似
+    //2 面向对象方法实现
+
+    /*point2.distance = function(oth){
+        // console.log("对象的方法被调用了");
+        // console.log(point1.x);
+        // console.log(this.x);//this在面向对象中代表当前调用者身份【自身对象】
+        return Math.sqrt(Math.pow(this.x-oth.x,2) + Math.pow(this.y-oth.y,2))
+    };//添加方法
+
+    point1.distance = function(oth){
+        // console.log("对象的方法被调用了");
+        // console.log(point1.x);
+        // console.log(this.x);//this在面向对象中代表当前调用者身份【自身对象】
+        return Math.sqrt(Math.pow(this.x-oth.x,2) + Math.pow(this.y-oth.y,2))
+    };//添加方法*/
+    // console.log(point2.distance(point1));//以敌机为当前对象身份调用
+    // console.log(point1.distance(point2));//以子弹为当前对象身份调用
+    //上述办法存在的缺陷，每个Point对象都有一个distance函数， 名称相同但是是两个东西【占用内存也是双份】
+    //解决办法： 用命名函数 ,
+    function getDestanceFunc(oth){
+        return Math.sqrt(Math.pow(this.x-oth.x,2) + Math.pow(this.y-oth.y,2));
+    }
+    //真正底层原理就是C语言的函数指针。
+    point1.getDestance = getDestanceFunc;//函数绑定,不能加()，如果加()代表将返回值赋值给左侧
+    point2.getDestance = getDestanceFunc;
+
+    console.log(point1.getDestance(point2));//以子弹为当前对象身份调用
+    console.log(point2.getDestance(point1));//以敌机为当前对象身份调用
+
+
+
+</script>
+</body>
+</html>

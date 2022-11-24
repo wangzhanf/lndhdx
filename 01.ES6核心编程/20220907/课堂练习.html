@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--通过prompt接受用户的输入，输入【每100公里油耗 ---   **11.5升**， 邮箱总量 --  **52升**，已行驶公里数----134】，在控制台输出还可以行驶多少公里，已消耗多少升油。-->
+<script>
+    //接受用户输入
+    let dUse = prompt("请输入每100公里油耗：","升");
+    let iTotal = prompt("请输入邮箱总容量：","升");
+    let dLen = Number.parseInt(prompt("已行驶的公里数：","公里"))/100;
+    //将用户输入转换为数值
+    dUse = Number.parseFloat(dUse);
+    iTotal = Number.parseFloat(iTotal);
+
+    let dCon = (iTotal - (dLen * dUse))*100/dUse;
+    console.log(`邮箱总量：${iTotal},已消耗${dLen * dUse},剩余行驶公里数${(iTotal - (dLen * dUse))*100/dUse}`);
+    console.log(`邮箱总量：${iTotal},已消耗${dLen * dUse},剩余行驶公里数${dCon}`);
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{margin: 10px;}
+        input{width: 90%;height: 3em;line-height: 3em;}
+        .btns{background-color: orange;overflow: auto;padding: 20px;}
+        .btns a{text-decoration: none;display: block;margin: 10px;text-align: center;float: left;width: 30%;}
+        .btns a:link{color: white;background-color: gray;}
+        .btns a:visited{color: white;background-color: gray;}
+        .btns a:hover{color: red;background-color: grey;}
+        a:nth-child(7),a:nth-child(7)~a{width: 45%;}
+        /*a:nth-last-child(2),a:nth-last-child(2)~a{width: 45%;}*/
+    </style>
+</head>
+<body>
+<input type="text" id="display" />
+<div class="btns">
+    <a href="https://www.baidu.com">1</a>
+    <a href="https://www.baidu.com">2</a>
+    <a href="https://www.baidu.com">3</a>
+    <a href="https://www.baidu.com">4</a>
+    <a href="https://www.baidu.com">5</a>
+    <a href="https://www.baidu.com">6</a>
+    <a href="https://www.baidu.com">+</a>
+    <a href="https://www.baidu.com">-</a>
+</div>
+<script>
+    //事件委托给父元素组件添加事件
+    document.querySelector('.btns').onclick = function(event){
+        //获得真实触发按钮上的文字
+        let sText = event.target.innerText;
+        if(sText.length > 1)
+            document.querySelector('#display').value = eval(document.querySelector('#display').value);
+        else
+            document.querySelector('#display').value += sText;            //将文本值追加到显示框中
+        //阻止超链接的默认行为
+        event.preventDefault();
+        //如果点到按钮本身的时候，不能冒泡
+        console.log(event);
+        // event.target.event.stopPropagation();
+    };
+</script>
+</body>
+</html>

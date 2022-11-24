@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+<!--
+    HTML本身就有对表单数据的基本验证能力,缺陷，在提交表的时候才会检查
+    HTML不能解决的问题再用javascript解决
+-->
+    <label>手机号码：<input name="phone" type="text" maxlength="11" pattern="/1[3-9][0-9]{9}/" /></label>
+    <input type="submit" value="注册" />
+    <div></div>
+</form>
+<script>
+    document.querySelector('[name="phone"]').onkeyup = function () {
+        //1 定义正则规则
+        let rPhone = /^1[3-9][0-9]{9}$/;
+        //2 进行匹配
+        let sPhone = this.value;
+        let str;
+        if(rPhone.test(sPhone)){
+            str = '恭喜您，该手机号码可以使用';
+        }else{
+            str = '请使用正确的手机号码';
+        }
+        document.querySelector('div').innerHTML = str;
+    };
+</script>
+</body>
+</html>

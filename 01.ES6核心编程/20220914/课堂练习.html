@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="date" />
+    <input type="button" value="计算" />
+<script>
+    /*Date练习     示例  date_exercise.html
+计算2025年的圣诞节是星期几，距今天还有多少天，距我们现在的时间还有多少毫秒？
+110254671000毫秒对应的日期（以 yyyy-MM-dd hh:mm:ss格式显示）？
+通过表单方式输入年月日，获取和当前日期的差距。
+获得毫秒数： getTime方法
+思路：先获取2025年圣诞节的日期对象，再获取当前时间的日期对象，两者相减即获得毫秒数；可以根据毫秒数计算天数；
+本练习的目的是熟悉对象的基本使用套路,   1 需要什么工具就创建什么对象 2 工具具体怎么用尝试调用其方法
+*/
+    //1 创建当前的时间对象和圣诞节日期对象
+    let dtCurr = new Date();
+    console.log(dtCurr);//以时间的毫秒形式展示还是以本地时间展示[需要自己观察]
+    let dtChris = new Date(/*2025,12,25*/ /*"2025/12/25"*/ '2025-12-25');//多种参数可以构造
+    //2 通过Date提供的方法获取对应的信息
+    console.log('3年后的圣诞节是周',dtChris.getDay());//获取星期
+    //3 Date相关的计算
+    console.log("和当前时间差",dtChris - dtCurr,"毫秒");//两个日期可以运算,这是一种在程序中比较奇特的应用[C++中称为运算符重载]
+    console.log("距离今天还有",Math.floor((dtChris - dtCurr)/(1000 * 60 * 60 * 24)),"天"); //通过毫秒转化为天
+
+    //4 如果指定日期不是固定的圣诞节,可以考虑使用表单来获取用户输入的日期
+    //4.1   点击按钮时开始执行逻辑
+    document.querySelector('[type="button"]').onclick = function () {
+        let sDate = document.querySelector('[type="date"]').value//4.2   获取表单中的值
+        console.log(sDate);//2022-10-01 对于Date构造函数不一定能够识别,可以考虑使用split分割后组装
+        let dtUser = new Date(sDate);//4.3  将字符串转换为Date对象方便计算
+        console.log(dtUser);
+        console.log(Math.floor((dtUser - dtCurr)/(1000 * 60 * 60 *24)));//4.4   计算并输出
+    };
+
+</script>
+</body>
+</html>

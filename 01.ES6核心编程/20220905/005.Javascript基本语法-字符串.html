@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //字符串作为字面量， 仅用于表示自己不代表其他
+        console.log("1这是一个字符串");//第1种方式   ，  常用场景输出普通字符
+        //第2种方式,  和C语言不同，  JavaScript没有字符类型，所以  '  和    ”  都表示字符串，适合于输出html标签
+        console.log('2这是一个字符串');
+        //document.write("<input type=\"button\" value=\"按钮\" />");//传统的输出,需要把部分“当作普通字符处理
+        document.write('<input type="button" value="按钮" />'); // 推荐的方式，  JavaScript使用 '   ,  输出的HTML标签内采用 ”
+        //ES新标准  ， 模板字符串，便于和表达式组合展示，可以跨行存在
+        console.log(`3这是一个字符串`);//第3种方式, 反向单引号，数字键1的左边，
+        var myname = "wangzhanf";
+        console.log('我的姓名是：' + myname + "!!!");//拼接字符串，代码不清晰
+        console.log(`我的姓名是: ${myname}!!!`); //使用  ${} 占位表达式，将JavaScript的语句放在字符串中
+
+    </script>
+</body>
+</html>

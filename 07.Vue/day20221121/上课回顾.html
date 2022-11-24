@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <subc v-on:lalala="handlerprocess" v-bind:info="abc" v-bind:msg="bcd"></subc>
+    <h2> 买了 {{ num }} 包烟</h2>
+</div>
+
+<template id="subview">
+    <div>
+        <h2>{{info}}</h2>
+        <h2>{{msg}}</h2>
+        <input type="number" v-on:blur="sendSignal" v-model="money" />
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    // const a = Vue.component("subc",{
+    //     template:'#subview',
+    //     data:function(){
+    //         return {
+    //
+    //         };
+    //     }
+    // });
+
+    const vm = new Vue({
+        el: "#app",
+        methods:{
+            handlerprocess:function(val){
+                console.log("去买好吃的");
+                this.num = Math.floor(val / 20);
+            }
+        },
+        data: {
+            abc:"wangzhanf",
+            bcd:18,
+            num:0
+        },
+        components:{
+            subc:{
+                template:'#subview',
+                data:function (){
+                    return {
+                        money:88
+                    };
+                },
+                props:['info','msg'],
+                methods:{
+                    sendSignal:function(eve){
+                        //eve.target.value
+                        this.$emit("lalala",this.money);
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    /*计数器组件的样式定义*/
+        .nums{
+            width: 3em;
+            height: 2em;
+            padding-left: 0.25em;
+            border: 1px solid orangered;
+            border-radius: 0.1em;
+            line-height: 2em;
+            position: relative;
+        }
+        .nums .up,.nums .down{
+            width: 1em;
+            height: 1em;
+            background-color: orangered;
+            position: absolute;
+            right: 0em;
+        }
+        .nums .up{
+            top: 0em;
+        }
+        .nums .down{
+            bottom: 0em;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(item,index) in blists" :key="item.id">
+      {{ index + 1 }}  -- {{ item.id }} -- {{ item.name }} -- <mycount></mycount>
+    </li>
+  </ul>
+</div>
+<!--计数器的静态模板view-->
+<template id="mycountview">
+    <div class="nums">
+        <span v-on:click="add" class="up"></span>
+        {{ num }}
+        <span v-on:click="sub" class="down"></span>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.devtools = true;
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      blists:[
+        {id:110,name:"HTML"},
+        {id:119,name:"CSS"},
+        {id:120,name:"Javascript"},
+        {id:122,name:"Vue"},
+      ]
+    },
+    components:{
+      mycount:{
+        template:"#mycountview",
+        data:function (){
+          return {
+            num:1
+          };
+        },
+        methods:{
+          add:function(){
+              this.num++;
+          },
+          sub:function(){
+            this.num--;
+          }
+        },
+      watch:{
+        num:{
+            deep:true,
+            handler:function(newVal,oldVal){
+                if(newVal < 1 || newVal > 10){
+                    this.num = oldVal;
+                }
+            }
+        }
+      }
+      }
+    }
+  });
+</script>
+</body>
+</html>

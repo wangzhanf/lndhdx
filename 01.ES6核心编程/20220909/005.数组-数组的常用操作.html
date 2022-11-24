@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * javascript中数据是 Array 对象的具体表现【张三(具体)  是    人（Array）】
+    * 具体的元素   都会包含  对象 的相关属性和方法， 张三的属性【姓名，身高，体重】，方法【吃饭，睡觉】
+    * JavaScript中数组 都是  Array衍生。Array拥有的属性和方法 具体数组都拥有
+    * 常见属性length可以获取数组长度，   常用方法  join("-") 将数组元素依次使用 - 连接起来成为字符串
+    * 属性和方法的使用规则   数组名.属性或方法         aNum1.sort()   调用数组的排序方法
+    * 建议通过帮助手册获得，  https://www.runoob.com/js/js-obj-array.html
+    *
+    * */
+
+    var aNum = ['one','two','three','four','five','six'];
+    var aNum1 = ['eight','nine'];
+    var aRet = new Array();
+    //push和unshift 分别向数组的后面和前面插入新数据
+    console.log(aNum);//['one', 'two', 'three', 'four', 'five', 'six']
+    aNum.push('seven');
+    aNum.unshift('zero');
+    console.log(aNum);//['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven']
+    //pop和shift，分别弹出数组最后和最前的元素，弹出的元素作为返回值 ，  delete可以删除指定位置的元素
+    var temp = aNum.pop();//
+    console.log(temp);//seven
+    temp = aNum.shift();//
+    console.log(temp);//zero
+    delete aNum[2];//一般不建议
+    console.log(aNum);//['one', 'two', 'three', 'four', 'five', 'six']
+
+    //转换和输出方式
+    console.log(aNum);//将数组对象输出，调试程序常用的方式
+    console.log(aNum.toString());//转换为用,分割的字符串输出
+    console.log(aNum.join('|'));//转换为用  指定参数作为分割的字符串输出
+
+    //数组合并,concat会将连接后的数组作为新数组返回, 数组的操作分为两种（响应式--改变原数组，非响应式）
+    let aNum2 = aNum.concat(aNum1);
+    console.log(aNum);
+    console.log(aNum1);
+    console.log(aNum2);
+
+    //截取数组中的部分,截取的部分作为新数组返回，起始位置都是以索引0开头 ，采用开闭空间 [起始，结束) ,包含起始，小于结束
+    let aNum3 = aNum2.slice(2,4);//原数组不改变
+    console.log(aNum2);
+    console.log(aNum3);
+    let aNum4 = aNum2.splice(2,4,'a1','a2');//原数组改变，从2开始，删除4个元素(返回成一个新数组)，然后将a1和a2插入到第2个位置,
+    console.log(aNum2);//['one', 'two', 'a1', 'a2', 'eight', 'nine']
+    console.log(aNum4);
+
+    //数组元素的排列
+    aNum2.sort();//sort将元素重新排序，修改当前数组
+    console.log(aNum2);//['a1', 'a2', 'eight', 'nine', 'one', 'two']
+    aNum2.reverse();//sort将元素前后倒置，修改当前数组
+    console.log(aNum2);
+    //sort排序的时候，默认排序规则是按照字母顺序【自然排序】排列的，
+    let aNum5 = [23,14,6,25,19,366];
+    console.log(aNum5);
+    aNum5.sort();
+    console.log(aNum5);
+    //sort函数可以接收一个函数作为排序依据
+    aNum5.sort(function(a,b){
+        //a 和 b 分别代表每次遍历数组元素时的前一个值和后一个值， 如果返回>0 升序 ，  如果返回 <0 降序
+        return a-b;
+    });
+    console.log(aNum5);
+    aNum5.sort((x,y)=>y-x);//使用箭头函数语法糖让代码更精简
+    console.log(aNum5);
+</script>
+</body>
+</html>

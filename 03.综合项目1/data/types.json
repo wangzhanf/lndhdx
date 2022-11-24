@@ -1,0 +1,15 @@
+{
+  "typeList": [
+    {"imgSrc": "./img/dcfl01.png","title": "美食1"},
+    {"imgSrc": "./img/dcfl02.png","title": "美食2"},
+    {"imgSrc": "./img/dcfl03.png","title": "美食3"},
+    {"imgSrc": "./img/dcfl04.png","title": "美食4"},
+    {"imgSrc": "./img/dcfl05.png","title": "美食5"},
+    {"imgSrc": "./img/dcfl06.png","title": "美食6"},
+    {"imgSrc": "./img/dcfl07.png","title": "美食7"},
+    {"imgSrc": "./img/dcfl08.png","title": "美食8"},
+    {"imgSrc": "./img/dcfl09.png","title": "美食9"},
+    {"imgSrc": "./img/dcfl10.png","title": "美食10"}
+  ],
+  "sCode": 666
+}

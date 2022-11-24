@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="打开新窗口" />
+<button>移动</button>
+<script>
+    /*
+    * 变量的作用域，   myWin   在全局作用域，   window.myWin
+    * 函数作用域
+    * 使用了一个变量【赋值】，没有  let,const  修饰符，自动提升为全局变量
+    * */
+    let myWin;
+    document.querySelector('input').onclick = function () {
+        // window.moveTo(300,100);
+        myWin = window.open('./昨日回顾.html','newWin','width=200,height=200,toolbar=false');
+        //myWin代表新打开的浏览器窗口，通过该 句柄  【把柄】 即可操作
+        myWin.moveTo(400,200);
+    };
+
+    document.querySelector('button').onclick = function () {
+      myWin.moveBy(-10,-10);
+    };
+</script>
+</body>
+</html>

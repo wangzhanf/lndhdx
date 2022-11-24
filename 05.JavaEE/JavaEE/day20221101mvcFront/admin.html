@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>商家管理</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+<!--    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+</head>
+<body>
+<header class="container-fluid text-success mb-3 mt-3">
+    <h2 class="col-8 offset-1">ELE 管理系统</h2>
+</header>
+<div class="container">
+    <!-- 按钮：用于打开模态框 -->
+<!--    <button class="btn btn-primary btn-lg mb-3 mt-3" data-toggle="modal" data-target="#addFormModal">添加新商家</button>-->
+    <button class="btn btn-primary btn-lg mb-3 mt-3" data-toggle="modal" data-target="#addFormModalWithFile2">添加管理员(带文件2)</button>
+    <button class="btn btn-danger btn-lg mb-3 mt-3" id="delMulBtn">删除所选</button>
+<!--    搜索框开始-->
+    <form class="form-inline m-3" id="searchForm">
+        <label for="aidCon">ID:</label>
+        <input type="text" class="form-control m-2" id="aidCon" name="aidCon" list="bidList" />
+        <datalist id="bidList">
+            <option value="大于">></option>
+            <option value="等于">=</option>
+            <option value="小于"><</option>
+        </datalist>
+        <input type="text" class="form-control m-2" name="id" id="id" />
+        <label for="businessNameS">管理员名称:</label>
+        <input type="text" class="form-control m-2" name="adminName" id="businessNameS">
+
+        <button type="button" class="btn btn-primary m-2" id="searchBtn">搜索</button>
+    </form>
+<!--    搜索框结束-->
+    <table id="display" class="table table-border table-striped table-hover">
+        <thead>
+        <tr class="table-primary text-white">
+            <th>
+                <input type="checkbox" id="choiceToggle" name="" />
+                <button class="btn btn-sm btn-warning" id="reversBtn">反选</button>
+            </th>
+            <th>序号</th>
+            <th>id</th>
+            <th>名称</th>
+            <th>avatar</th>
+            <th>电话</th>
+<!--            <th>起送</th>-->
+<!--            <th>配送</th>-->
+            <th>gender</th>
+            <th>uptime</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <ul class="pagination pagination-lg" id="showPage">
+
+    </ul>
+    <div id="pageInfo"></div>
+</div>
+<!--演示用代码-->
+<!--<div class="container bg-info">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-12 col-md-4  col-lg-3 bg-primary">1</div>-->
+<!--        <div class="col-sm-6 col-md-4  col-lg-3 offset-lg-1 bg-danger">2</div>-->
+<!--        <div class="col-sm-6 col-md-4  col-lg-4 offset-lg-1 bg-info">3</div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<!-- 模态框 -->
+<div class="modal fade" id="addFormModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">添加新管理员</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="adminName">名称:</label>
+                        <input type="text" class="form-control" placeholder="请输入商家名称" name="adminName" id="adminName">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码:</label>
+                        <input type="password" class="form-control" placeholder="请输入密码" id="password" name="password">
+                    </div>
+
+                    <button type="button" id="addBtn" class="btn btn-block btn-primary"  data-dismiss="modal">添 加</button>
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="addFormModalWithFile2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">添加新管理员</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="businessName2">名称:</label>
+                        <input type="text" class="form-control" placeholder="请输入名称" name="adminName" id="businessName2">
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">密码:</label>
+                        <input type="password" class="form-control" placeholder="请输入密码" id="password2" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="radio" value="1" name="gender" />男 </label>
+                        <label><input type="radio" value="0" name="gender" />女 </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="businessExplain2">phone:</label>
+                        <input type="text" class="form-control" placeholder="请输入介绍" id="businessExplain2" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="businessAddress2">头像:
+                            <input hidden="hidden" type="file" class="form-control"  id="businessAddress2">
+                            <img id="businessAddress2Show"  width="80px" src="http://localhost:7777/uploadDir/null.png" />
+                        </label>
+                        <input type="hidden" name="avatar" id="businessAddress21" value="" />
+                    </div>
+
+                    <button type="button" id="addBtn2" class="btn btn-block btn-primary"  data-dismiss="modal">添 加</button>
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="uptFormModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">修改管理员信息</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form>
+                    <input readonly="readonly" hidden="hidden" type="text" name="id" id="idU" />
+                    <input readonly="readonly" hidden="hidden" type="text" name="iid" id="iid" />
+                    <div class="form-group">
+                        <label for="businessNameU">名称:</label>
+                        <input type="text" class="form-control" placeholder="请输入商家名称" name="adminName" id="businessNameU">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordU">密码:</label>
+                        <input type="password" class="form-control" placeholder="请输入密码" id="passwordU" name="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="radio" value="1" name="gender" />男 </label>
+                        <label><input type="radio" value="0" name="gender" />女 </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneU">phone:</label>
+                        <input type="text" class="form-control" placeholder="请输入介绍" id="phoneU" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="businessAddress3">头像:
+                            <input hidden="hidden" type="file" class="form-control"  id="businessAddress3">
+                            <img id="businessAddress3Show"  width="80px" src="http://localhost:7777/uploadDir/null.png" />
+                        </label>
+                        <input type="hidden" name="avatar" id="businessAddress31" value="" />
+                    </div>
+
+                    <button type="button" id="uptBtn" class="btn btn-block btn-info"  data-dismiss="modal">修 改</button>
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!--<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>-->
+<script src="./js/jquery-3.6.1.min.js"></script>
+
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<!--<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>-->
+<script src="./js/popper.min.js"></script>
+
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/common.js"></script>
+<script>
+
+    //全局的页码值，方便操作的时候回到当前页
+    var CPAGES = 1; //当前页码数
+    var TPAGES = 1;
+    var SPAGES = 2;// 默认每页条目数
+    //简写模式
+    $(function () {
+        //项目代码
+        //当页面DOM就绪时获得列表数据
+        getList();
+        //给添加按钮绑定事件
+        $("#addBtn").click(addOneNoneFile);
+        //单独上传文件模式
+        $("#businessAddress2").change(addOneWithFile2upFile);
+        $("#businessAddress3").change(addOneWithFile3upFile);
+        $("#addBtn2").click(addOneWithFile2);
+        //给修改按钮绑定事件
+        $("#uptBtn").click(updateOne);
+        //多选的所有操作
+        multipleCheck();
+        //删除多个按钮绑定事件
+        $("#delMulBtn").click(deleteMulitpleRecord);
+        //给搜索按钮绑定事件
+        $("#searchBtn").click(searchData);
+    });
+
+    function searchData(){
+        //收集条件信息
+        $("#searchForm").serialize();
+        getList(CPAGES,SPAGES,$("#searchForm").serialize());
+    }
+
+    function deleteMulitpleRecord(){
+        let ids = "";
+        let bNames = "";
+        let Separator = "-";
+        //获取已选中复选框
+        $('[name="choiceList"]').each(function(){
+            //硬编码
+            if(this.checked) {
+                bNames = bNames.concat($(this).val(), Separator);
+                ids = ids.concat($(this).attr("data-id"), Separator);
+            }
+        });
+        //处理拼接后的字符串
+        bNames = bNames.substring(0,bNames.length-1);
+        ids = ids.substring(0,ids.length-1);
+        //执行删除
+        deleteRecord(bNames,ids);
+    }
+
+    function deleteRecord(names,ids){
+        if(!confirm("真的要删除这些记录吗？" + names)) return;
+        //执行删除逻辑
+        $.ajax({
+            type:"GET",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/deleteOne.do?ids="+ids,
+            error:function(){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(res){
+                myAlert(res.message,"bg-success text-white",1500);
+                //if(TPAGES == CPAGES && TPAGES%2 == 0)
+                getList(CPAGES);
+            }
+        });
+    }
+
+
+
+    function updateOne(){
+        let $oForm = $("#uptFormModal form");
+        $.ajax({
+            type:"POST",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/updateOne.do",
+            data:$oForm.serialize(),//通过jQuery提供的方法序列化的方式
+            error:function(a,b,c){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(result,status,xhr){
+                getList(CPAGES);
+                $oForm.get(0).reset();
+            }
+        });
+    }
+
+    function addOneNoneFile(){
+        //取消提交表单的默认行为
+
+        let $oForm = $("#addFormModal form");
+         $.ajax({
+            type:"POST",
+             xhrFields: {
+                 withCredentials: true   //允许xhr对象携带认证消息
+             },
+             crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/addOne.do",
+            data:$oForm.serialize(),//通过jQuery提供的方法序列化的方式
+            error:function(res,b,c){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(res,status,xhr){
+                getList(1);
+                myAlert(res.message);
+                $oForm.get(0).reset();
+            }
+        });
+    }
+
+    function addOneWithFile2upFile(){
+        //取消提交表单的默认行为
+        // this.parentElement.preventDefault();
+        // this.parentElement.submit = false;
+        let $oForm = $("#addFormModalWithFile2 form");
+        //var file = $('#businessAddress')[0].files
+        // 判断是否选择了文件
+        //console.log(file.length);
+        //if (file.length <= 0) {
+        //    return alert('请上传文件')
+        //}
+        // 创建formdata
+        var fd = new FormData();
+        // 向formdata中传入数据
+        fd.append("fileobj",$('#businessAddress2').prop('files')[0]);
+        // file是一个伪数组
+
+        // fd.append('avatar', file[0]);
+        //console.log(fd);
+        //fd.append('infoData',$oForm.serialize());
+        $.ajax({
+            type:"POST",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            // contentType:"application/x-www-form-urlencoded",
+            // contentType:"multipart/form-data",
+            cache: false,//必须设置为false
+            processData: false,//必须设置为false
+            contentType: false,
+            url:"http://localhost:7777/day20221101mvc/business/addOneWithFile2upFile.do",
+            /*data:{//手工获取的方式
+                businessName:$("#businessName").val(),
+                password:$("#password").val(),
+                businessExplain:$("#businessExplain").val()
+            },*/
+            data:fd,//通过jQuery提供的方法序列化的方式
+            error:function(res,b,c){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(res,status,xhr){
+                $("#businessAddress2Show").attr("src","http://localhost:7777/uploadDir/"+res.message);
+                $("#businessAddress21").val(res.message);
+                myAlert(res.message);
+
+            }
+        });
+    }
+
+    function addOneWithFile3upFile(){
+        //取消提交表单的默认行为
+        // this.parentElement.preventDefault();
+        // this.parentElement.submit = false;
+        let $oForm = $("#uptFormModal form");
+        //var file = $('#businessAddress')[0].files
+        // 判断是否选择了文件
+        //console.log(file.length);
+        //if (file.length <= 0) {
+        //    return alert('请上传文件')
+        //}
+        // 创建formdata
+        var fd = new FormData();
+        // 向formdata中传入数据
+        fd.append("fileobj",$('#businessAddress3').prop('files')[0]);
+        // file是一个伪数组
+
+        // fd.append('avatar', file[0]);
+        //console.log(fd);
+        //fd.append('infoData',$oForm.serialize());
+        $.ajax({
+            type:"POST",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            // contentType:"application/x-www-form-urlencoded",
+            // contentType:"multipart/form-data",
+            cache: false,//必须设置为false
+            processData: false,//必须设置为false
+            contentType: false,
+            url:"http://localhost:7777/day20221101mvc/business/addOneWithFile2upFile.do",
+            /*data:{//手工获取的方式
+                businessName:$("#businessName").val(),
+                password:$("#password").val(),
+                businessExplain:$("#businessExplain").val()
+            },*/
+            data:fd,//通过jQuery提供的方法序列化的方式
+            error:function(res,b,c){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(res,status,xhr){
+                $("#businessAddress3Show").attr("src","http://localhost:7777/uploadDir/"+res.message);
+                $("#businessAddress31").val(res.message);
+                myAlert(res.message);
+
+            }
+        });
+    }
+
+    function addOneWithFile2(){
+        //取消提交表单的默认行为
+        // this.parentElement.preventDefault();
+        // this.parentElement.submit = false;
+        let $oForm = $("#addFormModalWithFile2 form");
+        $.ajax({
+            type:"POST",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/addOne.do",
+            /*data:{//手工获取的方式
+                businessName:$("#businessName").val(),
+                password:$("#password").val(),
+                businessExplain:$("#businessExplain").val()
+            },*/
+            data:$oForm.serialize(),//通过jQuery提供的方法序列化的方式
+            error:function(res,b,c){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(res,status,xhr){
+                getList(1);
+                myAlert(res.message);
+                $oForm.get(0).reset();
+            }
+        });
+    }
+
+
+    function getList(p,ps,cond){
+        p = p==null?1:p;
+        ps = ps==null?10:ps;
+
+        //分页关键，  MySQL 使用limit 分页，展示分页信息【总记录数，每页条目数，当前页】，逻辑【（页码数-1）*每页条目数 = 起始，】
+        $.ajax({
+            type:"GET",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/list.do",
+            data:{
+                pages : p,
+                pageSize : ps,
+                cond : $("#searchForm").serialize()
+            },
+            error:function(a,b,c){
+                myAlert(a.message,"bg-danger text-white",1500);
+            },
+            success:function(result,status,xhr){
+                parseDataShow(result.dataZone.ret.list);
+                parsePageShow(result.dataZone.ret);
+            }
+        });
+    }
+
+    function parsePageShow(ret){
+        //页码数 = 向上取整( total / pageSize )
+        let totalPages = Math.ceil(ret.total / ret.pageSize);
+        //当前页码 = startNum / 3  + 1;
+        let currentPage = ret.startNum / ret.pageSize + 1;
+        //页码列表的容量
+        let pageListLength = ret.pageListLength;
+        console.log(totalPages,currentPage,pageListLength);
+
+        //先清空原有数据区域
+        let $oSP = $("#showPage");
+        $oSP.empty();//清空子元素
+        //渲染按钮
+        let $oLi1 = $(`<li class="page-item"><a class="page-link" href="#" data-p="1">首页</a></li>`);
+        let $oLi2 = $(`<li class="page-item"><a class="page-link" href="#" data-p="${currentPage - 1}">前一页</a></li>`);
+        $oSP.append($oLi1).append($oLi2);
+        //循环渲染列表按钮
+        if(currentPage <= 3){
+            startPages = 1;
+            endPages = pageListLength > totalPages?totalPages:pageListLength;
+        }else if(currentPage >= totalPages - 2){
+            startPages = totalPages - pageListLength;
+            endPages = totalPages;
+        }else{
+            var startPages = currentPage - Math.floor(pageListLength/2);
+            var endPages = currentPage + Math.floor(pageListLength/2);
+        }
+
+
+        for (let i = startPages; i <= endPages ; i++) {
+            if(i == currentPage)
+                $oSP.append($(`<li class="page-item active"><a class="page-link" href="#" data-p="${i}">${i}</a></li>`));
+            else
+                $oSP.append($(`<li class="page-item"><a class="page-link" href="#" data-p="${i}">${i}</a></li>`));
+        }
+
+        let $oLi12 = $(`<li class="page-item"><a class="page-link" href="#" data-p="${currentPage+1}">后一页</a></li>`);
+        let $oLi11 = $(`<li class="page-item"><a class="page-link" href="#" data-p="${totalPages}">尾页</a></li>`);
+        $oSP.append($oLi12).append($oLi11);
+
+        //给所有的页码按钮添加事件，建议使用事件委托
+        $("#showPage").off("click","a");
+        $("#showPage").on("click","a",function(eve){
+            //拿到按钮上的页码数
+            let p = $(eve.target).attr("data-p");
+            CPAGES = p;
+            getList(p);
+        });
+
+
+        //使某些按钮视觉失效，行为失效
+        $("#showPage").off("click","a.active");
+        if(currentPage == 1){
+            $oLi1.addClass("disabled");
+            $oLi2.addClass("disabled");
+        }
+        if(currentPage == endPages){
+            $oLi11.addClass("disabled");
+            $oLi12.addClass("disabled");
+        }
+
+        $("#pageInfo").html(`<div>总记录数：${ret.total} ,每页 ${ret.pageSize} 条，共 ${totalPages} 页</div>`);
+    }
+
+    function parseDataShow(blists){
+        //先清空原有数据区域
+        let $oTbody = $("#display>tbody");
+        $oTbody.empty();//清空子元素
+        //渲染数据
+        let $oTr;
+        for (let i = 0; i < blists.length; i++) {
+            $oTr = $("<tr></tr>");
+            let $oTd0 = $("<th></th>").html(`<input type="checkbox" name="choiceList" value="${blists[i].businessName}" data-id="${blists[i].id}" />`);
+            let $oTd1 = $("<td></td>").text(i+1);
+            let $oTd2 = $("<td></td>").text(blists[i].id); //blists[i].id
+            let $oTd3 = $("<td></td>").text(blists[i].adminName);
+            //let $oTd4 = $("<td></td>").text(blists[i].password);
+            let picUrl = blists[i].info.avatar == null ? "null.png" : blists[i].info.avatar;
+            let $oTd5 = $("<td></td>").append($('<img>').attr('src','http://localhost:7777/uploadDir/'+picUrl).css('width','60px'));
+            // let $oTd5 = $("<td></td>").text(blists[i].businessAddress);
+            let $oTd6 = $("<td></td>").text(blists[i].info.phone);
+            let $oTd7 = $("<td></td>").text(blists[i].starPrice);
+            let $oTd8 = $("<td></td>").text(blists[i].deliveryPrice);
+            let $oTd9 = $("<td></td>").text(blists[i].info.gender?"男":"女");
+            let $oTd10 = $("<td></td>").text(new Date(blists[i].uptime).Format("yyyy/MM/dd") );
+            let $oTd11 = $("<td></td>");
+            let $uBtn = $("<button class='btn btn-info ml-1 mr-1'  data-toggle='modal' data-target='#uptFormModal'>修改</button>").attr("data-id",blists[i].id);
+            $uBtn.click(showUpdateModal);
+            let $dBtn = $(`<a data-id="${blists[i].id}" data-name="${blists[i].adminName}" class='btn btn-danger ml-1 mr-1'>删除</a>`);
+            $dBtn.click(deleteSingleRecord);
+            $oTd11.append($uBtn).append($dBtn);
+            $oTr.append($oTd0).append($oTd1).append($oTd2).append($oTd3)./*append($oTd4).*/append($oTd5).append($oTd6)./*append($oTd7).append($oTd8).*/append($oTd9).append($oTd10).append($oTd11);
+            $oTbody.append($oTr);
+            //$("#display>tbody").append($("<tr></tr>").append($("<td></td>").text(i+1)).append($("<td></td>").text(blists[i].id)).append($("<td></td>").text(blists[i].businessName)));
+        }
+    }
+
+    function showUpdateModal(eve) {
+        //根据传递过来的 id，查询该商家的所有字段信息
+        console.log($(this).attr("data-id"));
+        $.ajax({
+            type:"GET",
+            xhrFields: {
+                withCredentials: true   //允许xhr对象携带认证消息
+            },
+            crossDomain: true,//是否允许跨域
+            url:"http://localhost:7777/day20221101mvc/admin/get.do?id="+$(this).attr("data-id"),
+            error:function (){
+                myAlert(res.message,"bg-danger text-white",1500);
+            },
+            success:function(result,status,xhr){
+                //将查询到的数据回填到模态框的表单中
+                // console.log(result)
+                let bus = result.dataZone.bus;
+                $("#idU").val(bus.id);
+                $("#iid").val(bus.info.id);
+                $("#gender").val(bus.info.gender);
+                $("#businessNameU").val(bus.adminName);
+                $("#passwordU").val(bus.password);
+                $("#phoneU").val(bus.info.phone);
+                $("#businessAddress31").val(bus.info.avatar);
+                $("#businessAddress3Show").attr("src","http://localhost:7777/uploadDir/"+bus.info.avatar);
+                $("#aidU").val(bus.aid);
+            }
+        });
+
+
+
+    }
+
+    function deleteSingleRecord(eve){
+        eve.preventDefault();//阻止超链接的默认行为
+        let id = $(this).attr("data-id");
+        let name = $(this).attr("data-name");
+        deleteRecord(name,id);
+    }
+
+</script>
+
+
+
+
+</body>
+</html>
+
+

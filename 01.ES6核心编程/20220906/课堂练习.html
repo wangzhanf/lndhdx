@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+课堂小练习：【截止15：50】
+
+可以通过 变量接收  prompt的返回值，即可获取用户的输入圆的半径，
+如果用户输入非法则使用默认的半径值 5   ，
+如果输入的数值是小数，则精确到小数点后两位  ，
+最后输出 圆的面积。
+-->
+<script>
+    const PI = 3.14;
+    let dRadius;
+    let dArea;//面积
+    //获取用户输入
+    dRadius = prompt('请输入圆的半径:','5');
+    //判断用户输入是否合法,合法返回数字部分,不合法返回NaN
+    console.log(Number.parseFloat(dRadius));//临时调试
+    if(Number.isNaN(Number.parseFloat(dRadius))){
+        //输入非法的情况
+        dRadius = 5;//
+    }else{
+        //输入合法的情况
+        // dRadius = dRadius.toFixed(2);  1.235   123.5    123  1.23
+        // dRadius = Math.floor(dRadius);
+        dRadius = Number.parseFloat(dRadius);
+        dRadius = Number.parseInt(dRadius * 100) / 100;//保留2位
+    }
+    // console.log(dRadius);
+    dArea = PI * dRadius * dRadius;
+    console.log(`输入半径:${dRadius},对应面积:${dArea}`);
+
+</script>
+
+</body>
+</html>

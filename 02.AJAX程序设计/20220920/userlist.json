@@ -1,0 +1,32 @@
+{
+  "users":[
+    {
+      "name": "zhangsan",
+      "gender": true,
+      "hobby": ["足球","篮球","排球"],
+      "age": 18,
+      "role": {
+        "level": 0,
+        "name":"计算机中级职称"
+      }
+    },
+    {
+      "name": "lisi",
+      "gender": false,
+      "hobby": ["电影","音乐"],
+      "age": 17,
+      "role": null
+    },
+    {
+      "name": "wangwu",
+      "gender": false,
+      "hobby": ["计算机","游戏","学习","体育"],
+      "age": 19,
+      "role": {
+        "level": 2,
+        "name":"财会高级职称"
+      }
+    }
+  ],
+  "mystate": true
+}

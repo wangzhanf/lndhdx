@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="calc">
+    <input type="text" name="display" />
+    <button value="1">1</button>
+    <button value="2">2</button>
+    <button>+</button>
+    <button>-</button>
+    <input type="button" value="计算" />
+</div>
+<script>
+    //点击任意一个按钮时,将按钮上的文字追加到显示框中  , innerHTML,  innerText ,value
+/*    document.querySelector('[value="1"]').onclick = function () {
+        console.log(this);
+    }
+    document.querySelector('[value="2"]').onclick = function () {
+        console.log(this);
+    }*/
+    let aButs = document.querySelectorAll('button');//返回类数组的集合
+    console.log(aButs);
+    //获得显示框
+    let oDis = document.querySelector('[name="display"]');
+    //分别给每个按钮绑定事件   .,追加到显示框
+    for (let i = 0; i < aButs.length; i++) {
+        aButs[i].onclick = function(){
+            console.log(aButs[i]);
+            //点击按钮将内容追加到显示框中
+            oDis.value += aButs[i].innerText;//是否有改写的可能  this
+        };
+    }
+    //点击计算按钮时执行运算
+    document.querySelector('[type="button"]').onclick = function () {
+        //获取显示区的内容
+        let oper =  oDis.value;
+        //计算该表达式
+        let ret = window.eval(oper);
+        //将结果回写到显式区
+        oDis.value = ret;
+    };
+
+</script>
+</body>
+</html>

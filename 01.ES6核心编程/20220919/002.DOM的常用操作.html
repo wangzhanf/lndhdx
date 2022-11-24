@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>菜单</h2>
+<ul id="myNav">
+    <li><a href="https://www.baidu.com">百度</a></li>
+    <li><a class="active" href="http://www.sina.com.cn">新浪</a></li>
+    <li><a href="http://www.163.com">网易</a></li>
+</ul>
+<h2>购物车</h2>
+<ul id="myNav1">
+    <li><a href="https://www.baidu.com">百度</a></li>
+    <li><a class="active" href="http://www.sina.com.cn">新浪</a></li>
+    <li><a href="http://www.163.com">网易</a></li>
+</ul>
+<h2>演示DOM导航</h2>
+<ul id="myList">
+    <li><span>1</span></li>
+    <li><span>2</span></li>
+    <li><span>3</span></li>
+    <li><span>4</span></li>
+    <li><span>5</span></li>
+</ul>
+<h2>目标</h2>
+<ul id="target">
+
+</ul>
+<script>
+    window.onload = function(){//建议所有的js都写在onload事件回调中
+        //DOM的常用操作就是增删改查
+        //1 查
+        //1.1   document.getElement_x_By_xxxx   ById获取单一元素
+
+        // let oUl = document.getElementById("myNav");//单一的HTMLElement或者null
+        // //不确定肯定能获得元素，项目中使用元素前都需要先进行对象检测
+        // if(!oUl) return false;
+        //     oUl.innerText = "123";
+        // console.log("正常代码");
+
+        //1.2   其他   ByXXX获取的都是集合【伪数组】,按照数组遍历
+        // let oAs = document.getElementsByTagName("a");//得到一个集合，如果无元素集合长度为0
+        // for (let i = 0; i < oAs.length; i++) {
+        //     oAs[i].onclick = function (event) {
+        //         console.log(event.target.href);//HTML-DOM，不太推荐
+        //         event.preventDefault();
+        //         event.stopPropagation();
+        //     };
+        // }
+        // console.log(oAs);
+        // for (const oAsKey in oAs) {
+        //     oAsKey[0].onclick = function(event){
+        //         console.log(event.target);
+        //         event.preventDefault();
+        //         event.stopPropagation();
+        //     }
+        // }
+        //1.3   document.querySelector()    获取单一元素,根据css选择器获取第一个匹配的单一元素
+        // let oA = document.querySelector('a');
+        // if(!oA) return false;
+        // oA.onclick = function(event){
+        //     console.log(this.href);
+        //     event.preventDefault();
+        // };
+        //1.4   document.querySelectorAll
+        // let oAs = document.querySelectorAll('a');//得到一个NodeList集合，如果无元素集合长度为0
+        // console.log(oAs);
+        // console.log(oAs[1].href);
+
+        //1.5   查属性节点  ，   getAttribute("属性名")    HTML-DOM  使用属性快捷方式查
+        // let sUrl = document.getElementById('myNav').getElementsByClassName("active")[0].getAttribute("href");
+        // console.log(sUrl);
+        // let sUrl = document.querySelector('#myNav .active').href;//不推荐
+        // let sUrl = document.querySelector('#myNav .active').getAttribute("href");
+        // console.log(sUrl);
+
+        //1.6   DOM节点的导航，
+        //1.6.1 先找到地标
+        let oFlag = document.querySelector('#myList');
+        //1.6.2 向上找
+        console.log(oFlag.parentNode,oFlag.parentElement);//相同， 每个节点只有一个父
+        //1.6.3 向下找
+        console.log(oFlag.firstElementChild);
+        console.log(oFlag.lastElementChild);
+        console.log(oFlag.children[0]);
+        console.log(oFlag.childElementCount,oFlag.childNodes,oFlag.children);//childNodes包括源码中的文本节点,children只包括元素节点
+        //1.6.4 同级别找
+        console.log(oFlag.previousSibling);//包括文本节点
+        console.log(oFlag.previousElementSibling);//仅找元素节点
+        console.log(oFlag.nextElementSibling);//仅找元素节点
+
+        //2 增加【主要是操作元素、文本、属性节点，新创建的节点需要显示需要挂载到DOM树】
+        //   <li title="新节点提示">44444</li>
+        //2.1   增加【创建】一个元素节点
+        let oLi = document.createElement("li");//此时 oLi仅仅是一个碎片
+        //2.2   增加【创建】文本节点
+        let oText = document.createTextNode("444444");
+        //2.3   创建或修改属性节点   setAttribute(“属性名”，“属性值”)
+        // let oAttr = document.createAttribute("title");  //不推荐
+        oLi.setAttribute("title","新节点提示");//推荐
+
+        //2.4   挂载[建议先将碎片组装为一个大的碎片，然后再挂载到DOM树],注意，一个节点只有一个父节点
+        oLi.append(oText);//将子节点oText追加到父节点oLi的尾部
+        // oLi.prepend(oText);//插入到前面
+        document.querySelector('#myNav').append(oLi);
+        let oLiClone = oLi.cloneNode(true);//参数为true则代表深度克隆【所有子节点】
+        //document.querySelector('#myNav1').prepend(oLiClone);
+
+        //2.5   指定位置的插入,父元素对象调方法
+        let oParent = document.querySelector('#myNav1');
+        let oRef = document.querySelector('#myNav1>.active');
+        oParent.insertBefore(oLiClone,oParent.childNodes[4]);//查找时默认会元素+文本都认为子节点
+
+
+        //3 删除
+        //3.1   通过代码添加的节点
+        //oLiClone.remove();  //删除节点
+        //oLiClone.empty();// 部分javscript扩展中存在该方法
+        // document.querySelector("#myNav1").removeChild(oLiClone);//【不推荐】
+        // let oParent = document.querySelector("#myNav1");//【不推荐】
+        // oParent.removeChild(oParent.childNodes[0]);//【不推荐】
+        //某元素内的部分文本结合JavaScript的字符串函数删除部分
+        //删除属性   removeAttribute()
+
+
+        //4 修改 ， innerHTML，innerText，value  都可以修改
+        oFlag.lastElementChild.previousElementSibling.innerText = '444';
+        document.querySelector('#myList>li:nth-last-child(3)').innerText = '333';
+        //属性修改    setAttribute("属性名","新值")
+        // oFlag.replaceChild();//替换
+
+
+
+        //业务应用
+        let oSrc = document.querySelector('#myList');
+        let oDst = document.querySelector('#target');
+        //依次给oSrc中的li绑定事件
+        let oLis = oSrc.children;
+        for (let i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function(event){
+                console.log(oLis[i]);
+                //oDst.append(oLis[i].cloneNode(true));
+                oDst.insertBefore(oLis[i].cloneNode(true),oDst.firstElementChild);//insertAfter如何实现
+            };
+        }
+    };
+
+    // Object.defineProperty('document',)//课后理解
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--模板文件确保基础问题无歧义-->
+<html>
+<head>
+    <!--  标签可嵌套不可交叉,非自闭和标签必须成对出现,自闭合标签以  "空格 /" 结尾，所有标签名小写字母，所有属性都必须有属性值，自定义属性用 data-开头  -->
+    <meta charset="UTF-8" />
+    <!--  优先响应移动设备端，确保在不同设备上都不会缩放元素  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!--  模板中要将资源加载  -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.css" />
+    <title>饿了么首页</title>
+</head>
+<body>
+<header class="pageHeader">
+    搜索框
+</header>
+<section class="mainContent">
+<!--    分类列表开始-->
+    <ul class="typeList">
+
+    </ul>
+<!--    /分类列表结束-->
+<!--    商户列表开始-->
+    <div class="sortZone">
+        <button class="byName">按名称排序</button>
+        <button class="byStar">按评价排序</button>
+        <button class="byDistance">按距离排序</button>
+    </div>
+    <input type="number" id="star" />
+    <ul class="businessList">
+        <!--<li>
+            <a href="#">
+                <p>
+                    <img src="./img/sj01.png" />
+                    <span>3</span>
+                </p>
+
+                <h3>万家饺子</h3>
+                <h5>4</h5>
+                <h5>3.6</h5>
+                <div>￥15元起送 | ￥3元配送</div>
+                <div>各种饺子炒菜</div>
+            </a>
+        </li>-->
+    </ul>
+<!--    /商户列表结束-->
+</section>
+<footer class="pageFooter">
+    <ul class="footNav">
+        <li>
+            <a href="./index.html">
+                <span class="fa fa-home"></span>
+                首页
+            </a>
+        </li>
+        <li>
+            <a href="./goods.html">
+                <span class="fa fa-compass"></span>
+                发现
+            </a>
+        </li>
+        <li>
+            <a href="./orderList.html">
+                <span class="fa fa-file-text-o"></span>
+                订单
+            </a>
+        </li>
+        <li>
+            <a href="./login.html">
+                <span class="fa fa-user-o"></span>
+                我的
+            </a>
+        </li>
+    </ul>
+</footer>
+<!--因为JavaScript是阻塞式加载模式，js的引入不要放在前面，应该在  /body  之前-->
+<script src="./js/main.js"></script>
+<!--因为每个页面加载时执行的代码可能不同，所以给每个页面预留一个script段，将自动加载执行代码写在此处-->
+<script>
+    window.onload = function(){
+        getTypes();//获取所有类别列表并渲染
+        //当页面加载的时候获取商家列表数据并渲染,单页面中的代码尽量简短
+        getAllBusiness();
+
+        //排序按钮绑定事件
+        var globalBusinessData = [];
+        document.querySelector('.sortZone').onclick = sortData;
+        document.querySelector('#star').onchange = filterData;
+    };
+</script>
+</body>
+</html>

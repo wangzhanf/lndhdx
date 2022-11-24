@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li><a href="https://www.baidu.com">百度</a></li>
+    <li><a href="http://www.sina.com.cn">新浪</a></li>
+</ul>
+<script>
+    //输出信息的三种方式，   alert()，   console.log() ,   document.write()
+    //改变DOM的方式
+    document.write("新内容");//默认在文档流当前位置输出  ，  类似于爆破拆迁
+    //可以使用DOM节点对象的   innerHTML ,innerText,value  对DOM节点对象【增，删，改，查】 , 类似于黄大锤
+    document.querySelector('ul').innerHTML += '<li><a href="http://www.163.com">网易</a></li>';
+
+    let oTarget = document.querySelector('a');//获取DOM对象节点
+    console.log("节点类型是",oTarget.nodeType,"，节点名称",oTarget.nodeName,",节点值",oTarget.nodeValue);
+    //1 A null
+
+</script>
+
+<!--div位于文档流的此位置，渲染流脱离了标准文档流-->
+<div style="position: absolute;">hello</div>
+
+</body>
+</html>

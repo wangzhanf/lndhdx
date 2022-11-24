@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out{width: 400px;height: 400px;background-color: orangered;}
+        .in{width: 200px;height: 200px;background-color: green;}
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="in">
+        <a href="https://www.baidu.com">百度</a>
+    </div>
+</div>
+<script>
+    /*  基本概念    同步编程和异步编程【回调函数（事件click）】，事件，事件处理函数【钩子onclick】
+    *   常见事件    根据需求查阅对应的事件即可
+    *   自定义事件处理过程   编码细节
+    * */
+    function aClick(event){
+        console.log('a被点击了');
+        event.stopPropagation();//阻止冒泡
+        //return false;//阻止默认行为的一种方式,
+        event.preventDefault();//阻止默认行为的第2种方式
+    }
+
+    document.querySelector('body').onclick = function () {
+        console.log('body被点击了');
+        //console.log(aClick());
+    }
+    document.querySelector('a').onclick = aClick;
+
+    document.querySelector('.in').onclick = function (event) {
+        console.log("默认第一个参数是事件对象",event);
+        console.log('in被点击了');
+        event.stopPropagation();//阻止冒泡
+    }
+    document.querySelector('.out').onclick=function () {
+        console.log('out被点击了');
+    }
+</script>
+</body>
+</html>

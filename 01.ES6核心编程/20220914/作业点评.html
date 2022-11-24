@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1 多名成员，每个成员都有一定的属性【姓名，性别，年龄】，对象类型【基本，数组，对象】
+    let mem1 = new Object();//Object是一切对象的祖先
+    mem1.name = 'zs';mem1.gender = false;mem1.age = 19;
+    let mem2 = new Object({name:'ls',gender:true,age:16});
+    let mem3 = {name:'ww',gender:false,age:17};
+    let mem4 = new Object({name:'ml',gender:true,age:20});
+    //2 多名成员需要迭代处理【挨个处理】，需要一个容器，该例子使用数组比较合适
+    let aMems = [mem2,mem3];
+    aMems.unshift(mem1);
+    aMems.push(mem4);
+    console.log(aMems);
+    //3 要求在数组中按照年龄排序，需要使用数组的排序方法,a和b代表两个相邻的对象元素
+    //aMems.sort(function(a,b){return a.age-b.age;});//默认按照字符顺序排序，对象是引用类型【内存的地址】，按需求排序，sort带 排序函数  参数
+    aMems.sort((a,b)=>b.age - a.age);
+    console.log(aMems);
+    //4 能够配对，选择两个成员，判定是否可以配对【年龄大于等于17，并且性别相同才可以分配到一个寝室】
+    //4.1   使用面向结构的全局函数完成
+    function matchStru(o1,o2){
+        if(o1.age >= 17 && o2.age >= 17 && o1.gender == o2.gender){
+            console.log('可以分配到一个寝室');
+        }else{
+            console.log('不可以分配到一个寝室');
+        }
+    }
+    matchStru(aMems[0],aMems[1]);
+    matchStru(aMems[1],aMems[2]);
+    matchStru(aMems[0],aMems[3]);
+    //4.2   使用面向对象的方法完成，对象为基准，调用者
+    /*mem1.match = function(o){
+        console.log('match!!!',o);
+    };
+    mem2.match = function(o){
+        console.log('match!!!',o);
+    };
+    mem1.match(mem2);
+    mem2.match(mem1);
+    */
+    function myMatch(o){
+        //this    当前对象
+        if(this.age >= 17 && o.age >= 17 && this.gender == o.gender){
+            console.log('可以分配到一个寝室');
+        }else{
+            console.log('不可以分配到一个寝室');
+        }
+    }
+    // aMems[0].match = aMems[1].match = aMems[2].match = aMems[3].match = myMatch;
+    for (let i = 0; i < aMems.length; i++) {
+        aMems[i].match = myMatch;//函数指针绑定，不能有() ，
+    }
+    aMems[0].match(aMems[1]);//   此时 运行myMatch函数时， this是  aMems[0]
+    aMems[1].match(aMems[2]);//   此时 运行myMatch函数时， this是  aMems[1]
+    aMems[3].match(aMems[0]);//   此时 运行myMatch函数时， this是  aMems[3]
+
+
+</script>
+</body>
+</html>

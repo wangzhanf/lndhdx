@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //数组定义的方式1
+    let aNum1 = [];//定义一个空数组
+    let aNum2 = [1,2,3];//定义一个拥有三个元素的数组，初始值给定
+    //数组定义的方式2
+    let aNum3 = new Array();//使用new运算符调用 Array构造函数，产生一个空数组地址赋值给 aNum3
+    let aNum4 = new Array(10);//创建一个初始长度为10元素的数组 ,默认填充undefined
+    console.log(aNum4[2]);//undefined
+    let aNum5 = new Array('Tom','Jerry','Mice');
+    console.log(aNum5[1]);
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span::before{
+            content: "￥ ";
+        }
+    </style>
+</head>
+<body>
+<!--模拟点餐，改变数量，总价产生改变-->
+<div class="menu">
+    烤鸡翅
+    单价<span>5</span>
+    数量：<input type="number" placeholder="0" />
+</div>
+<div class="display">
+    总价：<span>0</span>
+</div>
+<script>
+    let oInput = document.querySelector('input');
+    function dataDriver(event){
+        //处理数据的健壮性
+        if(oInput.value < 0){
+            oInput.value = 0;
+        }
+        if(oInput.value >99){
+            oInput.value = 99;
+        }
+        //处理数据计算
+        document.querySelector(".display span").innerHTML = oInput.value * parseInt(document.querySelector('.menu span').innerText);
+    }
+    //什么情况认为数据改变了
+    oInput.onkeydown = dataDriver;
+    oInput.onchange = dataDriver;
+    // document.onchange = dataDriver;
+
+
+</script>
+
+</body>
+</html>

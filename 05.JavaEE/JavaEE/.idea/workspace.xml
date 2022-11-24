@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="day20221101mvc:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3d4b1b64-dba5-4503-8e7f-7930752df0fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/code.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/AdminMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/AdminMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/InfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/InfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/domain/BusinessVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/domain/Info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/day2022112401.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/java/MyBatisGenerater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/db.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/mybatisConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/mybatisGenerateConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/test/java/TestMyBatis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221123/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221123/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../后端框架课堂笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../后端框架课堂笔记.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GePbCaQBGoeuK1VpeIYyA5N94C" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/b/upload&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27471265&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221101mvc\src\main\java\vip\epss\utils" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221027mini\src\main\java" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221027mini\src\main\webapp" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221027\src\main\java" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221026\src\main\java\vip\epss\utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\05.JavaEE\JavaEE\day20221031\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="vip.epss.dao" />
+      <recent name="vip.epss.controller" />
+      <recent name="vip.epss.domain" />
+      <recent name="vip.epss.utils" />
+      <recent name="vip.epss.filter" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.64" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.64" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="day20221101mvc:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/day20221101mvc" />
+          </settings>
+        </artifact>
+        <file path="$PROJECT_DIR$/../../../../../../b/upload">
+          <settings>
+            <option name="CONTEXT_PATH" value="/uploadDir" />
+          </settings>
+        </file>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="fac6f036-65a7-4855-907b-8209afe919f2" />
+        <option name="HTTP_PORT" value="7777" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="6642" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="day20221101mvc:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3d4b1b64-dba5-4503-8e7f-7930752df0fd" name="Changes" comment="" />
+      <created>1666746147796</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666746147796</updated>
+      <workItem from="1666746149284" duration="17214000" />
+      <workItem from="1666828463516" duration="28157000" />
+      <workItem from="1666914395064" duration="19353000" />
+      <workItem from="1667174592493" duration="15933000" />
+      <workItem from="1667195607302" duration="3717000" />
+      <workItem from="1667260804735" duration="17087000" />
+      <workItem from="1667346838533" duration="6415000" />
+      <workItem from="1667433270715" duration="9198000" />
+      <workItem from="1667455701006" duration="173000" />
+      <workItem from="1667455883142" duration="2263000" />
+      <workItem from="1667477585562" duration="1613000" />
+      <workItem from="1667519833444" duration="8103000" />
+      <workItem from="1667618940119" duration="617000" />
+      <workItem from="1667778558535" duration="13260000" />
+      <workItem from="1667865534759" duration="17973000" />
+      <workItem from="1667905741728" duration="12330000" />
+      <workItem from="1667919816381" duration="310000" />
+      <workItem from="1667952418216" duration="18568000" />
+      <workItem from="1668002771795" duration="27000" />
+      <workItem from="1668002881965" duration="27000" />
+      <workItem from="1668002986157" duration="26000" />
+      <workItem from="1668038821752" duration="16623000" />
+      <workItem from="1668124343417" duration="14861000" />
+      <workItem from="1668481914439" duration="1387000" />
+      <workItem from="1669098725731" duration="619000" />
+      <workItem from="1669256116467" duration="4679000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/day20221101mvc/src/main/java/vip/epss/controller/BusinessUpdateServlet.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/day20221101mvc/src/main/java/vip/epss/controller/AdminAddServlet.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.apache.commons.fileupload.disk.DiskFileItem" memberName="isFormField" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
