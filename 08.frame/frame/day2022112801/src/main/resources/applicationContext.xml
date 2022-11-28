@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    每个bean的声明都将会被放在IOC容器中-->
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!--开启自动扫描机制-->
+    <context:component-scan base-package="vip.epss"></context:component-scan>
+    <!--    每个bean的声明都将会被放在IOC容器中-->
 <!--    id就是对象名，class就是 类， 相当于Srping的超级工厂生产了一个bean叫做adminMapper并将其放入了IOC容器-->
     <bean id="adminMapper" class="vip.epss.dao.AdminMapper"></bean>
     <bean id="foodMapper" class="vip.epss.dao.FoodMapper"></bean>
-    <bean id="adminService" class="vip.epss.service.AdminService">
+    <bean id="adminService" class="vip.epss.service.AdminService" scope="prototype">
 <!--        property  持有的成员属性对象, 依赖注入，通过ref指向已经在IOC的Bean,默认通过getter和setter注入和使用-->
         <property name="adminMapper" ref="adminMapper"></property>
         <property name="foodMapper" ref="foodMapper"></property>

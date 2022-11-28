@@ -17,12 +17,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
+
 
         <!-- 此依赖会关联引用Spring中的所有基础jar包，利用了maven自动依赖管理，导入所有的spring的核心包 -->
         <dependency>

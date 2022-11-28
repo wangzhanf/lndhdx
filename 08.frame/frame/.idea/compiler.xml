@@ -12,6 +12,7 @@
         <module name="day20221123" />
         <module name="day2022112801" />
         <module name="day20221124" />
+        <module name="day2022112802" />
       </profile>
     </annotationProcessing>
   </component>
