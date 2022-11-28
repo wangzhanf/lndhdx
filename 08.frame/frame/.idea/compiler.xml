@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="day2022112401" />
-        <module name="day20221124" />
+        <module name="day20221128" />
         <module name="day20221123" />
+        <module name="day20221124" />
       </profile>
     </annotationProcessing>
   </component>

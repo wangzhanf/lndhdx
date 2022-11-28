@@ -9,6 +9,7 @@
   <modules>
     <module>day20221123</module>
     <module>day20221124</module>
+	<module>day20221128</module>
 	<module>day2022112401</module>
   </modules>
   <name>fatherModule</name>
