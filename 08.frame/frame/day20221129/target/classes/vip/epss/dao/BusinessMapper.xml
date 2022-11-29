@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="vip.epss.dao.BusinessMapper" >
+  <resultMap id="BaseResultMap" type="vip.epss.domain.Business" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="businessName" property="businessname" jdbcType="VARCHAR" />
+    <result column="businessAddress" property="businessaddress" jdbcType="VARCHAR" />
+    <result column="businessExplain" property="businessexplain" jdbcType="VARCHAR" />
+    <result column="starPrice" property="starprice" jdbcType="DECIMAL" />
+    <result column="deliveryPrice" property="deliveryprice" jdbcType="DECIMAL" />
+    <result column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="uptime" property="uptime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, password, businessName, businessAddress, businessExplain, starPrice, deliveryPrice,
+    aid, uptime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="vip.epss.domain.BusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from business
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from business
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="vip.epss.domain.BusinessExample" >
+    delete from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="vip.epss.domain.Business" >
+    insert into business (id, password, businessName,
+      businessAddress, businessExplain, starPrice,
+      deliveryPrice, aid, uptime
+      )
+    values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{businessname,jdbcType=VARCHAR},
+      #{businessaddress,jdbcType=VARCHAR}, #{businessexplain,jdbcType=VARCHAR}, #{starprice,jdbcType=DECIMAL},
+      #{deliveryprice,jdbcType=DECIMAL}, #{aid,jdbcType=INTEGER}, #{uptime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="vip.epss.domain.Business" >
+    insert into business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="businessname != null" >
+        businessName,
+      </if>
+      <if test="businessaddress != null" >
+        businessAddress,
+      </if>
+      <if test="businessexplain != null" >
+        businessExplain,
+      </if>
+      <if test="starprice != null" >
+        starPrice,
+      </if>
+      <if test="deliveryprice != null" >
+        deliveryPrice,
+      </if>
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="uptime != null" >
+        uptime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="businessname != null" >
+        #{businessname,jdbcType=VARCHAR},
+      </if>
+      <if test="businessaddress != null" >
+        #{businessaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessexplain != null" >
+        #{businessexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="starprice != null" >
+        #{starprice,jdbcType=DECIMAL},
+      </if>
+      <if test="deliveryprice != null" >
+        #{deliveryprice,jdbcType=DECIMAL},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="uptime != null" >
+        #{uptime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="vip.epss.domain.BusinessExample" resultType="java.lang.Integer" >
+    select count(*) from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update business
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessname != null" >
+        businessName = #{record.businessname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessaddress != null" >
+        businessAddress = #{record.businessaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessexplain != null" >
+        businessExplain = #{record.businessexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starprice != null" >
+        starPrice = #{record.starprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliveryprice != null" >
+        deliveryPrice = #{record.deliveryprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uptime != null" >
+        uptime = #{record.uptime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update business
+    set id = #{record.id,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR},
+      businessName = #{record.businessname,jdbcType=VARCHAR},
+      businessAddress = #{record.businessaddress,jdbcType=VARCHAR},
+      businessExplain = #{record.businessexplain,jdbcType=VARCHAR},
+      starPrice = #{record.starprice,jdbcType=DECIMAL},
+      deliveryPrice = #{record.deliveryprice,jdbcType=DECIMAL},
+      aid = #{record.aid,jdbcType=INTEGER},
+      uptime = #{record.uptime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="vip.epss.domain.Business" >
+    update business
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="businessname != null" >
+        businessName = #{businessname,jdbcType=VARCHAR},
+      </if>
+      <if test="businessaddress != null" >
+        businessAddress = #{businessaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessexplain != null" >
+        businessExplain = #{businessexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="starprice != null" >
+        starPrice = #{starprice,jdbcType=DECIMAL},
+      </if>
+      <if test="deliveryprice != null" >
+        deliveryPrice = #{deliveryprice,jdbcType=DECIMAL},
+      </if>
+      <if test="aid != null" >
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="uptime != null" >
+        uptime = #{uptime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="vip.epss.domain.Business" >
+    update business
+    set password = #{password,jdbcType=VARCHAR},
+      businessName = #{businessname,jdbcType=VARCHAR},
+      businessAddress = #{businessaddress,jdbcType=VARCHAR},
+      businessExplain = #{businessexplain,jdbcType=VARCHAR},
+      starPrice = #{starprice,jdbcType=DECIMAL},
+      deliveryPrice = #{deliveryprice,jdbcType=DECIMAL},
+      aid = #{aid,jdbcType=INTEGER},
+      uptime = #{uptime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+<!--  add new-->
+  <resultMap id="BaseResultMapWithObject" type="vip.epss.domain.Business" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+<!--    <result column="password" property="password" jdbcType="VARCHAR" />-->
+    <result column="businessName" property="businessname" jdbcType="VARCHAR" />
+    <result column="businessAddress" property="businessaddress" jdbcType="VARCHAR" />
+<!--    <result column="businessExplain" property="businessexplain" jdbcType="VARCHAR" />-->
+<!--    <result column="starPrice" property="starprice" jdbcType="DECIMAL" />-->
+<!--    <result column="deliveryPrice" property="deliveryprice" jdbcType="DECIMAL" />-->
+<!--    <result column="aid" property="aid" jdbcType="INTEGER" />-->
+<!--    <result column="uptime" property="uptime" jdbcType="TIMESTAMP" />-->
+<!--    封装列表数据  -->
+    <collection property="foods" ofType="Food">
+      <result column="foodName" property="foodname" jdbcType="VARCHAR" />
+      <result column="id" property="bid" jdbcType="INTEGER" />
+      <result column="foodPrice" property="foodprice" jdbcType="DECIMAL" />
+    </collection>
+  </resultMap>
+
+  <resultMap id="BaseResultMapWithObject1" type="vip.epss.domain.Business" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="businessName" property="businessname" jdbcType="VARCHAR" />
+        <result column="businessAddress" property="businessaddress" jdbcType="VARCHAR" />
+        <result column="businessExplain" property="businessexplain" jdbcType="VARCHAR" />
+        <result column="starPrice" property="starprice" jdbcType="DECIMAL" />
+        <result column="deliveryPrice" property="deliveryprice" jdbcType="DECIMAL" />
+        <result column="aid" property="aid" jdbcType="INTEGER" />
+        <result column="uptime" property="uptime" jdbcType="TIMESTAMP" />
+    <!--    封装列表数据  -->
+<!--    <collection property="foods" ofType="Food" select="vip.epss.dao.FoodMapper.selectByBid" column="id"></collection>-->
+    <collection property="foods" ofType="Food" select="vip.epss.dao.FoodMapper.selectByBidByAnnotation" column="id"></collection>
+  </resultMap>
+
+  <sql id="BaseWithObject_Column_List" >
+    b.id as id,
+    b.businessName as businessName,
+    b.businessAddress as businessAddress,
+    f.foodName as foodName,
+    f.foodPrice as foodPrice
+  </sql>
+  <sql id="multiple_table_join_condition" >
+    business as b
+  left join food as f on b.id = f.bid
+  </sql>
+
+
+  <select id="selectByExampleWithObject" resultMap="BaseResultMapWithObject" parameterType="vip.epss.domain.BusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="BaseWithObject_Column_List" />
+    from
+    <include refid="multiple_table_join_condition" />
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="selectByExampleWithObject1" resultMap="BaseResultMapWithObject1" parameterType="vip.epss.domain.BusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+</mapper>
