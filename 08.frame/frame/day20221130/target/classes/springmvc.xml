@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--
+           此标签能够自动加载注解的处理器映射和注解的处理器适配，
+          而且还默认加载了很多其他方法。 比如：参数绑定到控制器参数、json转换解析器
+    -->
+    <mvc:annotation-driven />
+    <!-- 开启注解扫描，将包下带有@Controller注解的类纳入Spring容器中-->
+    <context:component-scan base-package="vip.epss.controller">
+<!--        包含-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+<!--        排除-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+</beans>

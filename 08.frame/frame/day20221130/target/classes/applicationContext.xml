@@ -66,7 +66,7 @@
 
 <!--    配置AOP，事务如何切入（可以是注解方式，也可以是配置文件）-->
     <aop:config>
-<!--        使用表达式语法描述   execution(返回类型  包路径.子包.仔仔包.方法名(..任意多个参数))   ，  * 通配所有 -->
+<!--        使用表达式语法描述   execution(返回类型  包路径.子包.仔仔包.方法名(..任意多个参数))   ，  * 通配所有   vip.*.*(..) -->
         <aop:advisor advice-ref="transactionInterceptor" pointcut="execution(* vip.epss.service.impl.*Impl.*(..))"></aop:advisor>
     </aop:config>
 </beans>

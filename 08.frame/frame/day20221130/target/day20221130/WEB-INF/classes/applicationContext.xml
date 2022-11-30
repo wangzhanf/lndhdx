@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       https://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    开启自动扫描，将@Component,@Repostroy,@Service,@Controller纳入到IOC-->
+    <context:component-scan base-package="vip.epss"></context:component-scan>
+<!--    声明面向方面的代码都可以自动-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+<!--    <bean id="adminMapper" class="vip.epss.dao.AdminMapper" scope="singleton"></bean>-->
+<!--    <bean id="adminService" class="vip.epss.service.AdminService">-->
+<!--        <property name="adminMapper" ref="adminMapper"></property>-->
+<!--    </bean>-->
+
+    <!-- 引入db配置文件  -->
+    <context:property-placeholder location="db.properties" />
+    <!-- 配置dataSource数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${driver}"></property>
+        <property name="url" value="${url}"></property>
+        <property name="username" value="${user}"></property>
+        <property name="password" value="${password}"></property>
+    </bean>
+    <!-- 创建SqlSessionFactory，并配置实体对象别名 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        依赖注入， 数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+<!--        依赖注入， 实体类的别名映射-->
+        <!--        <property name="typeAliasesPackage" value="vip.epss.domain"  课间休息：  11：00 />-->
+        <!--        引入独立的MyBatis配置文件，将Spring中不易配置或者只能由MyBatis完成的任务分离出去-->
+        <property name="configLocation" value="mybatisConfig.xml"></property>
+    </bean>
+    <!-- 配置Mapper，自动扫描Mapper接口，并为其注入SqlSessionFactory -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="vip.epss.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+<!--    配置Spring的声明式事务  ,  spring-jdbc包 DataSourceTransactionManager -->
+<!--    配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+<!--    配置事务增强 ， 由spring-tx提供的， spring子模块提供的内容，可以使用名字空间方式引用-->
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+<!--        拦截属性配置-->
+        <tx:attributes>
+<!--            所有的方法都是事务方法-->
+            <tx:method name="*" isolation="DEFAULT" />
+<!--            排除查询方法【select，count,query】-->
+            <tx:method name="select*" read-only="true" />
+            <tx:method name="count*" read-only="true" />
+            <tx:method name="query*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+<!--    配置AOP，事务如何切入（可以是注解方式，也可以是配置文件）-->
+    <aop:config>
+<!--        使用表达式语法描述   execution(返回类型  包路径.子包.仔仔包.方法名(..任意多个参数))   ，  * 通配所有   vip.*.*(..) -->
+        <aop:advisor advice-ref="transactionInterceptor" pointcut="execution(* vip.epss.service.impl.*Impl.*(..))"></aop:advisor>
+    </aop:config>
+</beans>
