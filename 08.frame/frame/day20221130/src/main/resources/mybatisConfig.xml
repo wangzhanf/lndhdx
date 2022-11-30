@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    引入外部的数据库配置文件-->
+    <properties resource="db.properties"></properties>
+
+    <!-- 如果aggressiveLazyLoading为true，那么lazyLoadingEnabled即使为true也无效。 -->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+
+    <typeAliases>
+        <!--        单个定义别名-->
+        <!--        <typeAlias type="vip.epss.domain.Business" alias="Business"></typeAlias>-->
+        <!--        <typeAlias type="vip.epss.domain.Admin" alias="Admin"></typeAlias>-->
+        <!--        按照包批量定义别名,  类名就是别名-->
+        <package name="vip.epss.domain"/>
+    </typeAliases>
+
+
+
+
+    <!-- 配置数据源相关属性和事务 -->
+<!--    此时，数据库链接的配置由Spring的主配置文件取代了-->
+<!--    <environments default="development">-->
+<!--        &lt;!&ndash; 可以配置多个数据源环境，默认使用default中的值 &ndash;&gt;-->
+<!--        <environment id="development">-->
+<!--            &lt;!&ndash; 使用jdbc的事务管理 &ndash;&gt;-->
+<!--            <transactionManager type="JDBC" />-->
+<!--            &lt;!&ndash; 配置数据源，并使用自带数据库连接池 &ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                &lt;!&ndash;                mysql 5.7 以前 com.mysql.jdbc.Driver 8以后用  com.mysql.cj.jdbc.Driver&ndash;&gt;-->
+<!--                <property name="driver" value="${driver}" />-->
+<!--                <property name="url" value="${url}" />-->
+<!--                <property name="username" value="${user}" />-->
+<!--                <property name="password" value="${password}" />-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--        &lt;!&ndash;        运维的环境&ndash;&gt;-->
+<!--        <environment id="run">-->
+<!--            &lt;!&ndash; 使用jdbc的事务管理 &ndash;&gt;-->
+<!--            <transactionManager type="JDBC" />-->
+<!--            &lt;!&ndash; 配置数据源，并使用自带数据库连接池 &ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver" />-->
+<!--                <property name="url"-->
+<!--                          value="jdbc:mysql://localhost:3331/abc?characterEncoding=utf-8" />-->
+<!--                <property name="username" value="root" />-->
+<!--                <property name="password" value="123" />-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+    <!-- 配置映射文件，可配置多个  ,  SQL语句和java方法的映射文件 -->
+    <mappers>
+        <!--        映射单个文件-->
+        <!--        推荐方式， xml SQL配置文件和Dao接口文件放在同一目录-->
+<!--                <mapper class="vip.epss.dao.BusinessMapper"></mapper>-->
+<!--                <mapper resource="vip.epss.dao.BusinessMapper.xml" />-->
+
+        <!--        映射多个文件  ，   发布该目录-->
+<!--        <package name="vip.epss.dao"/>-->
+        <!--        <mapper resource="com/neusoft/po/Emp.xml" />-->
+    </mappers>
+
+
+
+</configuration>

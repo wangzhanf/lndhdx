@@ -14,6 +14,7 @@
       <module>day2022112801</module>
       <module>day2022112802</module>
       <module>day20221129</module>
+      <module>day20221130</module>
   </modules>
   <name>fatherModule</name>
   <url>http://maven.apache.org</url>
