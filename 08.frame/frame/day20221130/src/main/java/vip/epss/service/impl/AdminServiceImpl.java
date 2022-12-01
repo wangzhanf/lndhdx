@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vip.epss.dao.AdminMapper;
 import vip.epss.dao.BusinessMapper;
 import vip.epss.dao.InfoMapper;
@@ -56,6 +57,7 @@ public class AdminServiceImpl implements AdminService {
 
 
     @Override
+//    @Transactional
     public int deleteByPrimaryKey(Integer id){
         //事务开始,在spring配置文件中切入了事务处理机制
         System.out.println("AdminServiceImpl 的  deleteByPrimaryKey() 方法被调用了");

@@ -14,8 +14,15 @@
        https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 <!--    开启自动扫描，将@Component,@Repostroy,@Service,@Controller纳入到IOC-->
-    <context:component-scan base-package="vip.epss"></context:component-scan>
-<!--    声明面向方面的代码都可以自动-->
+
+    <context:component-scan base-package="vip.epss">
+        <!--        包含-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <!--        排除-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--    声明面向方面的代码都可以自动-->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 <!--    <bean id="adminMapper" class="vip.epss.dao.AdminMapper" scope="singleton"></bean>-->
 <!--    <bean id="adminService" class="vip.epss.service.AdminService">-->

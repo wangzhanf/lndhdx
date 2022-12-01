@@ -1,5 +1,6 @@
 package vip.epss.advice;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class DataTransaction {
     private Integer i = 1;
-    @Autowired
-    private SqlSessionFactory sqlSessionFactory;
+    //@Autowired
+    //private SqlSessionFactory sqlSessionFactory;
+    //SqlSession sqlSession;
     //定义统一的切入点，可以复用代码
     @Pointcut("execution(* vip.epss.service.impl.*Impl.*(..))")
     private void definePointCut(){
@@ -26,6 +28,7 @@ public class DataTransaction {
     @Before("definePointCut()")
     public void beginTransaction(JoinPoint joinPoint){
         System.out.println("@Before     ........" + joinPoint);
+//        sqlSession = sqlSessionFactory.openSession(false);
         //不自动提交
     }
 
@@ -39,6 +42,7 @@ public class DataTransaction {
     @AfterReturning(value = "definePointCut()",returning = "ret")
     public void retAfter(JoinPoint joinPoint,Object ret){
         System.out.println("@AfterReturning   ........" + joinPoint + (Integer)ret*(Integer)ret);
+//        sqlSession.commit();
         //手动提交事务
     }
 

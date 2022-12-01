@@ -10,11 +10,19 @@
     -->
     <mvc:annotation-driven />
     <!-- 开启注解扫描，将包下带有@Controller注解的类纳入Spring容器中-->
-    <context:component-scan base-package="vip.epss.controller">
+    <context:component-scan base-package="vip.epss">
 <!--        包含-->
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 <!--        排除-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
+<!--    视图解析器，用来拼接URL，此时所有的返回视图【String】都将被拼接地址-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+<!--        默认添加的前缀-->
+        <property name="prefix" value="/WEB-INF/"></property>
+<!--        默认添加的后缀-->
+        <property name="suffix" value=".jsp"></property>
+
+    </bean>
 </beans>
