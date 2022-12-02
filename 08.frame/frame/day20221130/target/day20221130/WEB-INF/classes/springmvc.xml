@@ -19,7 +19,7 @@
     </context:component-scan>
 <!--    视图解析器，用来拼接URL，此时所有的返回视图【String】都将被拼接地址-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
-<!--        默认添加的前缀-->
+<!--        默认添加的前缀  ,  / 应用根目录 -->
         <property name="prefix" value="/WEB-INF/"></property>
 <!--        默认添加的后缀-->
         <property name="suffix" value=".jsp"></property>

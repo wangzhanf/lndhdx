@@ -30,6 +30,7 @@ public class HelloController {
     }
 
     @GetMapping("/he4")
+    // String    forward到视图页   ，   redirect:http://www.baidu.com
     public String hello4(){
         return "444";
     }
