@@ -58,5 +58,28 @@
     <input type="submit" value="提交验证对象的封装和session自动注入" />
 </form>
 
+
+
+<%--测试REST风格的设计--%>
+    <a href="http://localhost:8888/day20221130_war/adminrest/opt/5">REST查(GET)</a>
+
+    <form method="post" action="http://localhost:8888/day20221130_war/adminrest/opt">
+        <input type="text" name="adminname"/>
+        <input type="text" name="password" />
+        <input type="submit" value="验证REST增(POST)" />
+    </form>
+
+    <form method="post" action="http://localhost:8888/day20221130_war/adminrest/opt/5">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="验证REST删(DELETE)" />
+    </form>
+
+    <form method="post" action="http://localhost:8888/day20221130_war/adminrest/opt/5">
+        <input type="hidden" name="_method" value="PUT" />
+        <input type="text" name="adminname" />
+        <input type="text" name="password" />
+        <input type="submit" value="验证REST改(UPDATE)" />
+    </form>
+
 </body>
 </html>

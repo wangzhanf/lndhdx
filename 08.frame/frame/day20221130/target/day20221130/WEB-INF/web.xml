@@ -5,6 +5,27 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <!--使⽤Rest风格的URI，将页⾯普通的post请求转为指定的delete或者put请求-->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <servlet-name>dispatcherServlet</servlet-name>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <servlet-name>dispatcherServlet</servlet-name>
+  </filter-mapping>
+
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -19,5 +40,7 @@
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+
 
 </web-app>
