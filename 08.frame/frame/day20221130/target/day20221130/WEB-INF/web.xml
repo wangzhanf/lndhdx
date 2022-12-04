@@ -5,6 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+<!--  过滤器的顺序按照filter的标签顺序进行的-->
+  <filter>
+    <filter-name>CrosFilter</filter-name>
+    <filter-class>vip.epss.filter.CROSFilter</filter-class>
+  </filter>
+
   <!--使⽤Rest风格的URI，将页⾯普通的post请求转为指定的delete或者put请求-->
   <filter>
     <filter-name>HiddenHttpMethodFilter</filter-name>
@@ -15,6 +21,11 @@
     <filter-name>HttpPutFormContentFilter</filter-name>
     <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
   </filter>
+
+  <filter-mapping>
+    <filter-name>CrosFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <filter-mapping>
     <filter-name>HiddenHttpMethodFilter</filter-name>

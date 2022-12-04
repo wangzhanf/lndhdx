@@ -4,12 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
 </head>
 <body>
     <button id="aBtn1">发送ajax get请求</button>
+    <button id="aBtn2">发送ajax post请求</button>
+    <button id="aBtn3">发送ajax delete请求</button>
+    <form id="upForm">
+        <input type="text" name="adminname" value="lisi" />
+        <input type="text" name="password" value="1234" />
+        <input type="text" name="info.phone" value="13977776666" />
+        <div id="aBtn4">jQuery 发送ajax put请求</div>
+        <div id="aBtn5">axios 发送ajax put请求</div>
+    </form>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#aBtn5').click(function(){
+            axios.put(
+                "http://localhost:8888/day20221130_war/adminar/opt/77",
+                Qs.stringify($('#upForm').serialize(),
+                {
+                    headers:{
+                        contentType: "application/x-www-form-urlencoded;charset=UTF-8"
+                    }
+                }
+                )).then(
+                function(res){
+                    console.log(res);
+                }
+            ).catch(err=>{
+                console.log(err);
+            });
+        });
+
+
+        $('#aBtn4').click(function(){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true   //允许xhr对象携带认证消息
+                },
+                crossDomain: true,//是否允许跨域
+                // contentType:"multipart/form-data",
+                cache: false,//必须设置为false
+                processData: false,//必须设置为false
+                //如果需要使用序列化表单等复杂对象数据，设置contentType为x-www-form-urlencoded  / multipart/form-data 类型或者使用默认
+                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                type:"put",
+                url:"http://localhost:8888/day20221130_war/adminar/opt/77",
+                data:$('#upForm').serialize(),
+                // data:mydataJsonJ,
+                success:function(res){
+                    $('#upForm').get(0).reset();
+                    console.log(res);
+                }
+            });
+        });
+
+
+        $('#aBtn3').click(function(){
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true   //允许xhr对象携带认证消息
+                },
+                crossDomain: true,//是否允许跨域
+                // contentType:"multipart/form-data",
+                cache: false,//必须设置为false
+                processData: false,//必须设置为false
+                contentType: false,//必须设置为false
+                type:"delete",
+                url:"http://localhost:8888/day20221130_war/adminar/opt/99",
+                success:function(res){
+                    console.log(res);
+                }
+            });
+        });
+    });
+</script>
+
 <script>
     window.onload = function(){
+        document.querySelector("#aBtn2").onclick = function(){
+            let mydata = {//json的标准格式    'Key'：value
+                'adminname':'zhangsan',
+                'password':'123456',
+                'info.phone':'13898647536'
+            };
+            let xhr = new XMLHttpRequest();
+            
+            let url = "http://localhost:8888/day20221130_war/adminar/opt";
+            // let url = "http://localhost:8888/day20221130_war/adminar/opt?adminname=zhangsan&password=123456&info.phone=13898647536";
+            xhr.open("post",url,true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    console.log(xhr.responseText);
+                }
+            }
+            // xhr.send(JSON.stringify(mydata));   //服务器端无法识别
+            xhr.send("adminname=zhangsan&password=123456&info.phone=13898647536"); //对应  22 行代码
+            // xhr.send();  //对应    23 行代码
+        };
+
         document.querySelector("#aBtn1").onclick = function(){
             let xhr = new XMLHttpRequest();
             let url = "http://localhost:8888/day20221130_war/adminar/opt/666";
