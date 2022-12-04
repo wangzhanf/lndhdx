@@ -26,13 +26,13 @@
         $('#aBtn5').click(function(){
             axios.put(
                 "http://localhost:8888/day20221130_war/adminar/opt/77",
-                Qs.stringify($('#upForm').serialize(),
-                {
+                $('#upForm').serialize()
+                /*,{
                     headers:{
-                        contentType: "application/x-www-form-urlencoded;charset=UTF-8"
+                        'ContentType': "application/x-www-form-urlencoded;charset=UTF-8"
                     }
-                }
-                )).then(
+                }*/
+                ).then(
                 function(res){
                     console.log(res);
                 }
