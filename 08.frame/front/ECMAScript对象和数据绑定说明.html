@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="page" />
+    <span id="dis"></span>
+    
+<script>
+    "use strict"   //严格模式
+
+    document.querySelector('#page').onkeyup = function(eve){
+        //console.log(eve.target.value);
+        Book.page = window.parseInt(eve.target.value);
+        document.querySelector('#dis').innerText = Book.page;
+    };
+
+
+    var Book = {price:12.34,_page:100};
+    Object.defineProperty(Book,"name",{
+        configurable:true,
+        enumerable:true,
+        writable:false, //默认为true 
+        value:"anonymous"
+    });
+
+    Object.defineProperty(Book,"page",{
+        configurable:true,//如果设置为false，就再没有办法设置回true了，想想为什么
+        enumerable:false,//不能被枚举
+        get:function(){
+            console.log("getter被调用了");
+            return this._page - 2;//去除封面
+        },
+        set:function(newValue){
+            console.log("setter被调用了");
+            this._page = newValue;
+            document.querySelector('#page').value = this._page;
+            document.querySelector('#dis').innerText = this._page;
+        }
+    });
+
+    console.dir(Book);
+    //Book.name = 'HTML'; //无效喽，严格模式下报错
+    Book.price = 66.33;
+    Book.page = 33;
+    console.dir(Book);
+
+    for (const iterator in Book) {
+        console.log(iterator);
+    }
+</script>
+</body>
+</html>
