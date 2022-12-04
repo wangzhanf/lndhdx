@@ -17,5 +17,9 @@
         <module name="day2022112802" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day20221125" target="11" />
+      <module name="day2022112501" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

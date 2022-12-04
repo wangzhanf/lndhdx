@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="aBtn1">发送ajax get请求</button>
+<script>
+    window.onload = function(){
+        document.querySelector("#aBtn1").onclick = function(){
+            let xhr = new XMLHttpRequest();
+            let url = "http://localhost:8888/day20221130_war/adminar/opt/666";
+            xhr.open("get",url,true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    console.log(xhr.responseText);
+                }
+            }
+            xhr.send();
+        };
+    };
+</script>
+</body>
+</html>

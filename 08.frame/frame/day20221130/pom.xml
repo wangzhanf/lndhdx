@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>frame</artifactId>
@@ -54,7 +54,7 @@
         </dependency>
 
         <!-- 此依赖会关联引用Spring中的所有基础jar包，利用了maven自动依赖管理，导入所有的spring的核心包 -->
-<!--        核心包：bean，core，context，spEL（Expression）-->
+        <!--        核心包：bean，core，context，spEL（Expression）-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -67,7 +67,7 @@
             <version>${spring.version}</version>
         </dependency>
 
-<!--        aop的相关依赖-->
+        <!--        aop的相关依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -80,33 +80,33 @@
             <version>${spring.version}</version>
         </dependency>
 
-<!--        aop的织入包-->
+        <!--        aop的织入包-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.7</version>
         </dependency>
 
-<!--        Spring整合MyBatis-->
+        <!--        Spring整合MyBatis-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-<!--            由ORM厂商提供-->
+            <!--            由ORM厂商提供-->
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.5</version>
         </dependency>
-<!--        SpringMvc依赖-->
+        <!--        SpringMvc依赖-->
         <!-- spring-webmvc会依赖spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-<!--        idea2022.4版本直接导入  webmvc  扩展库没有 web和webmvc的包-->
+        <!--        idea2022.4版本直接导入  webmvc  扩展库没有 web和webmvc的包-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -114,7 +114,7 @@
         </dependency>
 
 
-<!--        需要原生的servlet实现部分功能-->
+        <!--        需要原生的servlet实现部分功能-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -126,7 +126,7 @@
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
         </dependency>
-<!--        JSTL标签库-->
+        <!--        JSTL标签库-->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>

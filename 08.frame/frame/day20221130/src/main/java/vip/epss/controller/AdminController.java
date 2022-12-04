@@ -76,9 +76,11 @@ public class AdminController {
         return modelAndView;
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/add")    //  http://localhost:8888/day20221130_war/admin/add   重定向到    http://localhost:8888/day20221130_war/admin/index
     public ModelAndView add(Admin admin){
         ModelAndView modelAndView = new ModelAndView("redirect:index");
+//        ModelAndView modelAndView = new ModelAndView("redirect:../hello/he1");
+//        ModelAndView modelAndView = new ModelAndView("redirect:http://www.baidu.com");
         System.out.println("添加一个admin");
         admin.setId(admins.size());//伪装
         admins.add(admin);
