@@ -1,15 +1,15 @@
 package vip.epss.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import vip.epss.domain.Admin;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping(value = "/admin")   //http://localhost:8888/day20221130_war/admin
 @Controller
@@ -92,6 +92,31 @@ public class AdminController {
     @GetMapping(value = "/addF")
     public String addF(){
         return "adminpage/addForm";//转发到该地址
+    }
+
+
+    // 必须要有MultipartFile类型参数。而且参数名必须与表单file控件名一致
+    @ResponseBody
+    @PostMapping(value = "/upload")
+    public String upload(MultipartFile upfile) {
+        //上传图片存储目录
+        String path = "c:/b/upload";
+        //获取文件名并使用UUID生成新文件名
+        String fileName = upfile.getOriginalFilename();
+        String newFileName = UUID.randomUUID() + fileName.substring(fileName.lastIndexOf("."));
+        //在指定上传图片存储目录中创建新文件
+        File targetFile = new File(path, newFileName);
+        //如果找不到指定目录和文件，就新创建此目录和文件
+        if (!targetFile.exists()) {
+            targetFile.mkdirs();
+        }
+        //将文件写入硬盘（myFile在内存中）
+        try {
+            upfile.transferTo(targetFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ok";
     }
 
 }

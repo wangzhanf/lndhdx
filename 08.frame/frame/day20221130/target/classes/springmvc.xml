@@ -8,6 +8,7 @@
            此标签能够自动加载注解的处理器映射和注解的处理器适配，
           而且还默认加载了很多其他方法。 比如：参数绑定到控制器参数、json转换解析器
     -->
+<!--    注解驱动，开启是没错的 -->
     <mvc:annotation-driven />
     <!-- 开启注解扫描，将包下带有@Controller注解的类纳入Spring容器中-->
     <context:component-scan base-package="vip.epss">
@@ -24,5 +25,12 @@
 <!--        默认添加的后缀-->
         <property name="suffix" value=".jsp"></property>
 
+    </bean>
+
+    <!--必须要有此id名,multipartResolver   不能自行设置 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--上传文件大小限制，单位：字节 -->
+        <property name="maxUploadSize" value="5000000"></property>
     </bean>
 </beans>

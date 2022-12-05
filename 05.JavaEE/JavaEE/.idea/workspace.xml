@@ -10,34 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d4b1b64-dba5-4503-8e7f-7930752df0fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/AdminMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/AdminMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/InfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/dao/InfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/domain/BusinessVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/java/vip/epss/domain/Info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221124/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/day2022112401.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/java/MyBatisGenerater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/mybatisConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/resources/mybatisGenerateConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day2022112401/src/test/java/TestMyBatis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ff77235-df2d-47f9-b50c-8571c9eb4b22.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4ff77235-df2d-47f9-b50c-8571c9eb4b22.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221123/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221123/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminAjaxRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminAjaxRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/resources/springmvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/webapp/a.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/webapp/a.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/vip/epss/controller/AdminAjaxRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/vip/epss/controller/AdminAjaxRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/vip/epss/filter/CROSFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/vip/epss/filter/CROSFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/vip/epss/controller/AdminAjaxRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/vip/epss/controller/AdminAjaxRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/vip/epss/filter/CROSFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/vip/epss/filter/CROSFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/front/ajaxJsonRequestDemo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/front/ajaxJsonRequestDemo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../后端框架课堂笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../后端框架课堂笔记.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -246,6 +231,8 @@
       <workItem from="1668481914439" duration="1387000" />
       <workItem from="1669098725731" duration="619000" />
       <workItem from="1669256116467" duration="4679000" />
+      <workItem from="1670207670717" duration="290000" />
+      <workItem from="1670209551658" duration="854000" />
     </task>
     <servers />
   </component>

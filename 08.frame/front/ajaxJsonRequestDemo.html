@@ -23,6 +23,7 @@
 <script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
 <script>
     $(document).ready(function(){
+        //库和框架  效率工具
         $('#aBtn5').click(function(){
             axios.put(
                 "http://localhost:8888/day20221130_war/adminar/opt/77",
@@ -34,7 +35,9 @@
                 }*/
                 ).then(
                 function(res){
-                    console.log(res);
+                    console.log(res); // 默认接收到的内容就是 字符串
+                    //如果你认为是json，客户端程序员需要转换//客户端判断类型不合理（没有标准规范）
+                    //JSON.parse(res); 
                 }
             ).catch(err=>{
                 console.log(err);
@@ -111,7 +114,7 @@
 
         document.querySelector("#aBtn1").onclick = function(){
             let xhr = new XMLHttpRequest();
-            let url = "http://localhost:8888/day20221130_war/adminar/opt/666";
+            let url = "http://localhost:8888/day20221130_war/adminar/opt/8";
             xhr.open("get",url,true);
             xhr.onreadystatechange = function(){
                 if(xhr.readyState == 4 && xhr.status == 200){

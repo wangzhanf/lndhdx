@@ -81,5 +81,12 @@
         <input type="submit" value="验证REST改(UPDATE)" />
     </form>
 
+    <form method="post" action="http://localhost:8888/day20221130_war/admin/upload" enctype="multipart/form-data">
+        <input type="file" name="upfile" />
+        <input type="submit" value="上传" />
+    </form>
+
+
+
 </body>
 </html>
