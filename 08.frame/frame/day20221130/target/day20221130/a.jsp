@@ -9,6 +9,9 @@
 <html>
 <head>
     <title>Title</title>
+<%--    上传多个文件的js插件--%>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 </head>
 <body>
 成功登录的管理页面  <%=session.getAttribute("uname")%>
@@ -87,6 +90,17 @@
     </form>
 
 
+<%--多文件上传普通形式--%>
+<form method="post" action="http://localhost:8888/day20221130_war/admin/uploads" enctype="multipart/form-data">
+    <input type="file" name="upfiles" />
+    <input type="file" name="upfiles" />
+    <input type="file" name="upfiles" />
+    <input type="submit" value="上传多个文件" />
+</form>
+
+
+<%--多文件上传使用插件形式--%>
+<form action="http://localhost:8888/day20221130_war/admin/uploads" class="dropzone" id="my-awesome-dropzone"></form>
 
 </body>
 </html>

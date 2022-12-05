@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import vip.epss.domain.Admin;
+import vip.epss.utils.MessageAndData;
+import vip.epss.utils.UpUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -119,4 +121,20 @@ public class AdminController {
         return "ok";
     }
 
+    @ResponseBody
+    @PostMapping(value = "/uploads")
+    public MessageAndData uploads(MultipartFile[] upfiles) {
+        List<String> retFileName = new ArrayList<>();
+        //处于健壮性考虑， 确保上传的文件合理
+        if(upfiles!=null && upfiles.length > 0){//满足需要上传的条件
+            //上传图片存储目录,允许业务类程序员指定
+            String path = "c:/b/upload";
+            //循环遍历上传文件
+            for (int i = 0; i < upfiles.length; i++) {
+                retFileName.add(UpUtils.saveFile(upfiles[i],path));
+            }
+            System.out.println(retFileName);
+        }
+        return MessageAndData.success("上传成功").addData("ups",retFileName);
+    }
 }
