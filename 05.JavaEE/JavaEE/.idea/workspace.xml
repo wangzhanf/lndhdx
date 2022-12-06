@@ -10,9 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d4b1b64-dba5-4503-8e7f-7930752df0fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminAjaxRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/controller/AdminAjaxRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/resources/springmvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/classes/springmvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/target/day20221130/WEB-INF/classes/springmvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../后端框架课堂笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../后端框架课堂笔记.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
