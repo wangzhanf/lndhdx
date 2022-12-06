@@ -101,6 +101,6 @@
 
 <%--多文件上传使用插件形式--%>
 <form action="http://localhost:8888/day20221130_war/admin/uploads" class="dropzone" id="my-awesome-dropzone"></form>
-
+<input type="submit" value="提交" />
 </body>
 </html>

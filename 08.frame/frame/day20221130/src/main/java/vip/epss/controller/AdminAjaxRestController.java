@@ -1,9 +1,13 @@
 package vip.epss.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vip.epss.domain.Admin;
+import vip.epss.domain.Info;
 import vip.epss.utils.MessageAndData;
+import vip.epss.utils.UpUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,10 +46,32 @@ public class AdminAjaxRestController {
         return "delete:"+id.toString();
     }
 
-    @PostMapping(value = "/opt")
+    //最原始的rest风格的post
+    /*@PostMapping(value = "/opt")
     public String add(Admin admin){
         System.out.println(admin);
         return admin.toString();
+    }*/
+
+    @PostMapping(value = "/opt")
+    public MessageAndData add(@RequestParam(value = "upfile" ,required = false ) MultipartFile upfile1, Admin admin, HttpServletRequest httpServletRequest){
+        //System.out.println(upfile);
+        //System.out.println(admin);
+        String path = "c:/b/upload";
+        String avatar = UpUtils.saveFile(upfile1, path);
+        Info info = new Info();
+        info.setAvatar(avatar);
+        admin.setInfo(info);
+
+
+        //1 方案：  后端通过手动方式获取参数,原因是前端通过formData重新封装数据， 没有对应的实体类【HttpServletRequest会被自动封装到handler，声明即可使用】
+        // 分割字串的方式拼接成一个Admin对象。
+        //String infoData = httpServletRequest.getParameter("infoData");
+        //System.out.println(infoData);
+
+        //2 方案：  前端传递数据时按照后端实体进行包装，后端使用实体类参数接收即可  【代码参考  ajaxJsonRequestDemo.html  42行】
+        System.out.println(admin);
+        return MessageAndData.success().addData("admin",admin);
     }
 
     @PutMapping(value = "/opt/{aid}")
