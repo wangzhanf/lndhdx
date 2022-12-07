@@ -8,9 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import vip.epss.dao.AdminMapper;
 import vip.epss.dao.BusinessMapper;
 import vip.epss.dao.InfoMapper;
+import vip.epss.domain.Admin;
+import vip.epss.domain.AdminExample;
 import vip.epss.domain.InfoExample;
 import vip.epss.service.AdminService;
 import vip.epss.service.BusinessService;
+
+import java.util.List;
 
 @Service(value = "adminService")
 public class AdminServiceImpl implements AdminService {
@@ -73,5 +77,34 @@ public class AdminServiceImpl implements AdminService {
         //删admin
         int j = adminMapper.deleteByPrimaryKey(id);
         return j;
+    }
+
+    @Override
+    public Admin selectByPrimaryKey(Integer id) {
+        Admin admin = adminMapper.selectByPrimaryKey(id);
+        return admin;
+    }
+
+    @Override
+    public List<Admin> selectByExample(AdminExample example) {
+        List<Admin> admins = adminMapper.selectByExample(example);
+        return admins;
+    }
+
+
+    @Override
+    public Admin loginCheck(Admin admin) {
+        AdminExample adminExample = new AdminExample();
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        criteria.andAdminnameEqualTo(admin.getAdminname());
+        criteria.andPasswordEqualTo(admin.getPassword());
+        List<Admin> admins = adminMapper.selectByExample(adminExample);
+        Admin retadmin = null;
+        if(admins.size() == 0)
+            retadmin = null;
+        if(admins.size() > 0)
+            retadmin =  admins.get(0);
+
+        return retadmin;
     }
 }

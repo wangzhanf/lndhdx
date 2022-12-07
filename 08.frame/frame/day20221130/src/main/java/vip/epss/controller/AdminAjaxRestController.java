@@ -1,13 +1,16 @@
 package vip.epss.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vip.epss.domain.Admin;
 import vip.epss.domain.Info;
+import vip.epss.service.AdminService;
 import vip.epss.utils.MessageAndData;
 import vip.epss.utils.UpUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +19,9 @@ import java.util.Map;
 @RequestMapping("/adminar")
 @RestController   //  @Controller 和  @ResponseBody 合体
 public class AdminAjaxRestController {
+
+    @Autowired
+    private AdminService adminService;
 
     @GetMapping(value = "/opt/{aid}")
     public MessageAndData /*Map<String, Object>*/ /*List<Admin>*/ /*Admin*/ get(@PathVariable("aid")Integer id){
@@ -42,8 +48,9 @@ public class AdminAjaxRestController {
     }
 
     @DeleteMapping(value = "/opt/{aid}")
-    public String delete(@PathVariable("aid")Integer id){
-        return "delete:"+id.toString();
+    public MessageAndData delete(@PathVariable("aid")Integer id){
+        int i = adminService.deleteByPrimaryKey(id);
+        return MessageAndData.success().addData("num",i);
     }
 
     //最原始的rest风格的post
@@ -80,5 +87,19 @@ public class AdminAjaxRestController {
         return "id:" + id + "," + admin.toString();
     }
 
-
+    @PostMapping(value = "/login")
+    public MessageAndData login(Admin admin, HttpSession httpSession){
+        System.out.println(admin);
+        Admin ret = adminService.loginCheck(admin);
+        MessageAndData mad = null;
+        if(ret == null){
+            mad = MessageAndData.error().addData("msg","用户名和密码不匹配");
+        }else{
+            mad = MessageAndData.success().addData("msg","欢迎回来");
+            httpSession.setMaxInactiveInterval(30);
+            httpSession.setAttribute("loginStatus",true);
+            httpSession.setAttribute("ADMIN_SESSION",ret);
+        }
+        return mad;
+    }
 }

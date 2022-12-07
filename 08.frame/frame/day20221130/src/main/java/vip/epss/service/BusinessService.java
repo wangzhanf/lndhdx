@@ -1,4 +1,7 @@
 package vip.epss.service;
 
-public interface BusinessService extends CommonService{
+import vip.epss.domain.Business;
+import vip.epss.domain.BusinessExample;
+
+public interface BusinessService extends CommonService<Business, BusinessExample>{
 }

@@ -1,6 +1,8 @@
 package vip.epss.service.impl;
 
 import org.springframework.stereotype.Service;
+import vip.epss.domain.Business;
+import vip.epss.domain.BusinessExample;
 import vip.epss.service.BusinessService;
 
 import java.io.IOException;
@@ -17,5 +19,15 @@ public class BusinessServiceImpl implements BusinessService {
         //删商家
         //成功则提交事务，失败则回滚事务
         return 9;
+    }
+
+    @Override
+    public Business selectByPrimaryKey(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List<Business> selectByExample(BusinessExample example) {
+        return null;
     }
 }

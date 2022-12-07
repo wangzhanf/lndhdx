@@ -30,7 +30,7 @@
 <!--    </bean>-->
 
     <!-- 引入db配置文件  -->
-    <context:property-placeholder location="db.properties" />
+    <context:property-placeholder location="classpath:db.properties" />
     <!-- 配置dataSource数据源 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driver}"></property>
@@ -45,7 +45,22 @@
 <!--        依赖注入， 实体类的别名映射-->
         <!--        <property name="typeAliasesPackage" value="vip.epss.domain"  课间休息：  11：00 />-->
         <!--        引入独立的MyBatis配置文件，将Spring中不易配置或者只能由MyBatis完成的任务分离出去-->
-        <property name="configLocation" value="mybatisConfig.xml"></property>
+        <property name="configLocation" value="classpath:mybatisConfig.xml"></property>
+        <!--        配置分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor" id="pageHelper">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            offsetAsPageNum=true
+                            pageSizeZero=true
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
     <!-- 配置Mapper，自动扫描Mapper接口，并为其注入SqlSessionFactory -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

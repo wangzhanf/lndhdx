@@ -1,8 +1,10 @@
 package vip.epss.controller;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import vip.epss.domain.Admin;
+import vip.epss.service.AdminService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,6 +58,18 @@ public class HelloController {
     @GetMapping("/he7")
     public String hello7(Admin admin){
         return admin.toString();
+    }
+
+    @GetMapping("/he9")
+    public String hello9(){
+        //仿造人工获得Spring IOC容器工作
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        //通过IOC容器拿到 Bean
+        AdminService adminService = classPathXmlApplicationContext.getBean("adminService", AdminService.class);
+//        //使用Bean
+        Integer i = adminService.deleteByPrimaryKey(9);
+        System.out.println(i);
+        return "" + i;
     }
 
     @GetMapping("/he8")

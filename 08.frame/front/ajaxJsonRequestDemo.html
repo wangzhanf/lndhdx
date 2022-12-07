@@ -28,12 +28,45 @@
         <input id="aBtn6" type="button" value="带文件和参数的post" />
     </form>
 
+    <form id="loginForm">
+        <input type="text" name="adminname" />
+        <input type="text" name="password" />
+
+        <input id="aBtn7" type="button" value="登录功能" />
+    </form>
+
+
+    <hr />
+    <h1>REST案例</h1>
+    
+
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.js"></script>
 <script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
 <script>
     $(document).ready(function(){
         //库和框架  效率工具
+
+        $('#aBtn7').click(function(){
+            let $oForm = $("#loginForm");
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true   //允许xhr对象携带认证消息
+                },
+                crossDomain: true,//是否允许跨域
+                // contentType:"multipart/form-data",
+                cache: false,//必须设置为false
+                // processData: false,//必须设置为false
+                //如果需要使用序列化表单等复杂对象数据，设置contentType为x-www-form-urlencoded  / multipart/form-data 类型或者使用默认
+                // contentType: false,
+                type:"post",
+                url:"http://localhost:8888/day20221130_war/adminar/login",
+                data:$oForm.serialize(),
+                success:function(res){
+                    $oForm.get(0).reset();
+                }
+            });
+        });
 
         $('#aBtn6').click(function(){
             let $oForm = $("#afForm");
@@ -119,7 +152,7 @@
                 processData: false,//必须设置为false
                 contentType: false,//必须设置为false
                 type:"delete",
-                url:"http://localhost:8888/day20221130_war/adminar/opt/99",
+                url:"http://localhost:8888/day20221130_war/adminar/opt/8",
                 success:function(res){
                     console.log(res);
                 }
