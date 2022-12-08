@@ -163,6 +163,13 @@
             <version>5.1.8</version>
         </dependency>
 
+<!--JDK8  之后不允许使用@Resource注解-->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>day20221130</finalName>

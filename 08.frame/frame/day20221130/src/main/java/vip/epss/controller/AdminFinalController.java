@@ -10,8 +10,11 @@ import vip.epss.domain.Admin;
 import vip.epss.domain.AdminExample;
 import vip.epss.service.AdminService;
 import vip.epss.service.CommonService;
+import vip.epss.service.impl.AdminServiceImpl;
 import vip.epss.utils.MessageAndData;
 
+
+import javax.annotation.Resource;
 import java.util.List;
 
 //完整版本的REST应用模式
@@ -25,11 +28,10 @@ import java.util.List;
 @RequestMapping("/admins")
 public class AdminFinalController implements CommonController<Admin>{
 
-//    @Autowired
-    @Qualifier("adminService")
-//    @Resource
     @Autowired
-
+//    @Qualifier("adminService")
+//    @Resource(name = "adminService",type = AdminServiceImpl.class)
+    //@Resource
     private AdminService adminService;
 
     @GetMapping("/{keyword}/{pageNum}/{pageSize}")
