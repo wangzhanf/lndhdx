@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <button id="aBtn1">发送跨域请求到springboot1</button>
+    <button id="aBtn2">发送跨域请求到springboot2</button>
+  
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //库和框架  效率工具
+
+        $('#aBtn1').click(function(){
+            $.ajax({
+                // xhrFields: {
+                //     withCredentials: true   //允许xhr对象携带认证消息
+                // },
+                crossDomain: true,//是否允许跨域
+                // contentType:"multipart/form-data",
+                // cache: false,//必须设置为false
+                processData: false,//必须设置为false
+                //如果需要使用序列化表单等复杂对象数据，设置contentType为x-www-form-urlencoded  / multipart/form-data 类型或者使用默认
+                // contentType: false,
+                type:"get",
+                url:"http://localhost:8080/admins/hello",
+                success:function(res){
+                    console.log(res);
+                }
+            });
+        });
+
+        $('#aBtn2').click(function(){
+            $.ajax({
+                // xhrFields: {
+                //     withCredentials: true   //允许xhr对象携带认证消息
+                // },
+                crossDomain: true,//是否允许跨域
+                // contentType:"multipart/form-data",
+                // cache: false,//必须设置为false
+                processData: false,//必须设置为false
+                //如果需要使用序列化表单等复杂对象数据，设置contentType为x-www-form-urlencoded  / multipart/form-data 类型或者使用默认
+                // contentType: false,
+                type:"get",
+                url:"http://localhost:8080/hello/h1",
+                success:function(res){
+                    console.log(res);
+                }
+            });
+        });
+
+        
+    });
+</script>
+
+
+</body>
+</html>

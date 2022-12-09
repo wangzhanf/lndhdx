@@ -1,0 +1,15 @@
+# 设置服务器端口
+server:
+  port: 88
+  servlet:
+    context-path: "/abc"
+    encoding:
+      charset: UTF-8
+
+# 伪造一个数据
+username: wangzhanf
+# 爱好
+hobby:
+  - 足球
+  - 篮球
+  - 乒乓球
