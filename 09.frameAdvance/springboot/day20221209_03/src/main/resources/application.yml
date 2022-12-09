@@ -13,3 +13,15 @@ hobby:
   - 足球
   - 篮球
   - 乒乓球
+
+Person:
+  name: guest
+  age: 18
+  salary: 234.56
+
+
+conndb:
+  driver: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3331/ele_se?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+  username: root
+  password: 111111

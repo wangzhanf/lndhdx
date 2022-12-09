@@ -6,6 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import vip.epss.domain.Person;
 
 @RestController
 @RequestMapping("admins")
@@ -22,10 +23,13 @@ public class AdminController {
     private String encode;
 
     //获取整个配置文件  ，整个配置文件默认都会被IOC收录，都被封装在Environment对象，通过自动注入@Autowired引用，通过  getProperty获得具体的key对应的value
-    @Autowired
+    @Autowired   //
     private Environment environment;
 
-    //获取配置文件中的部分片段 ，将片段封装为实体类
+    //获取配置文件中的部分片段 ，将片段封装为实体类， setter和getter自动注入
+
+    @Autowired   //手工设置能够被IOC收录
+    private Person person;
 
 
 //    @Value("${hobby}")
@@ -38,6 +42,8 @@ public class AdminController {
 //             ) {
 //            System.out.println(s);
 //        }
+
+        System.out.println(person);
         return this.uname + this.hobby + this.encode +  this.environment.getProperty("username");
     }
 }
