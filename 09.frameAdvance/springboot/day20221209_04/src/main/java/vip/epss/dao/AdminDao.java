@@ -1,5 +1,6 @@
 package vip.epss.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -17,4 +18,8 @@ public interface AdminDao {
 
     @Select("select * from admin")
     List<Admin> selectByExample();
+
+    @Insert("insert into admin (adminname,password) value (#{adminname},#{password})")
+    Integer insert(Admin admin);
+
 }
