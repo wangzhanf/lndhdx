@@ -19,7 +19,7 @@ public interface AdminDao {
     @Select("select * from admin")
     List<Admin> selectByExample();
 
-    @Insert("insert into admin (adminname,password) value (#{adminname},#{password})")
+    @Insert("insert into admin (id,adminname,password) value (#{id},#{adminname},#{password})")
     Integer insert(Admin admin);
 
 }

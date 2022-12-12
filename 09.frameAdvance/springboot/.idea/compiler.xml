@@ -7,14 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="day20221212_01" />
         <module name="day20221208_02" />
         <module name="day20221209_04" />
         <module name="day20221209_03" />
         <module name="day20221209_02" />
         <module name="day20221208_01" />
         <module name="day20221209_01" />
+        <module name="day20221212_3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day20221212_01" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -24,6 +29,8 @@
       <module name="day20221209_02" options="-parameters" />
       <module name="day20221209_03" options="-parameters" />
       <module name="day20221209_04" options="-parameters" />
+      <module name="day20221212_01" options="-parameters" />
+      <module name="day20221212_3" options="-parameters" />
     </option>
   </component>
 </project>

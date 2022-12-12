@@ -1,0 +1,16 @@
+#  xml   ==>    properties    ==>  yaml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3331/ele_se?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 111111
+
+server:
+  port: 80
+
+#设置日志的输出级别：  debug  >   info     >   warn    >    error
+logging:
+  level:
+    org.springframework: error
+    vip.epss.dao: info

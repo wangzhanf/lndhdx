@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cc38b19b-e625-42f5-b06f-1c9bc75e833f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/java/vip/epss/MpGeneratorApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/src/test/java/vip/epss/MpGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mpGenerator/src/test/java/vip/epss/MpGeneratorApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/Day202212123Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/MybatisPlusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/dao/AdminDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/domain/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/test/java/vip/epss/Day202212123ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot/day20221209_04/src/main/java/vip/epss/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/day20221209_04/src/main/java/vip/epss/dao/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../框架整合课堂笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../框架整合课堂笔记.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\myfloder\develop-tools\apache-maven-3.8.6\repo" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../develop-tools/apache-maven-3.8.6" />
+        <option name="userSettingsFile" value="C:\myfloder\develop-tools\apache-maven-3.8.6\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2InnsGFsadyZdHzdX7mKZIJE3ze" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "11 (2)",
+    "last_opened_file_path": "C:/myfloder/授课资料/辽宁理工职业大学/code/09.frameAdvance/FinalProject/mpGenerator/src/main/resources",
+    "settings.editor.selected.configurable": "MavenSettings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\09.frameAdvance\FinalProject\mpGenerator\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MpGenerator">
+    <configuration name="MpGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vip.epss.MpGenerator" />
+      <module name="mpGenerator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vip.epss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MpGeneratorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mpGenerator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.MpGeneratorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MpGenerator" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc38b19b-e625-42f5-b06f-1c9bc75e833f" name="Changes" comment="" />
+      <created>1670826423478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670826423478</updated>
+      <workItem from="1670826425203" duration="2507000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

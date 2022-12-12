@@ -10,6 +10,7 @@ import vip.epss.dao.BusinessMapper;
 import vip.epss.dao.InfoMapper;
 import vip.epss.domain.Admin;
 import vip.epss.domain.AdminExample;
+import vip.epss.domain.Info;
 import vip.epss.domain.InfoExample;
 import vip.epss.service.AdminService;
 import vip.epss.service.BusinessService;
@@ -82,6 +83,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin selectByPrimaryKey(Integer id) {
         Admin admin = adminMapper.selectByPrimaryKey(id);
+        InfoExample infoExample = new InfoExample();
+        InfoExample.Criteria criteria = infoExample.createCriteria();
+        criteria.andAidEqualTo(admin.getId());
+        List<Info> infos = infoMapper.selectByExample(infoExample);
+        admin.setInfo(infos.get(0));
+
         return admin;
     }
 
