@@ -5,40 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc38b19b-e625-42f5-b06f-1c9bc75e833f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/java/vip/epss/MpGeneratorApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/src/test/java/vip/epss/MpGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mpGenerator/src/test/java/vip/epss/MpGeneratorApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/Day202212123Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/MybatisPlusConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/dao/AdminDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/java/vip/epss/domain/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springboot/day20221212_3/src/test/java/vip/epss/Day202212123ApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../08.frame/frame/day20221130/src/main/java/vip/epss/service/impl/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot/day20221209_04/src/main/java/vip/epss/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot/day20221209_04/src/main/java/vip/epss/dao/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mpGenerator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mpGenerator/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mpGenerator/src/main/java/vip/epss/MpGeneratorApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mpGenerator/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mpGenerator/src/test/java/vip/epss/MpGeneratorApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../框架整合课堂笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../框架整合课堂笔记.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,12 +39,18 @@
       <MavenGeneralSettings>
         <option name="localRepository" value="C:\myfloder\develop-tools\apache-maven-3.8.6\repo" />
         <option name="mavenHome" value="$PROJECT_DIR$/../../../../../develop-tools/apache-maven-3.8.6" />
+        <option name="useMavenConfig" value="true" />
         <option name="userSettingsFile" value="C:\myfloder\develop-tools\apache-maven-3.8.6\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectId" id="2InnsGFsadyZdHzdX7mKZIJE3ze" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -77,24 +58,134 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11 (2)",
-    "last_opened_file_path": "C:/myfloder/授课资料/辽宁理工职业大学/code/09.frameAdvance/FinalProject/mpGenerator/src/main/resources",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "last_opened_file_path": "C:/myfloder/授课资料/辽宁理工职业大学/code/09.frameAdvance/FinalProject/adminLine/src/main/resources/mapper",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.27471265",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "2ec1accd7076b6cc7411723936db3594"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\09.frameAdvance\FinalProject\adminLine\src\main\resources\mapper" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\09.frameAdvance\FinalProject\CommonLine\src\main\java\vip\epss\utils" />
+      <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\09.frameAdvance\FinalProject\adminLine\src\main\resources" />
       <recent name="C:\myfloder\授课资料\辽宁理工职业大学\code\09.frameAdvance\FinalProject\mpGenerator\src\main\resources" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="vip.epss.service.impl" />
+      <recent name="vip.epss.service" />
+      <recent name="vip.epss.mapper" />
+      <recent name="vip.epss.domain" />
+      <recent name="vip.epss.controller" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.MpGenerator">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BusinessLineApplication">
     <configuration name="MpGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="vip.epss.MpGenerator" />
       <module name="mpGenerator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vip.epss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BusinessLineTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="businessLine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vip.epss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vip.epss" />
+      <option name="MAIN_CLASS_NAME" value="vip.epss.BusinessLineTest" />
+      <option name="METHOD_NAME" value="test01" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoLineTest.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="infoLine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vip.epss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vip.epss" />
+      <option name="MAIN_CLASS_NAME" value="vip.epss.InfoLineTest" />
+      <option name="METHOD_NAME" value="test01" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="adminLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.AdminLineApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BusinessLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="businessLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.BusinessLineApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="CommonLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.CommonLineApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FoodLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="foodLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.FoodLineApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vip.epss.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="infoLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.InfoLineApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="vip.epss.*" />
@@ -112,8 +203,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrdermapLineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ordermapLine" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vip.epss.OrdermapLineApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.FoodLineApplication" />
+        <item itemvalue="JUnit.BusinessLineTest.test01" />
+        <item itemvalue="JUnit.InfoLineTest.test01" />
+        <item itemvalue="Spring Boot.InfoLineApplication" />
         <item itemvalue="Application.MpGenerator" />
       </list>
     </recent_temporary>
@@ -127,6 +229,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670826423478</updated>
       <workItem from="1670826425203" duration="2507000" />
+      <workItem from="1670889221196" duration="16499000" />
     </task>
     <servers />
   </component>

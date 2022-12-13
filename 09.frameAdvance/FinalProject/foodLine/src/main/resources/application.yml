@@ -1,0 +1,23 @@
+#  xml   ==>    properties    ==>  yaml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3331/ele_se?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 111111
+
+server:
+  port: 120
+
+#设置日志的输出级别：  debug  >   info     >   warn    >    error
+logging:
+  level:
+    org.springframework: info
+    vip.epss.dao: info
+
+
+
+# 实体类和数据表字段形成映射时，驼峰写法使用下划线替换
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false

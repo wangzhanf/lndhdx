@@ -10,13 +10,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ordermapLine" />
+        <module name="infoLine" />
+        <module name="businessLine" />
+        <module name="CommonLine" />
+        <module name="foodLine" />
+        <module name="adminLine" />
         <module name="mpGenerator" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CommonLine" options="-parameters" />
+      <module name="adminLine" options="-parameters" />
+      <module name="businessLine" options="-parameters" />
+      <module name="foodLine" options="-parameters" />
+      <module name="infoLine" options="-parameters" />
       <module name="mpGenerator" options="-parameters" />
+      <module name="ordermapLine" options="-parameters" />
     </option>
   </component>
 </project>

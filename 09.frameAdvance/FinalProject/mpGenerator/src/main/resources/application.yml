@@ -12,5 +12,5 @@ server:
 #设置日志的输出级别：  debug  >   info     >   warn    >    error
 logging:
   level:
-    org.springframework: error
+    org.springframework: info
     vip.epss.dao: info

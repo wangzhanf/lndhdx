@@ -1,13 +1,13 @@
 package vip.epss;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MpGeneratorApplication {
-
+@MapperScan("vip.epss.mapper")
+public class OrdermapLineApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MpGeneratorApplication.class, args);
+        SpringApplication.run(OrdermapLineApplication.class,args);
     }
-
 }
