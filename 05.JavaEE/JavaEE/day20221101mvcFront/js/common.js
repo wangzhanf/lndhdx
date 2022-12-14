@@ -33,6 +33,40 @@ function multipleCheck(){
 //日期转换 客户端的工具
 //基于原型链给某个对象添加成员，所有的Date对象都拥有该成员
 // (new Date()).Format
+
+function Abc(){};
+Abc.name = "zs";
+//  每个showMe都是独立的函数代码
+// Abc.showMe = function(){
+//     console.log(this.name);
+// }
+//  每个实例共享同样的函数代码
+Abc.showMe = showMeF;
+function showMeF(){
+    console.log(this.name);
+}
+function createABC(aname){
+    let ret = new Abc();
+    ret.name = aname;
+    ret.showMe = showMeF;
+    return ret;
+}
+
+let a1 = createABC("ls");
+let a2 = createABC("ww");
+a1.showMe();a2.showMe();
+//a1.kkk = 'kk';
+//console.log(a2.kkk);
+
+Abc.prototype.hello = function(){
+
+}
+a1.hello();a2.hello();
+
+let currentDate = new Date();
+currentDate.fmt = function(){};
+
+
 Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1, // 月份

@@ -2,6 +2,7 @@ package vip.epss.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,8 +22,9 @@ import java.util.List;
  * @author wangzhanf
  * @since 2022-12-12
  */
+@CrossOrigin("*")   //微服务方式，使用注解更加方便
 @RestController
-@RequestMapping("/businesses")
+@RequestMapping("/businesses")     //       http://localhost:140/businesses   [GET]
 public class BusinessController {
 
     @Autowired
